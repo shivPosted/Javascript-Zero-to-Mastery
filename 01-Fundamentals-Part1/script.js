@@ -31,11 +31,11 @@ console.log(typeof string01);
 console.log(typeof null);  */                                         // a bug in JS that null is an object type
 
 
-let age = 21;
-age = 22;                                           //mutable in case of let 
+// let age = 21;
+// age = 22;                                           //mutable in case of let 
 
-const BIRTH_YEAR = 2001;
-BIRTH_YEAR = 2003;                                              //immutable in const will give an error
+// const BIRTH_YEAR = 2001;
+// BIRTH_YEAR = 2003;                                              //immutable in const will give an error
 
-var familia = "Rajput"
-console.log(familia);                                       //looks like let but don't use it
+// var familia = "Rajput"
+// console.log(familia);                                       //looks like let but don't use it
