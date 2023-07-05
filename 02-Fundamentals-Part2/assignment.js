@@ -39,7 +39,7 @@ console.log(VALUE3);*/
 
 
 //function declaration
-/*function percentageOfWorld1(population) {
+function percentageOfWorld1(population) {
     return (population / 7900) * 100;
 }
 
@@ -62,15 +62,15 @@ const VALUE_2 = PERCENTAGE_1(500);
 const VALUE_3 = PERCENTAGE_1(14);
 console.log(VALUE_1);
 console.log(VALUE_2);
-console.log(VALUE_3);*/
+console.log(VALUE_3);
 
 
-console.log('Assignment-14');
+// console.log('Assignment-14');
 
 // 1. Recreate the last assignment, but this time create an arrow function called
 // 'percentageOfWorld3'
 
-const percentageOfWorld3 = population => (population / 7900) * 100;
+/*const percentageOfWorld3 = population => (population / 7900) * 100;
 
 const VALUE_01 = percentageOfWorld3(100);
 const VALUE_02 = percentageOfWorld3(200);
@@ -78,4 +78,18 @@ const VALUE_03 = percentageOfWorld3(1200);
 
 console.log(`The country01 population is ${VALUE_01} % of the world`);
 console.log(`The country02 population is ${VALUE_02} % of the world`);
-console.log(`The country03 population is ${VALUE_03} % of the world`);
+console.log(`The country03 population is ${VALUE_03} % of the world`);*/
+
+console.log('Assignment-15');
+
+// 1. Create a function called 'describePopulation'. Use the function type you
+// like the most. This function takes in two arguments: 'country' and
+// 'population', and returns a string like this: 'China has 1441 million people,
+// which is about 18.2% of the world.'
+// 2. To calculate the percentage, 'describePopulation' call the
+// 'percentageOfWorld1' you created earlier
+// 3. Call 'describePopulation' with data for 3 countries of your choice
+
+const describePopulation = (country, population) => `${country} has ${population} people, which is about ${percentageOfWorld1(population)}% of the world`;
+
+console.log(describePopulation('India', 1441));
