@@ -51,7 +51,7 @@ language = "Hindi";
 // 5. Based on the variables you created, create a new variable 'description'
 // which contains a string with this format: 'Portugal is in Europe, and its 11 million
 // people speak portuguese'
-console.log("Assignment-04");
+/*console.log("Assignment-04");
 let populationHalf = population / 2;
 console.log(populationHalf);
 
@@ -65,7 +65,7 @@ console.log("The population of finland is grater than my country, this statement
 let populationLessThanAverage = 33 > population;
 console.log("The population of my country is less than average is " + populationLessThanAverage);
 // let description = country + " is in " + continent + ", and its " + population + " million people speaks " + language;
-// console.log(description);
+// console.log(description);*/
 
 // console.log("Challenge#01");
 // Mark and John are trying to compare their BMI (Body Mass Index), which is calculated using the formula: BMI = mass / (height * height) (mass in kg and height in meters).
@@ -96,12 +96,12 @@ console.log("The population of my country is less than average is " + population
 // console.log("Is Mark's BMI higher than John is " + markHigherBMI);
 
 
-console.log("Assignment-05");
+/*console.log("Assignment-05");
 const DESCRIPTION = `${country} is in ${continent} and its ${population} million people speaks ${language}`;
-console.log(DESCRIPTION);
+console.log(DESCRIPTION);*/
 
 
-console.log("Assignment-06");
+// console.log("Assignment-06");
 // 1. If your country's population is greater that 33 million, log a string like this to the
 // console: 'Portugal's population is above average'. Otherwise, log a string like
 // 'Portugal's population is 22 million below average' (the 22 is the average of 33
@@ -118,7 +118,7 @@ console.log("Assignment-06");
 // }
 
 
-console.log("Assignment-07");
+// console.log("Assignment-07");
 
 // 1. Predict the result of these 5 operations without executing them:
 // '9' - '5';
@@ -136,7 +136,7 @@ console.log("Assignment-07");
 
 
 
-console.log("Assignment-08");
+// console.log("Assignment-08");
 
 // 1. Declare a variable 'numNeighbours' based on a prompt input like this:
 // prompt('How many neighbour countries does your country
@@ -156,8 +156,65 @@ console.log("Assignment-08");
 // 8. Reflect on why we should use the === operator and type conversion in this
 // situation
 
-const numNeighbours = Number(prompt("How many neighbour countries does your country have?"));
+/*const numNeighbours = Number(prompt("How many neighbour countries does your country have?"));
 
 if (numNeighbours === 1) console.log("Only 1 border!");
 else if (numNeighbours > 1) console.log("More than 1 border");
-else console.log("No borders");
+else console.log("No borders");*/
+
+/*console.log("Assignment-09");
+let scoreDolphins = (96 + 108 + 89) / 3;
+let scoreKoalas = (88 + 91 + 110) / 3;
+
+if (scoreDolphins > scoreKoalas) console.log("Dolphins win the trophy");
+else if (scoreKoalas > scoreDolphins) console.log("Koalas win the trophy");
+else console.log("Both win the trophy");
+
+scoreDolphins = (97 + 112 + 101) / 3;
+scoreKoalas = (109 + 95 + 123) / 3;
+
+if ((scoreDolphins > scoreKoalas) && scoreDolphins >= 100) console.log("Dolphins win the trophy");
+else if ((scoreKoalas > scoreDolphins) && scoreKoalas >= 100) console.log("Koalas win the trophy");
+else console.log("Both win the trophy");
+
+scoreDolphins = (97 + 112 + 101) / 3;
+scoreKoalas = (109 + 95 + 106) / 3;
+
+if ((scoreDolphins > scoreKoalas) && scoreDolphins >= 100) console.log("Dolphins win the trophy");
+else if ((scoreKoalas > scoreDolphins) && scoreKoalas >= 100) console.log("Koalas win the trophy");
+else if (scoreDolphins >= 100 && scoreKoalas >= 100) console.log("Both win the trophy");                    //the only case left is both are equal so no need to check that
+else {
+    console.log("No One wins the trophy");
+}*/
+
+console.log("Assignment-10");
+// 1. Use a switch statement to log the following string for the given 'language':
+// chinese or mandarin: 'MOST number of native speakers!'
+// spanish: '2nd place in number of native speakers'
+// english: '3rd place'
+// hindi: 'Number 4'
+// arabic: '5th most spoken language'
+// for all other simply log 'Great language too :D'
+
+const LANGUAGE = 'hindi';
+
+switch (LANGUAGE) {
+    case 'chinese':
+    case 'mandarin':
+        console.log('MOST number of native speakers!');
+        break;
+    case 'spanish':
+        console.log('2nd place in number of native speakers');
+        break;
+    case 'english':
+        console.log('3rd place');
+        break;
+    case 'hindi':
+        console.log('Number 4');
+        break;
+    case 'arabic':
+        console.log('5th most spoken language');
+        break;
+    default:
+        console.log('Great language too :D');
+}

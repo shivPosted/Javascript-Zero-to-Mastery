@@ -121,7 +121,7 @@ console.log(typeof null);  */                                         // a bug i
 
 // == and ===
 
-const favouriteNumber = Number(prompt("What is your favourite Number?"));                               //prompt will return a string
+/*const favouriteNumber = Number(prompt("What is your favourite Number?"));                               //prompt will return a string
 if (favouriteNumber === 23) {
     console.log("23 is a cool number");
 } else if (favouriteNumber === 18) {
@@ -129,4 +129,66 @@ if (favouriteNumber === 23) {
 }
 else {
     console.log("This number is not cool at all");
+}*/
+
+/*const hasDriversLicense = true;
+const hasGoodVision = false;
+
+console.log(hasDriversLicense && hasGoodVision);
+console.log(hasDriversLicense || hasGoodVision);
+console.log(!hasGoodVision);
+
+const shouldDrive = hasDriversLicense && hasGoodVision;
+if (shouldDrive) {
+    console.log("Sarah should drive");
+}
+else {
+    console.log("Someone else should drive");
+}*/
+
+
+//Switch
+
+const DAY = 'tuesday';
+
+switch (DAY) {
+    case 'monday':                              //DAY === 'monday'  -->strict equilty
+        console.log('Plan the course');
+        console.log('Go to code meetup');
+        break;
+    case 'tuesday':
+        console.log('Prepare theory videos');
+        break;
+    case 'wednesday':
+    case 'thursday':
+        console.log('Find error in code');
+        break;
+    case 'friday':
+        console.log('Answer some of the question');
+        break;
+    case 'saturday':
+    case 'sunday':
+        console.log('Enjoy the weekend');
+        break;
+    default:
+        console.log('The entered day is incorrect');
+}
+
+//the same code in if-else ladder
+
+if (DAY === 'monday') {
+    console.log('Plan the course');
+    console.log('Go to code meetup');
+}
+else if (DAY === 'tuesday') {
+    console.log('Prepare theory videos');
+}
+else if (DAY === 'wednesday' || DAY === 'thursday') {
+    console.log('Find error in code');
+}
+else if (DAY === 'friday') {
+    console.log('Answer some of the question');
+}
+else if (DAY === 'saturday' || DAY === 'sunday') {
+    console.log('Enjoy the weekend');
 }
