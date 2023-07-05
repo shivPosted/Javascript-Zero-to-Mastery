@@ -187,7 +187,7 @@ else {
     console.log("No One wins the trophy");
 }*/
 
-console.log("Assignment-10");
+/*console.log("Assignment-10");
 // 1. Use a switch statement to log the following string for the given 'language':
 // chinese or mandarin: 'MOST number of native speakers!'
 // spanish: '2nd place in number of native speakers'
@@ -196,7 +196,7 @@ console.log("Assignment-10");
 // arabic: '5th most spoken language'
 // for all other simply log 'Great language too :D'
 
-const LANGUAGE = 'hindi';
+// const LANGUAGE = 'hindi';
 
 switch (LANGUAGE) {
     case 'chinese':
@@ -217,4 +217,14 @@ switch (LANGUAGE) {
         break;
     default:
         console.log('Great language too :D');
-}
+}*/
+
+console.log("Assignment-11");
+// 1. If your country's population is greater than 33 million, use the ternary operator
+// to log a string like this to the console: 'Portugal's population is above average'.
+// Otherwise, simply log 'Portugal's population is below average'. Notice how only
+// one word changes between these two sentences!
+// 2. After checking the result, change the population temporarily to 13 and then to
+// 130. See the different results, and set the population back to original
+
+population > 33 ? console.log(`${country}'s population is above average`) : console.log(`${country}'s population is below average`);
