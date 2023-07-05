@@ -40,9 +40,27 @@ console.log(typeof null);  */                                         // a bug i
 // var familia = "Rajput"
 // console.log(familia);                                       //looks like let but don't use it
 
-const firstName = "Shiv";
-const JOB = "Student";
-const BIRTH_YEAR = 2003;
-const PRESENT_YEAR = 2023;
+// const firstName = "Shiv";
+// const JOB = "Student";
+// const BIRTH_YEAR = 2003;
+// const PRESENT_YEAR = 2023;
 
-console.log("Hello I am " + firstName + " and I am a " + (PRESENT_YEAR - BIRTH_YEAR) + " year old " + JOB);
+// console.log("Hello I am " + firstName + " and I am a " + (PRESENT_YEAR - BIRTH_YEAR) + " year old " + JOB);
+
+const AGE = 16;
+const isOldEnough = AGE >= 18;
+if (isOldEnough) {
+    console.log(`You are elligible for driving license 😀`);
+}
+else
+    console.log(`You are not elligible for driving there are still ${18 - AGE} years left 😢`);
+
+let century;
+const BIRTH_YEAR = 1996;
+if (BIRTH_YEAR >= 2000) {
+    century = 21;
+} else {
+    century = 20;
+}
+
+console.log(`Born in ${century} century`);
