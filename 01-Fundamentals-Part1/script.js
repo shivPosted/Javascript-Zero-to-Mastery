@@ -91,3 +91,42 @@ console.log(typeof null);  */                                         // a bug i
 //truthy and falsy values
 
 // 5 falsy values: 0, '', undefined, null, NaN       everthing else is truthy values
+
+// console.log(Boolean(0));
+// console.log(Boolean(125));
+// console.log('Shiv');
+// let name = '';
+// console.log('');
+// let fullName;
+// console.log(fullName);
+
+// let money = 0;
+
+// if (money) {
+//     console.log("You are not broke yet");
+// } else {
+//     console.log("You are broke");
+// }
+
+// let height;
+
+// if (height) {
+//     console.log("YESH! Height is defined ⚖️");
+// } else {
+//     console.log("Hight is not defined 🫥");
+// }
+
+
+
+
+// == and ===
+
+const favouriteNumber = Number(prompt("What is your favourite Number?"));                               //prompt will return a string
+if (favouriteNumber === 23) {
+    console.log("23 is a cool number");
+} else if (favouriteNumber === 18) {
+    console.log("Its slightly less cool number");
+}
+else {
+    console.log("This number is not cool at all");
+}
