@@ -47,20 +47,34 @@ console.log(typeof null);  */                                         // a bug i
 
 // console.log("Hello I am " + firstName + " and I am a " + (PRESENT_YEAR - BIRTH_YEAR) + " year old " + JOB);
 
-const AGE = 16;
-const isOldEnough = AGE >= 18;
-if (isOldEnough) {
-    console.log(`You are elligible for driving license 😀`);
-}
-else
-    console.log(`You are not elligible for driving there are still ${18 - AGE} years left 😢`);
+// const AGE = 16;
+// const isOldEnough = AGE >= 18;
+// if (isOldEnough) {
+//     console.log(`You are elligible for driving license 😀`);
+// }
+// else
+//     console.log(`You are not elligible for driving there are still ${18 - AGE} years left 😢`);
 
-let century;
-const BIRTH_YEAR = 1996;
-if (BIRTH_YEAR >= 2000) {
-    century = 21;
-} else {
-    century = 20;
-}
+// let century;
+// const BIRTH_YEAR = 1996;
+// if (BIRTH_YEAR >= 2000) {
+//     century = 21;
+// } else {
+//     century = 20;
+// }
+// console.log(`Born in ${century} century`);
 
-console.log(`Born in ${century} century`);
+
+
+//type conversion
+
+let inputFieldValue = "2003";
+console.log(inputFieldValue, typeof inputFieldValue);
+console.log(Number(inputFieldValue), inputFieldValue);
+console.log(inputFieldValue + 18);
+console.log(Number(inputFieldValue) + 18);
+
+let age = 18;
+
+console.log(String(age), age);
+
