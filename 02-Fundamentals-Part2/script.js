@@ -27,7 +27,22 @@ console.log(APPLE_AND_ORANGE_JUICE);*/
 
 //arrow function
 
-const ageArrow = birthYear => 2023 - birthYear;
+/*const ageArrow = birthYear => 2023 - birthYear;
 
 const AGE = ageArrow(2001);
-console.log('Your age is ' + AGE);
+console.log('Your age is ' + AGE);*/
+
+//function calling other function
+
+function juicer(apples, oranges) {
+    const applePieces = pieces(apples);
+    const orangePieces = pieces(oranges);
+    const JUICE_OF = `Here is juice from ${applePieces} pieces of apple and ${orangePieces} pieces of oranges`;
+    return JUICE_OF;
+}
+
+const pieces = function (qty) {
+    return qty * 4;
+}
+
+console.log(juicer(4, 3));
