@@ -39,3 +39,10 @@ console.log(typeof null);  */                                         // a bug i
 
 // var familia = "Rajput"
 // console.log(familia);                                       //looks like let but don't use it
+
+const firstName = "Shiv";
+const JOB = "Student";
+const BIRTH_YEAR = 2003;
+const PRESENT_YEAR = 2023;
+
+console.log("Hello I am " + firstName + " and I am a " + (PRESENT_YEAR - BIRTH_YEAR) + " year old " + JOB);

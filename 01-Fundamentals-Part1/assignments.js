@@ -64,10 +64,10 @@ console.log("The population of finland is grater than my country, this statement
 
 let populationLessThanAverage = 33 > population;
 console.log("The population of my country is less than average is " + populationLessThanAverage);
-let description = country + " is in " + continent + ", and its " + population + " million people speaks " + language;
-console.log(description);
+// let description = country + " is in " + continent + ", and its " + population + " million people speaks " + language;
+// console.log(description);
 
-console.log("Challenge#01");
+// console.log("Challenge#01");
 // Mark and John are trying to compare their BMI (Body Mass Index), which is calculated using the formula: BMI = mass / (height * height) (mass in kg and height in meters).
 
 // Your task is to write some code to help them:
@@ -82,16 +82,20 @@ console.log("Challenge#01");
 
 // TEST DATA: Marks weighs 78 kg and is 1.69 m tall. John weighs 92 kg and is 1.95 m tall.
 
-/* Write your code below. Good luck! 🙂 */
-let massMark = 78;
-let massJohn = 92;
-let heightMark = 1.69;
-let heightJohn = 1.95;
+// const massMark = 78;
+// const massJohn = 92;
+// const heightMark = 1.69;
+// const heightJohn = 1.95;
 
-let BMIMark = massMark / (heightMark * heightMark);
-let BMIJohn = massJohn / (heightJohn * heightJohn);
-console.log("Mark's BMI: " + BMIMark + " John's BMI: " + BMIJohn);
+// const BMIMark = massMark / (heightMark ** 2);
+// const BMIJohn = massJohn / (heightJohn ** 2);
+// console.log("Mark's BMI: " + BMIMark + " John's BMI: " + BMIJohn);
 
-let markHigherBMI = BMIMark > BMIJohn;
+// const markHigherBMI = BMIMark > BMIJohn;
 
-console.log("Is Mark's BMI higher than John is " + markHigherBMI);
+// console.log("Is Mark's BMI higher than John is " + markHigherBMI);
+
+
+console.log("Assignment");
+const DESCRIPTION = `${country} is in ${continent} and its ${population} million people speaks ${language}`;
+console.log(DESCRIPTION);
