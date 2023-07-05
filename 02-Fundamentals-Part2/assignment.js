@@ -23,7 +23,7 @@ console.log(VALUE3);*/
 
 
 
-console.log('Assignment-13');
+// console.log('Assignment-13');
 // 1. The world population is 7900 million people. Create a function declaration
 // called 'percentageOfWorld1' which receives a 'population' value, and
 // returns the percentage of the world population that the given population
@@ -39,7 +39,7 @@ console.log('Assignment-13');
 
 
 //function declaration
-function percentageOfWorld1(population) {
+/*function percentageOfWorld1(population) {
     return (population / 7900) * 100;
 }
 
@@ -62,4 +62,20 @@ const VALUE_2 = PERCENTAGE_1(500);
 const VALUE_3 = PERCENTAGE_1(14);
 console.log(VALUE_1);
 console.log(VALUE_2);
-console.log(VALUE_3);
+console.log(VALUE_3);*/
+
+
+console.log('Assignment-14');
+
+// 1. Recreate the last assignment, but this time create an arrow function called
+// 'percentageOfWorld3'
+
+const percentageOfWorld3 = population => (population / 7900) * 100;
+
+const VALUE_01 = percentageOfWorld3(100);
+const VALUE_02 = percentageOfWorld3(200);
+const VALUE_03 = percentageOfWorld3(1200);
+
+console.log(`The country01 population is ${VALUE_01} % of the world`);
+console.log(`The country02 population is ${VALUE_02} % of the world`);
+console.log(`The country03 population is ${VALUE_03} % of the world`);

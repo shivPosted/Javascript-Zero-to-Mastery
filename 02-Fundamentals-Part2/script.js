@@ -6,7 +6,7 @@ const passedTest = true;
 if (passedTest) hasDriversLisence = true;
 if (hasDriversLisence) console.log("I can drive now :D");*/
 
-function callOutMyName() {
+/*function callOutMyName() {
     console.log("My name is Shiv");
 }
 
@@ -23,4 +23,11 @@ const APPLE_JUICE = juicer(3, 0);
 console.log(APPLE_JUICE);
 
 const APPLE_AND_ORANGE_JUICE = juicer(6, 5);
-console.log(APPLE_AND_ORANGE_JUICE);
+console.log(APPLE_AND_ORANGE_JUICE);*/
+
+//arrow function
+
+const ageArrow = birthYear => 2023 - birthYear;
+
+const AGE = ageArrow(2001);
+console.log('Your age is ' + AGE);
