@@ -68,13 +68,26 @@ console.log(typeof null);  */                                         // a bug i
 
 //type conversion
 
-let inputFieldValue = "2003";
-console.log(inputFieldValue, typeof inputFieldValue);
-console.log(Number(inputFieldValue), inputFieldValue);
-console.log(inputFieldValue + 18);
-console.log(Number(inputFieldValue) + 18);
+// let inputFieldValue = "2003";
+// console.log(inputFieldValue, typeof inputFieldValue);
+// console.log(Number(inputFieldValue), inputFieldValue);
+// console.log(inputFieldValue + 18);
+// console.log(Number(inputFieldValue) + 18);
 
-let age = 18;
+// let age = 18;
 
-console.log(String(age), age);
+// console.log(String(age), age);
 
+//type coersion
+
+// console.log('9' - '5');
+// console.log('19' - '13' + '17');
+// console.log('9' - '5' + 17);
+// console.log('123' < 57);
+// console.log(5 + 6 + '4' + 9 - 4 - 2); 
+
+
+
+//truthy and falsy values
+
+// 5 falsy values: 0, '', undefined, null, NaN       everthing else is truthy values
