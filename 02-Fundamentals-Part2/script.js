@@ -51,8 +51,25 @@ console.log(juicer(4, 3));*/
 
 //Arrays
 
-const EMOJIS = ['😀', '🍪', '🪸', '😉'];
-const EMOJIS_NUMBERS = ['1️⃣', '2️⃣', '3️⃣', '5️⃣', '6️⃣'];
+/*const EMOJIS = ['😀', '🍪', '🪸', '😉'];
+const EMOJIS_NUMBERS = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣'];
 
 console.log(EMOJIS);
 console.log(EMOJIS_NUMBERS[1]);
+
+const legthNow = EMOJIS.push('😇');
+const lengthNow2 = EMOJIS.unshift('🤗');
+
+console.log(EMOJIS);
+console.log(legthNow, lengthNow2);
+const POPPED1 = EMOJIS_NUMBERS.pop();
+const POPPED2 = EMOJIS_NUMBERS.shift();
+
+console.log(EMOJIS_NUMBERS);
+console.log(POPPED1, POPPED2);
+
+
+console.log(EMOJIS.indexOf('😇'));
+console.log(EMOJIS.includes('🪸'));*/
+
+
