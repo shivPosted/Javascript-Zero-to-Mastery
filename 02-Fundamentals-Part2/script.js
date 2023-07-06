@@ -97,7 +97,7 @@ console.log(shiv.friends);
 
 console.log(`${shiv.firstName} has ${shiv.friends.length} friends and his best friend is ${shiv.friends[2]}`);*/
 
-const shiv = {
+/*const shiv = {
     firstName: 'Shiv',
     lastName: 'Pratap',
     birthYear: 2001,
@@ -124,8 +124,8 @@ console.log(shiv.calcAge());
 
 console.log(shiv.age);
 console.log(shiv.age);
-console.log(shiv.age);
+console.log(shiv.age);*/
 
 // console.log(shiv['calcAge'](2003));
 
-console.log(`${shiv.firstName} is a ${shiv.age} year old student, and he has ${shiv.hasDriversLicense ? `a` : `no`}} driver license`);                              
+// console.log(`${shiv.firstName} is a ${shiv.age} year old student, and he has ${shiv.hasDriversLicense ? `a` : `no`}} driver license`);                              
