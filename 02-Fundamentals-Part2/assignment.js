@@ -238,13 +238,13 @@ console.log(NEIGHBOURS);*/
 // properties 'country', 'capital', 'language', 'population' and
 // 'neighbours' (an array like we used in previous assignments)
 
-/*const myCountry = {
+const myCountry = {
     country: 'India',
     capital: 'Delhi',
     language: 'Hindi',
     population: 1440 + ' million',
     neighbours: ['Bangladesh', 'Sri-Laka', 'Nepal', 'Bhutan', 'China']
-}*/
+}
 
 
 
@@ -255,3 +255,5 @@ console.log('Assignment-19');
 // and a capital called Helsinki.'
 // 2. Increase the country's population by two million using dot notation, and then
 // decrease it by two million using brackets notation.
+
+console.log(`${myCountry.country} has ${myCountry.population} ${myCountry.language}-speaking people, ${myCountry.neighbours.length} neighbour countries and a capital called ${myCountry.capital}`);
