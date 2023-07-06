@@ -51,8 +51,81 @@ console.log(juicer(4, 3));*/
 
 //Arrays
 
-const EMOJIS = ['😀', '🍪', '🪸', '😉'];
-const EMOJIS_NUMBERS = ['1️⃣', '2️⃣', '3️⃣', '5️⃣', '6️⃣'];
+/*const EMOJIS = ['😀', '🍪', '🪸', '😉'];
+const EMOJIS_NUMBERS = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣'];
 
 console.log(EMOJIS);
 console.log(EMOJIS_NUMBERS[1]);
+
+const legthNow = EMOJIS.push('😇');
+const lengthNow2 = EMOJIS.unshift('🤗');
+
+console.log(EMOJIS);
+console.log(legthNow, lengthNow2);
+const POPPED1 = EMOJIS_NUMBERS.pop();
+const POPPED2 = EMOJIS_NUMBERS.shift();
+
+console.log(EMOJIS_NUMBERS);
+console.log(POPPED1, POPPED2);
+
+
+console.log(EMOJIS.indexOf('😇'));
+console.log(EMOJIS.includes('🪸'));*/
+
+
+//Objects
+
+/*const shiv = {
+    firstName: 'Shiv',
+    lastName: 'Pratap',
+    profession: 'student',
+    age: 2023 - 2001,
+    friends: ['LalChand', 'Dheeraj', 'Adit', 'Shivam']
+}
+
+const wantToKnow = prompt('What do you want to know about me? Choose from firstName, lastName, profession, age, and friends');
+
+if (!shiv[wantToKnow]) {
+    console.log('Wrong Choice! Choose from firstName, lastName, profession, age, and friends');
+}
+else {
+    console.log(shiv[wantToKnow]);
+}
+
+shiv.friends.unshift('Anonymous');
+console.log(shiv.friends);
+
+console.log(`${shiv.firstName} has ${shiv.friends.length} friends and his best friend is ${shiv.friends[2]}`);*/
+
+const shiv = {
+    firstName: 'Shiv',
+    lastName: 'Pratap',
+    birthYear: 2001,
+    profession: 'student',
+    hasDriversLicense: false,
+    friends: ['LalChand', 'Dheeraj', 'Adit', 'Shivam'],
+
+
+    // calcAge: function (birthYear) {
+    //     return 2023 - birthYear;
+    // }
+
+    // calcAge: function () {
+    //     return this.birthYear;
+    // }
+
+    calcAge: function () {
+        this.age = 2023 - this.birthYear;
+        return this.age;
+    }
+}
+
+console.log(shiv.calcAge());
+
+console.log(shiv.age);
+console.log(shiv.age);
+console.log(shiv.age);
+
+// console.log(shiv['calcAge'](2003));
+
+console.log(`${shiv.firstName} is a ${shiv.age} year old student, and he has ${shiv.hasDriversLicense ? `a` : `no`}} driver license`);                              

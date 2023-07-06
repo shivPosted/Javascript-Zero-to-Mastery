@@ -1,6 +1,6 @@
 'use strict';
 
-console.log('Assignment-12');
+// console.log('Assignment-12');
 // 1. Write a function called 'describeCountry' which takes three parameters:
 // 'country', 'population' and 'capitalCity'. Based on this input, the
 // function returns a string with this format: 'Finland has 6 million people and its
@@ -183,7 +183,7 @@ console.log(PERCENTAGES);*/
 
 // TEST DATA: 125, 555, and 44.
 
-const calcTip = function (billValue) {
+/*const calcTip = function (billValue) {
     if (billValue >= 50 && billValue <= 300) {
         return billValue * 0.15;
     }
@@ -196,4 +196,64 @@ const TIP = calcTip(100);
 
 const bills = [125, 555, 44];
 const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
-const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
+const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];*/
+
+// console.log('Assignment-17');
+
+// 1. Create an array containing all the neighbouring countries of a country of your
+// choice. Choose a country which has at least 2 or 3 neighbours. Store the array
+// into a variable called 'neighbours'
+// 2. At some point, a new country called 'Utopia' is created in the neighbourhood of
+// your selected country. So add it to the end of the 'neighbours' array
+// 3. Unfortunately, after some time, the new country is dissolved. So remove it from
+// the end of the array
+// 4. If the 'neighbours' array does not include the country ‘Germany’, log to the
+// console: 'Probably not a central European country :D'
+// 5. Change the name of one of your neighbouring countries. To do that, find the
+// index of the country in the 'neighbours' array, and then use that index to
+// change the array at that index position. For example, you can search for
+// 'Sweden' in the array, and then replace it with 'Republic of Sweden'.
+
+
+/*const NEIGHBOURS = ['Bangladesh', 'Sri-Laka', 'Nepal', 'Bhutan', 'China'];
+NEIGHBOURS.push('Utopia');
+NEIGHBOURS.pop();
+
+if (!NEIGHBOURS.includes('Germany')) {
+    console.log('Probably not a cetral European Country');
+}
+
+const changingCountryName = NEIGHBOURS.indexOf('China');
+NEIGHBOURS[changingCountryName] = 'Dragon';
+
+console.log(NEIGHBOURS);*/
+
+
+
+
+
+// console.log('Assignment-18');
+
+// 1. Create an object called 'myCountry' for a country of your choice, containing
+// properties 'country', 'capital', 'language', 'population' and
+// 'neighbours' (an array like we used in previous assignments)
+
+const myCountry = {
+    country: 'India',
+    capital: 'Delhi',
+    language: 'Hindi',
+    population: 1440 + ' million',
+    neighbours: ['Bangladesh', 'Sri-Laka', 'Nepal', 'Bhutan', 'China']
+}
+
+
+
+console.log('Assignment-19');
+
+// 1. Using the object from the previous assignment, log a string like this to the
+// console: 'Finland has 6 million finnish-speaking people, 3 neighbouring countries
+// and a capital called Helsinki.'
+// 2. Increase the country's population by two million using dot notation, and then
+// decrease it by two million using brackets notation.
+
+console.log(`${myCountry.country} has ${myCountry.population} ${myCountry.language}-speaking people, ${myCountry.neighbours.length} neighbour countries and a capital called ${myCountry.capital}`);
