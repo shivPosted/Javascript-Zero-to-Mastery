@@ -75,7 +75,7 @@ console.log(EMOJIS.includes('🪸'));*/
 
 //Objects
 
-const shiv = {
+/*const shiv = {
     firstName: 'Shiv',
     lastName: 'Pratap',
     profession: 'student',
@@ -95,4 +95,37 @@ else {
 shiv.friends.unshift('Anonymous');
 console.log(shiv.friends);
 
-console.log(`${shiv.firstName} has ${shiv.friends.length} friends and his best friend is ${shiv.friends[2]}`);
+console.log(`${shiv.firstName} has ${shiv.friends.length} friends and his best friend is ${shiv.friends[2]}`);*/
+
+const shiv = {
+    firstName: 'Shiv',
+    lastName: 'Pratap',
+    birthYear: 2001,
+    profession: 'student',
+    hasDriversLicense: false,
+    friends: ['LalChand', 'Dheeraj', 'Adit', 'Shivam'],
+
+
+    // calcAge: function (birthYear) {
+    //     return 2023 - birthYear;
+    // }
+
+    // calcAge: function () {
+    //     return this.birthYear;
+    // }
+
+    calcAge: function () {
+        this.age = 2023 - this.birthYear;
+        return this.age;
+    }
+}
+
+console.log(shiv.calcAge());
+
+console.log(shiv.age);
+console.log(shiv.age);
+console.log(shiv.age);
+
+// console.log(shiv['calcAge'](2003));
+
+console.log(`${shiv.firstName} is a ${shiv.age} year old student, and he has ${shiv.hasDriversLicense ? `a` : `no`}} driver license`);                              
