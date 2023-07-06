@@ -39,7 +39,7 @@ console.log(VALUE3);*/
 
 
 //function declaration
-function percentageOfWorld1(population) {
+/*function percentageOfWorld1(population) {
     return (population / 7900) * 100;
 }
 
@@ -62,7 +62,7 @@ const VALUE_2 = PERCENTAGE_1(500);
 const VALUE_3 = PERCENTAGE_1(14);
 console.log(VALUE_1);
 console.log(VALUE_2);
-console.log(VALUE_3);
+console.log(VALUE_3);*/
 
 
 // console.log('Assignment-14');
@@ -80,7 +80,7 @@ console.log(`The country01 population is ${VALUE_01} % of the world`);
 console.log(`The country02 population is ${VALUE_02} % of the world`);
 console.log(`The country03 population is ${VALUE_03} % of the world`);*/
 
-console.log('Assignment-15');
+// console.log('Assignment-15');
 
 // 1. Create a function called 'describePopulation'. Use the function type you
 // like the most. This function takes in two arguments: 'country' and
@@ -90,6 +90,58 @@ console.log('Assignment-15');
 // 'percentageOfWorld1' you created earlier
 // 3. Call 'describePopulation' with data for 3 countries of your choice
 
-const describePopulation = (country, population) => `${country} has ${population} people, which is about ${percentageOfWorld1(population)}% of the world`;
+// const describePopulation = (country, population) => `${country} has ${population} people, which is about ${percentageOfWorld1(population)}% of the world`;
+// console.log(describePopulation('India', 1441));
 
-console.log(describePopulation('India', 1441));
+
+
+// CHALLENGE #1
+
+// Back to the two gymnastics teams, the Dolphins and the Koalas! There is a new gymnastics discipline, which works differently.
+
+// Each team competes 3 times, and then the average of the 3 scores is calculated (so one average score per team).
+
+// A team only wins if it has at least double the average score of the other team. Otherwise, no team wins!
+
+
+// Your tasks:
+
+// Create an arrow function calcAverage to calculate the average of 3 scores. This function should have three parameters and return a single number (the average score).
+
+// Create two new variables — scoreDolphins and scoreKoalas, and assign the value returned from the calcAverage function to them (you will need to call this function, and pass scores as arguments).
+
+// Create a function checkWinner that takes the average score of each team as parameters (avgDolphins and avgKoalas), and then logs the winner to the console, together with the victory points, according to the rule above. Example: Koalas win (30 vs. 13) (use avgDolphins and avgKoalas instead of hard-coded values).
+
+// Use the checkWinner function to determine the winner for both DATA 1 and DATA 2.
+
+// Ignore draws this time. Instead, log No team wins... to the console if there is no winner.
+
+
+
+// TEST DATA 1: Dolphins scored 44, 23, and 71. Koalas scored 65, 54, and 49.
+
+// TEST DATA 2: Dolphins scored 85, 54, and 41. Koalas scored 23, 34, and 27.
+
+/*const calcAverage = (score1, score2, score3) => (score1+score2+score3) / 3;
+
+const scoreDolphins = calcAverage(44, 23, 71);
+const scoreKoalas = calcAverage(65, 54, 49);
+
+const checkWinner = (avgDolphins, avgKoalas) => {
+    
+    if (avgDolphins >= avgKoalas*2){
+        console.log(`Dolphins win (${avgeDolphins} vs. ${avgKoalas})`);
+    }
+    else if(avgKoalas >= avgDolphins*2){
+      console.log (`Kolas win (${avgKoalas} vs. ${avgDolphins})`) ;
+    }
+    else {
+    console.log(`No team wins...`);
+    }
+}
+
+checkWinner(scoreDolphins, scoreKoalas);
+*/
+
+
+console.log('Assignment-16');

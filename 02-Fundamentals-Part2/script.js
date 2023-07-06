@@ -34,7 +34,7 @@ console.log('Your age is ' + AGE);*/
 
 //function calling other function
 
-function juicer(apples, oranges) {
+/*function juicer(apples, oranges) {
     const applePieces = pieces(apples);
     const orangePieces = pieces(oranges);
     const JUICE_OF = `Here is juice from ${applePieces} pieces of apple and ${orangePieces} pieces of oranges`;
@@ -45,4 +45,6 @@ const pieces = function (qty) {
     return qty * 4;
 }
 
-console.log(juicer(4, 3));
+console.log(juicer(4, 3));*/
+
+
