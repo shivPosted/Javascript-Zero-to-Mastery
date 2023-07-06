@@ -144,7 +144,7 @@ checkWinner(scoreDolphins, scoreKoalas);
 */
 
 
-console.log('Assignment-16');
+/*console.log('Assignment-16');
 
 // 1. Create an array containing 4 population values of 4 countries of your choice.
 // You may use the values you have been using previously. Store this array into a
@@ -163,4 +163,37 @@ const percentage2 = percentageOfWorld1(POPULATIONS[1]);
 const percentage3 = percentageOfWorld1(POPULATIONS[2]);
 const percentage4 = percentageOfWorld1(POPULATIONS[POPULATIONS.length - 1]);
 const PERCENTAGES = [percentage1, percentage2, percentage3, percentage4];
-console.log(PERCENTAGES); 
+console.log(PERCENTAGES);*/
+
+
+// CHALLENGE #2
+
+
+// Steven wants you to improve his tip calculator, using the same rules as before — tip 15% of the bill if the bill value is between 50 and 300, and if the value is different, the tip is 20%.
+
+// Your tasks:
+
+// Write a function calcTip that takes any bill value as an input and returns the corresponding tip, calculated based on the rules above (you can check out the code from the first tip calculator challenge if you need to). Use the function type you like the most. Test the function using a bill value of 100.
+
+// And now let's use arrays! So, create an array called bills containing the test data below.
+
+// Create an array called tips containing the tip value for each bill, calculated from the function you created before.
+
+// BONUS: Create an array totals containing the total values, so the bill + tip.
+
+// TEST DATA: 125, 555, and 44.
+
+const calcTip = function (billValue) {
+    if (billValue >= 50 && billValue <= 300) {
+        return billValue * 0.15;
+    }
+    else {
+        return billValue * 0.2;
+    }
+}
+
+const TIP = calcTip(100);
+
+const bills = [125, 555, 44];
+const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
+const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
