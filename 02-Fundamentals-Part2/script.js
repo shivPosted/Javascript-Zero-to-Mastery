@@ -79,5 +79,20 @@ const shiv = {
     firstName: 'Shiv',
     lastName: 'Pratap',
     profession: 'student',
+    age: 2023 - 2001,
     friends: ['LalChand', 'Dheeraj', 'Adit', 'Shivam']
 }
+
+const wantToKnow = prompt('What do you want to know about me? Choose from firstName, lastName, profession, age, and friends');
+
+if (!shiv[wantToKnow]) {
+    console.log('Wrong Choice! Choose from firstName, lastName, profession, age, and friends');
+}
+else {
+    console.log(shiv[wantToKnow]);
+}
+
+shiv.friends.unshift('Anonymous');
+console.log(shiv.friends);
+
+console.log(`${shiv.firstName} has ${shiv.friends.length} friends and his best friend is ${shiv.friends[2]}`);
