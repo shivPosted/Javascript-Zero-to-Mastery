@@ -48,3 +48,11 @@ const pieces = function (qty) {
 console.log(juicer(4, 3));*/
 
 
+
+//Arrays
+
+const EMOJIS = ['😀', '🍪', '🪸', '😉'];
+const EMOJIS_NUMBERS = ['1️⃣', '2️⃣', '3️⃣', '5️⃣', '6️⃣'];
+
+console.log(EMOJIS);
+console.log(EMOJIS_NUMBERS[1]);

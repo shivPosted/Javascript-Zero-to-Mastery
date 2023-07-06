@@ -145,3 +145,22 @@ checkWinner(scoreDolphins, scoreKoalas);
 
 
 console.log('Assignment-16');
+
+// 1. Create an array containing 4 population values of 4 countries of your choice.
+// You may use the values you have been using previously. Store this array into a
+// variable called 'populations'
+// 2. Log to the console whether the array has 4 elements or not (true or false)
+// 3. Create an array called 'percentages' containing the percentages of the
+// world population for these 4 population values. Use the function
+// 'percentageOfWorld1' that you created earlier to compute the 4
+// percentage values
+
+const POPULATIONS = [1440, 50, 100, 95];
+console.log(POPULATIONS.length === 4);
+const percentageOfWorld1 = population => (population / 7900) * 100;
+const percentage1 = percentageOfWorld1(POPULATIONS[0]);
+const percentage2 = percentageOfWorld1(POPULATIONS[1]);
+const percentage3 = percentageOfWorld1(POPULATIONS[2]);
+const percentage4 = percentageOfWorld1(POPULATIONS[POPULATIONS.length - 1]);
+const PERCENTAGES = [percentage1, percentage2, percentage3, percentage4];
+console.log(PERCENTAGES); 
