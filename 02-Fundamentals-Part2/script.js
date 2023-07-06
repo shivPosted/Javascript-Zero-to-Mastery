@@ -73,3 +73,11 @@ console.log(EMOJIS.indexOf('😇'));
 console.log(EMOJIS.includes('🪸'));*/
 
 
+//Objects
+
+const shiv = {
+    firstName: 'Shiv',
+    lastName: 'Pratap',
+    profession: 'student',
+    friends: ['LalChand', 'Dheeraj', 'Adit', 'Shivam']
+}

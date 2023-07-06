@@ -215,7 +215,7 @@ console.log('Assignment-17');
 // 'Sweden' in the array, and then replace it with 'Republic of Sweden'.
 
 
-const NEIGHBOURS = ['Bangladesh', 'Sri-Laka', 'Nepal', 'Bhutan', 'China'];
+/*const NEIGHBOURS = ['Bangladesh', 'Sri-Laka', 'Nepal', 'Bhutan', 'China'];
 NEIGHBOURS.push('Utopia');
 NEIGHBOURS.pop();
 
@@ -226,5 +226,22 @@ if (!NEIGHBOURS.includes('Germany')) {
 const changingCountryName = NEIGHBOURS.indexOf('China');
 NEIGHBOURS[changingCountryName] = 'Dragon';
 
-console.log(NEIGHBOURS);
+console.log(NEIGHBOURS);*/
 
+
+
+
+
+console.log('Assignment-18');
+
+// 1. Create an object called 'myCountry' for a country of your choice, containing
+// properties 'country', 'capital', 'language', 'population' and
+// 'neighbours' (an array like we used in previous assignments)
+
+const myCountry = {
+    country: 'India',
+    capital: 'Delhi',
+    language: 'Hindi',
+    population: 1440 + ' million',
+    neighbours: ['Bangladesh', 'Sri-Laka', 'Nepal', 'Bhutan', 'China']
+}
