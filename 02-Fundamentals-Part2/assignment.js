@@ -317,7 +317,7 @@ console.log('Assignment-21');
 // 'percentages' array that we created manually in the previous assignment,
 // and reflect on how much better this solution is
 
-const POPULATIONS = [1440, 50, 100, 95];
+/*const POPULATIONS = [1440, 50, 100, 95];
 const percentage2 = [];
 for (let i = 0; i < POPULATIONS.length; i++) {
     percentage2.push(percentageOfWorld1(i));
@@ -329,3 +329,29 @@ function percentageOfWorld1(index) {
 }
 
 console.log(percentage2);
+// printing array backward
+for (let i = percentage2.length; i > 0; i--) {
+    console.log(percentage2[i - 1]);
+}*/
+
+
+
+
+console.log('Assignment-22');
+
+// 1. Store this array of arrays into a variable called 'listOfNeighbours'
+// [['Canada', 'Mexico'], ['Spain'], ['Norway', 'Sweden',
+// 'Russia']];
+// 2. Log only the neighbouring countries to the console, one by one, not the entire
+// arrays. Log a string like 'Neighbour: Canada' for each country
+// 3. You will need a loop inside a loop for this. This is actually a bit tricky, so don't
+// worry if it's too difficult for you! But you can still try to figure this out anyway 😉
+
+
+const listOfNeighbours = [['Canada', 'Mexico'], ['Spain'], ['Norway', 'Sweden', 'Russia']];
+
+for (let i = 0; i < listOfNeighbours.length; i++) {
+    for (let j = 0; j < listOfNeighbours[i].length; j++) {
+        console.log(`Neighbour: ${listOfNeighbours[i][j]}`);
+    }
+}
