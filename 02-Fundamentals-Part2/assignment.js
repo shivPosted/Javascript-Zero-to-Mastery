@@ -261,7 +261,7 @@ console.log(NEIGHBOURS);*/
 
 
 
-console.log('Assignment-20');
+/*console.log('Assignment-20');
 
 // 1. Add a method called 'describe' to the 'myCountry' object. This method
 // will log a string to the console, similar to the string logged in the previous
@@ -290,4 +290,16 @@ const myCountry = {
 
 myCountry.describe();
 const answer = myCountry.checkIsland();
-console.log(answer);
+console.log(answer);*/
+
+
+
+console.log('Assignment-21');
+
+// 1. There are elections in your country! In a small town, there are only 50 voters.
+// Use a for loop to simulate the 50 people voting, by logging a string like this to
+// the console (for numbers 1 to 50): 'Voter number 1 is currently voting'
+
+for (let i = 0; i < 50; i++) {
+    console.log(`Voter number ${i + 1} is currently voting`);
+}
