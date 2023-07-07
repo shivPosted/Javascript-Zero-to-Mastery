@@ -128,7 +128,7 @@ const scoreDolphins = calcAverage(44, 23, 71);
 const scoreKoalas = calcAverage(65, 54, 49);
 
 const checkWinner = (avgDolphins, avgKoalas) => {
-    
+
     if (avgDolphins >= avgKoalas*2){
         console.log(`Dolphins win (${avgeDolphins} vs. ${avgKoalas})`);
     }
@@ -238,17 +238,17 @@ console.log(NEIGHBOURS);*/
 // properties 'country', 'capital', 'language', 'population' and
 // 'neighbours' (an array like we used in previous assignments)
 
-const myCountry = {
+/*const myCountry = {
     country: 'India',
     capital: 'Delhi',
     language: 'Hindi',
     population: 1440 + ' million',
     neighbours: ['Bangladesh', 'Sri-Laka', 'Nepal', 'Bhutan', 'China']
-}
+}*/
 
 
 
-console.log('Assignment-19');
+// console.log('Assignment-19');
 
 // 1. Using the object from the previous assignment, log a string like this to the
 // console: 'Finland has 6 million finnish-speaking people, 3 neighbouring countries
@@ -256,4 +256,158 @@ console.log('Assignment-19');
 // 2. Increase the country's population by two million using dot notation, and then
 // decrease it by two million using brackets notation.
 
-console.log(`${myCountry.country} has ${myCountry.population} ${myCountry.language}-speaking people, ${myCountry.neighbours.length} neighbour countries and a capital called ${myCountry.capital}`);
+// console.log(`${myCountry.country} has ${myCountry.population} ${myCountry.language}-speaking people, ${myCountry.neighbours.length} neighbour countries and a capital called ${myCountry.capital}`);
+
+
+
+
+/*console.log('Assignment-20');
+
+// 1. Add a method called 'describe' to the 'myCountry' object. This method
+// will log a string to the console, similar to the string logged in the previous
+// assignment, but this time using the 'this' keyword.
+// 2. Call the 'describe' method
+// 3. Add a method called 'checkIsland' to the 'myCountry' object. This
+// method will set a new property on the object, called 'isIsland'.
+// 'isIsland' will be true if there are no neighbouring countries, and false if
+// there are. Use the ternary operator to set the property.
+
+const myCountry = {
+    country: 'India',
+    capital: 'Delhi',
+    language: 'Hindi',
+    population: 1440 + ' million',
+    neighbours: ['Bangladesh', 'Sri-Laka', 'Nepal', 'Bhutan', 'China'],
+    describe: function () {
+        console.log(`${this.country} has ${this.population} ${this.language}-speaking people, ${this.neighbours.length} neighbour countries and a capital called ${this.capital}`)
+    },
+    checkIsland: function () {
+        this.isIsland = this.neighbours.length === 0;
+        return this.isIsland;
+
+    }
+}
+
+myCountry.describe();
+const answer = myCountry.checkIsland();
+console.log(answer);*/
+
+
+
+/*console.log('Assignment-21');
+
+// 1. There are elections in your country! In a small town, there are only 50 voters.
+// Use a for loop to simulate the 50 people voting, by logging a string like this to
+// the console (for numbers 1 to 50): 'Voter number 1 is currently voting'
+
+for (let i = 0; i < 50; i++) {
+    console.log(`Voter number ${i + 1} is currently voting`);
+}*/
+
+
+
+
+console.log('Assignment-22');
+
+// 1. Let's bring back the 'populations' array from a previous assignment
+// 2. Use a for loop to compute an array called 'percentages2' containing the
+// percentages of the world population for the 4 population values. Use the
+// function 'percentageOfWorld1' that you created earlier
+// 3. Confirm that 'percentages2' contains exactly the same values as the
+// 'percentages' array that we created manually in the previous assignment,
+// and reflect on how much better this solution is
+
+/*const POPULATIONS = [1440, 50, 100, 95];
+const percentage2 = [];
+for (let i = 0; i < POPULATIONS.length; i++) {
+    percentage2.push(percentageOfWorld1(i));
+}
+
+function percentageOfWorld1(index) {
+    const percentage = (POPULATIONS[index] / 7490) * 100;
+    return percentage;
+}
+
+console.log(percentage2);
+// printing array backward
+for (let i = percentage2.length; i > 0; i--) {
+    console.log(percentage2[i - 1]);
+}*/
+
+
+
+
+// console.log('Assignment-23');
+
+// 1. Store this array of arrays into a variable called 'listOfNeighbours'
+// [['Canada', 'Mexico'], ['Spain'], ['Norway', 'Sweden',
+// 'Russia']];
+// 2. Log only the neighbouring countries to the console, one by one, not the entire
+// arrays. Log a string like 'Neighbour: Canada' for each country
+// 3. You will need a loop inside a loop for this. This is actually a bit tricky, so don't
+// worry if it's too difficult for you! But you can still try to figure this out anyway 😉
+
+
+/*const listOfNeighbours = [['Canada', 'Mexico'], ['Spain'], ['Norway', 'Sweden', 'Russia']];
+
+for (let i = 0; i < listOfNeighbours.length; i++) {
+    for (let j = 0; j < listOfNeighbours[i].length; j++) {
+        console.log(`Neighbour: ${listOfNeighbours[i][j]}`);
+    }
+}*/
+
+
+
+
+console.log('CHALLENGE #4');
+// Let's improve Steven's tip calculator even more, this time using loops!
+
+// Your tasks:
+
+// Create an array called bills containing all 10 test bill values.
+
+// Create empty arrays for the tips and the totals (tips and totals)
+
+// Use the calcTip function we wrote before (included in the starter code) to calculate tips and total values (bill + tip) for every bill value in the bills array. Use a for loop to perform the 10 calculations!
+
+
+
+// TEST DATA: 22, 295, 176, 440, 37, 105, 10, 1100, 86, and 52.
+
+
+
+// BONUS:
+
+// Write a function calcAverage which takes an array called arr as an argument. This function calculates the average of all numbers in the given array. This is a DIFFICULT challenge (we haven't done this before)! Here is how to solve it if you feel like it:
+
+// First, you will need to add up all values in the array. To do the addition, start by creating a variable sum that starts at 0. Then loop over the array using a for loop. In each iteration, add the current value to the sum variable. This way, by the end of the loop, you have all values added together.
+
+// To calculate the average, divide the sum you calculated before by the length of the array (because that's the number of elements).
+
+// Call the function with the totals array.
+
+const calcTip = function (bill) {
+    return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+}
+
+
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+const tips = [];
+const totals = [];
+
+for (let i = 0; i < bills.length; i++) {
+    tips.push(calcTip(bills[i]));
+    totals.push(tips[i] + bills[i]);
+}
+
+
+const calcAverage = function (arr) {
+    let total = 0;
+    for (let i = 0; i < arr.length; i++) {
+        total += arr[i];
+    }
+    return (total / arr.length);
+}
+
+const average = calcAverage(totals);
+console.log(average);
