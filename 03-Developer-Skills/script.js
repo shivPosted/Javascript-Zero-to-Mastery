@@ -76,36 +76,36 @@
 // 2. Use the problem-solving framework: Understand the problem and break it up
 // into sub-problems!
 
-const printForecast = function (arr) {
-  let str = '';
-  for (let i = 0; i < arr.length; i++) {
-    str += `...${arr[i]}°C in ${i + 1} days`;
-  }
-  return str + '...';
-};
+// const printForecast = function (arr) {
+//   let str = '';
+//   for (let i = 0; i < arr.length; i++) {
+//     str += `...${arr[i]}°C in ${i + 1} days`;
+//   }
+//   return str + '...';
+// };
 
-const passingArray = [];
+// const passingArray = [];
 
-const paasingFunction = function (passingArray) {
-  let counter = 0;
-  counter = prompt('Enter the array numbers// Type stop to exit');
-  if (counter !== 'stop') {
-    counter = Number(counter);
-  }
+// const paasingFunction = function (passingArray) {
+//   let counter = 0;
+//   counter = prompt('Enter the array numbers// Type stop to exit');
+//   if (counter !== 'stop') {
+//     counter = Number(counter);
+//   }
 
-  while (counter !== 'stop') {
-    passingArray.push(counter);
+//   while (counter !== 'stop') {
+//     passingArray.push(counter);
 
-    counter = prompt('Enter the array numbers// Type a stop to exit');
-    if (counter === 'stop') {
-      break;
-    } else {
-      counter = Number(counter);
-    }
-  }
-  return passingArray;
-};
-const recievedArray = paasingFunction(passingArray);
+//     counter = prompt('Enter the array numbers// Type a stop to exit');
+//     if (counter === 'stop') {
+//       break;
+//     } else {
+//       counter = Number(counter);
+//     }
+//   }
+//   return passingArray;
+// };
+// const recievedArray = paasingFunction(passingArray);
 
-const rqdString = printForecast(recievedArray);
-console.log(rqdString);
+// const rqdString = printForecast(recievedArray);
+// console.log(rqdString);
