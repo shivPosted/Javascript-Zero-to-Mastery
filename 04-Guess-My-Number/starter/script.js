@@ -19,12 +19,21 @@
 
 // alert(`Congrats You won, you took ${counter} tries to win`);
 
+// document.querySelector('.number-box').textContent = 12;
+// console.log(document.querySelector('.number-box').textContent);
+// document.querySelector('.hint').textContent = '🥳 Correct Number!';
+
+// document.querySelector('.score').textContent = 13;
+
+// document.querySelector('.enter-num').value = 15;
+// console.log(document.querySelector('.enter-num').value);
+
 //Main Script
-document.querySelector('.number-box').textContent = 12;
-console.log(document.querySelector('.number-box').textContent);
-document.querySelector('.hint').textContent = '🥳 Correct Number!';
+document.querySelector('.check').addEventListener('click', function () {
+  const guess = Number(document.querySelector('.enter-num').value);
+  console.log(guess, typeof guess);
 
-document.querySelector('.score').textContent = 13;
-
-document.querySelector('.enter-num').value = 15;
-console.log(document.querySelector('.enter-num').value);
+  if (!guess) {
+    document.querySelector('.hint').textContent = '⛔ No number';
+  }
+});
