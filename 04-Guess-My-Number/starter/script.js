@@ -29,11 +29,34 @@
 // console.log(document.querySelector('.enter-num').value);
 
 //Main Script
+
+const secretNumber = Math.trunc(Math.random() * 20 + 1);
+let score = 20;
+// console.log(secretNumber);
+// document.querySelector('.number-box').textContent = secretNumber;
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.enter-num').value);
   console.log(guess, typeof guess);
-
-  if (!guess) {
-    document.querySelector('.hint').textContent = '⛔ No number';
+  if (score > 1) {
+    if (!guess) {
+      document.querySelector('.hint').textContent = '⛔ No number';
+      score--;
+    } else if (guess > secretNumber) {
+      document.querySelector('.hint').textContent = '📈 Too high!';
+      score--;
+    } else if (guess < secretNumber) {
+      document.querySelector('.hint').textContent = '📉 Too low!';
+      score--;
+    } else {
+      document.querySelector('.hint').textContent = '🥳 Correct Number!';
+      document.querySelector('.number-box').textContent = secretNumber;
+      document.body.style.backgroundColor = '#c084fc';
+    }
+  } else {
+    document.querySelector('.hint').textContent = '😥 You lost';
+    document.querySelector('.number-box').textContent = secretNumber;
+    document.body.style.backgroundColor = '#6b7280';
+    score = 0;
   }
+  document.querySelector('.score').textContent = score;
 });
