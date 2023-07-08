@@ -33,7 +33,7 @@
 const secretNumber = Math.trunc(Math.random() * 20 + 1);
 let score = 20;
 // console.log(secretNumber);
-// document.querySelector('.number-box').textContent = secretNumber;
+document.querySelector('.number-box').textContent = secretNumber;
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.enter-num').value);
   console.log(guess, typeof guess);
@@ -50,6 +50,8 @@ document.querySelector('.check').addEventListener('click', function () {
     } else {
       document.querySelector('.hint').textContent = '🥳 Correct Number!';
       document.querySelector('.number-box').textContent = secretNumber;
+      document.querySelector('.enter-num').style.backgroundColor = '#c084fc';
+      document.querySelector('.number-box').style.width = '30rem';
       document.body.style.backgroundColor = '#c084fc';
     }
   } else {
