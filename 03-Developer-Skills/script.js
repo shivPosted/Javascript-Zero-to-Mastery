@@ -1,4 +1,3 @@
-// Remember, we're gonna use strict mode in all scripts now!
 'use strict';
 
 // const arr = [9, 5, 8, 23, 78, 45, 15];
@@ -21,7 +20,7 @@
 //   let min = temp[0];
 //   for (let i = 1; i < temp.length; i++) {
 //     if (typeof temp[i] !== 'number') {
-//       continue;
+1; //       continue;
 //     }
 //     if (temp[i] > max) {
 //       max = temp[i];
@@ -109,3 +108,5 @@
 
 // const rqdString = printForecast(recievedArray);
 // console.log(rqdString);
+
+//MAIN SCRIPT
