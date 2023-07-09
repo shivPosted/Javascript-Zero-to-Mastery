@@ -48,6 +48,7 @@ h1 {
 }
 .flex {
   display: flex;
+  max-width: 100rem;
 }
 .status-range {
   font-size: 2.2rem;
@@ -95,4 +96,39 @@ main {
 
 .hint {
   margin-bottom: 11rem;
+}
+
+/* media-query*/
+
+@media (max-width: 58em) {
+  html {
+    font-size: 45%;
+  }
+  main {
+    margin-top: 30rem;
+  }
+}
+
+@media (max-width: 37em) {
+  html {
+    font-size: 35%;
+  }
+  .flex {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3.2rem;
+  }
+  .result {
+    align-self: center;
+    margin-left: 0;
+    font-size: 2.4rem;
+  }
+  .number-range {
+    text-align: center;
+    margin-left: 0;
+  }
+  h1 {
+    font-size: 4rem;
+  }
 }
