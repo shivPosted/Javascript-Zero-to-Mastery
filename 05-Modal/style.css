@@ -60,17 +60,22 @@ body {
   font-size: 1.6rem;
   border-radius: 5px;
   z-index: 5;
-  box-shadow: 5px 5px 30px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 5px 5px 30px 10px rgba(0, 0, 0, 0.275);
 }
 .close-modal {
   position: absolute;
-  top: 2rem;
-  right: 3.2rem;
-  font-size: 4rem;
+  top: 1rem;
+  right: 3rem;
+  font-size: 4.4rem;
   font-weight: bold;
   border: none;
   background: none;
   cursor: pointer;
+  color: #555;
+  transition: all 0.1s;
+}
+.close-modal:hover {
+  color: #000;
 }
 h1 {
   font-size: 3.2rem;
@@ -78,6 +83,7 @@ h1 {
 }
 p {
   font-size: 1.8rem;
+  color: #777;
 }
 
 .overlay {
