@@ -11,31 +11,35 @@
     <main>
       <div class="player-1 flex">
         <div class="total-score-section">
-          <h2>Player 1</h2>
-          <p class="total-score-1 total-score keep-total">0</p>
+          <h2 class="celebrate-1">Player 1</h2>
+          <p class="total-score-1">0</p>
         </div>
         <div class="current-score-section-1">
           <h3>current</h3>
-          <p class="current-score-1 total-current keep-current">0</p>
+          <p class="current-score-1" id="current--1">0</p>
         </div>
         <!-- <div class="player-inactive hidden overlay-1"></div> -->
       </div>
       <div class="player-2 flex player-inactive">
         <div class="total-score-section">
-          <h2>Player 2</h2>
-          <p class="total-score-2 total-score">0</p>
+          <h2 class="celebrate-2">Player 2</h2>
+          <p class="total-score-2">0</p>
         </div>
         <div class="current-score-section-2">
           <h3>current</h3>
-          <p class="current-score-2 total-current">0</p>
+          <p class="current-score-2" id="current--2">0</p>
         </div>
         <!-- <div class="player-inactive overlay-2"></div> -->
       </div>
       <button class="new-game btn">🔄 New Game</button>
       <button class="roll-dice btn">🎲 Roll Dice</button>
-      <button class="pause-game btn">⏸️ Pause</button>
+      <button class="pause-game btn">⏸️ Hold</button>
 
-      <img class="dice-image" src="dice-6.png" alt="dice-rolling image" />
+      <img
+        class="dice-image hidden"
+        src="dice-6.png"
+        alt="dice-rolling image"
+      />
     </main>
     <script src="script.js"></script>
   </body>

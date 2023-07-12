@@ -61,7 +61,7 @@ h3 {
 
 .player-1,
 .player-2 {
-  background-color: hsla(0, 0%, 100%, 0.651);
+  background-color: hsla(0, 0%, 100%, 0.736);
   padding: 9.6rem 15rem;
   text-align: center;
 }
@@ -70,7 +70,7 @@ h3 {
   flex-direction: column;
   gap: 12.8rem;
   position: relative;
-  transition: all 0.8s ease-in;
+  transition: all 0.5s;
 }
 .current-score-section-1,
 .current-score-section-2 {
@@ -147,10 +147,6 @@ h3 {
   display: none;
 } */
 
-.grayscale {
-  filter: grayscale(100%);
-}
-
 .dice-image {
   position: absolute;
   top: 45%;
@@ -166,7 +162,7 @@ h3 {
   color: rgb(237, 148, 77);
 }
 .player-inactive {
-  opacity: 0.65;
+  opacity: 0.6;
 }
 
 .player-won h2 {
