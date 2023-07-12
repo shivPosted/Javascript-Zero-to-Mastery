@@ -25,6 +25,7 @@ const init = function () {
 };
 
 init();
+
 const switchPlayer = function () {
   currentScore = 0;
   document.querySelector(`.current-score-${activePlayer}`).textContent =
@@ -33,9 +34,11 @@ const switchPlayer = function () {
     .querySelector(`.player-${activePlayer}`)
     .classList.toggle('player-inactive');
   activePlayer = activePlayer === 1 ? 2 : 1;
+  document
+    .querySelector(`.player-${activePlayer}`)
+    .classList.toggle('player-inactive');
 };
-
-const ROLL_DICE = function () {
+rollDice.addEventListener('click', function () {
   if (isPlaying) {
     const dice = Math.trunc(Math.random() * 6) + 1;
     diceImage.classList.remove('hidden');
@@ -47,28 +50,31 @@ const ROLL_DICE = function () {
         currentScore; //changes to be made for different players
     } else switchPlayer();
   }
-};
-const HOLD = function () {
+});
+
+holdGame.addEventListener('click', function () {
   if (isPlaying) {
     diceImage.classList.add('hidden');
     scores[activePlayer - 1] += currentScore;
     console.log(scores[activePlayer - 1]);
     document.querySelector(`.total-score-${activePlayer}`).textContent =
       scores[activePlayer - 1];
-    if (scores[activePlayer - 1] >= 20) {
+    if (scores[activePlayer - 1] >= 100) {
       document
         .querySelector(`.player-${activePlayer}`)
         .classList.add('player-won');
-      document.querySelector(
-        `.celebrate-${activePlayer}`
-      ).textContent = `Player ${activePlayer} won`;
       isPlaying = false;
     } else switchPlayer();
   }
-};
-
-rollDice.addEventListener('click', ROLL_DICE);
-
-holdGame.addEventListener('click', HOLD);
+});
 
 newGame.addEventListener('click', init);
+
+//for closing instruction panel
+
+const close = document.querySelector('.close-button');
+
+close.addEventListener('click', function () {
+  document.querySelector('.overlay').classList.add('hidden');
+  document.querySelector('.instruction').classList.add('hidden');
+});

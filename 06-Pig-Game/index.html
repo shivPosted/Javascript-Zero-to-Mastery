@@ -8,10 +8,37 @@
     <title>Pig Game</title>
   </head>
   <body>
+    <div class="overlay"></div>
+    <div class="instruction">
+      <div class="close-button">&times;</div>
+      <h1>Instruction to play👇</h1>
+      <ol>
+        <li>Each player takes turns rolling the die.</li>
+        <li>On your turn, roll the die by clicking a "Roll" button</li>
+        <li>
+          If you roll a 1, you lose all your accumulated points for that turn,
+          and it becomes the next player's turn.
+        </li>
+        <li>
+          If you roll any number other than 1, the number is added to your
+          current turn's points.
+        </li>
+        <li>
+          You can continue rolling the die to accumulate more points in the
+          current turn, or choose to "Hold" your points.
+        </li>
+        <li>
+          If you choose to "Hold," the accumulated points for the current turn
+          are added to your total score, and it becomes the next player's turn.
+        </li>
+        <li>The first player to reach 100 points wins the game.</li>
+      </ol>
+      <p>Enjoy the game and have fun <span>😄</span></p>
+    </div>
     <main>
       <div class="player-1 flex">
         <div class="total-score-section">
-          <h2 class="celebrate-1">Player 1</h2>
+          <h2>Player 1</h2>
           <p class="total-score-1">0</p>
         </div>
         <div class="current-score-section-1">
@@ -22,7 +49,7 @@
       </div>
       <div class="player-2 flex player-inactive">
         <div class="total-score-section">
-          <h2 class="celebrate-2">Player 2</h2>
+          <h2>Player 2</h2>
           <p class="total-score-2">0</p>
         </div>
         <div class="current-score-section-2">
