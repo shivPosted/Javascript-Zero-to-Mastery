@@ -70,7 +70,7 @@ h3 {
   flex-direction: column;
   gap: 12.8rem;
   position: relative;
-  transition: all 0.8s ease-in;
+  transition: all 0.5s;
 }
 .current-score-section-1,
 .current-score-section-2 {
@@ -162,7 +162,7 @@ h3 {
   color: rgb(237, 148, 77);
 }
 .player-inactive {
-  opacity: 0.65;
+  opacity: 0.6;
 }
 
 .player-won h2 {

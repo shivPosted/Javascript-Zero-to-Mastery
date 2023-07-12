@@ -4,10 +4,13 @@ const score02El = document.getElementById('score--2');
 const newGame = document.querySelector('.new-game');
 const pauseGame = document.querySelector('.pause-game');
 const rollDice = document.querySelector('.roll-dice');
-const currentScore01 = document.getElementById('current--1');
-const currentScore02 = document.getElementById('current--2');
+const current01El = document.getElementById('current--1');
+const current02El = document.getElementById('current--2');
 const diceImage = document.querySelector('.dice-image');
+
 let currentScore = 0;
+
+let activePlayer = 1;
 
 rollDice.addEventListener('click', function () {
   const dice = Math.trunc(Math.random() * 6) + 1;
@@ -16,8 +19,18 @@ rollDice.addEventListener('click', function () {
 
   if (dice !== 1) {
     currentScore += dice;
-    currentScore01.textContent = currentScore; //changes tot be made for different players
+    document.querySelector(`.current-score-${activePlayer}`).textContent =
+      currentScore; //changes to be made for different players
   } else {
-    currentScore01.textContent = `0`;
+    currentScore = 0;
+    document.querySelector(`.current-score-${activePlayer}`).textContent =
+      currentScore;
+    document
+      .querySelector(`.player-${activePlayer}`)
+      .classList.toggle('player-inactive');
+    activePlayer = activePlayer === 1 ? 2 : 1;
+    document
+      .querySelector(`.player-${activePlayer}`)
+      .classList.toggle('player-inactive');
   }
 });
