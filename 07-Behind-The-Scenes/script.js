@@ -73,3 +73,25 @@ function outerFunction2() {
 }
 
 outerFunction2();
+
+/*Hoisting*/
+
+console.log(i); // What will be printed?
+var i = 5;
+
+myFunction4(); // What will happen?
+
+function myFunction4() {
+  console.log('Hello!');
+}
+
+// myFunction5(); // What will happen?
+
+// var myFunction5 = function () {
+//   console.log('Hello!');
+// };
+
+if (true) {
+  console.log(x); // What will happen?
+  let x = 5;
+}
