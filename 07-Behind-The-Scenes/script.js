@@ -138,4 +138,41 @@ console.log(john);
 
 john.calcAge();
 
-f();
+const pratap = {
+  name: 'shiv',
+
+  greet: () => console.log(`Hey ${this.name}`), //as object doesn't have their own scope it is a global scope and arrow function will take this from parent function in this case from the global window object and there is no name in their
+};
+
+pratap.greet();
+// f();
+
+/*arrow function and normal function*/
+
+const practice = {
+  name: 'shiv',
+  birthYear: 2003,
+  role: 'student',
+  age: 22,
+  summary: function () {
+    // const isMillenial = function () { ----------->>> this keyword in regular function is undefined in strict mode
+    //   if (this.age >= 40 && this.age === 21) {
+    //     console.log(`You  are a millenial`);
+    //   }
+    // };
+    const isGenZ = () => {
+      // ----------->>> this keyword will be inherited from the parent element in case of the arrow function
+      if (this.age <= 40 && this.age === 22) {
+        console.log(`${this.name} you  are genZ`);
+      } else {
+        console.log(`you are not genZ`);
+      }
+    };
+    isGenZ();
+    return `my name is ${this.name} and I am a ${2023 - this.birthYear} old ${
+      this.role
+    }`;
+  },
+};
+
+practice.summary();
