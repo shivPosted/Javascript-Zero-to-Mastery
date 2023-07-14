@@ -175,4 +175,26 @@ const practice = {
   },
 };
 
+const argumentType = function (a, b) {
+  console.log(arguments);
+  for (let i = 0; i < 5; i++) {
+    arguments[i] = i;
+  }
+  console.log(arguments);
+  return a + b;
+};
+
+console.log(argumentType(5, 7));
+
+// const argumentsTypeArrow = (a, b) => {
+//   console.log(arguments);
+//   for (let i = 0; i < 5; i++) {
+//     arguments[i] = i;
+//   }
+//   console.log(arguments);
+//   return a + b;
+// };
+
+// console.log( argumentsTypeArrow(2, 6));
+
 practice.summary();
