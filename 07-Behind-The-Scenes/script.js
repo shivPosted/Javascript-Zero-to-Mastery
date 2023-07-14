@@ -198,3 +198,54 @@ console.log(argumentType(5, 7));
 // console.log( argumentsTypeArrow(2, 6));
 
 practice.summary();
+
+/*primitive vs reference types*/
+
+//Primitve Types
+let lastName = 'Pratap';
+let oldLastName = lastName;
+lastName = 'Shekhawat';
+
+console.log(oldLastName);
+console.log(lastName);
+
+//Reference types
+
+const SHIV = {
+  name: 'Shiv',
+  role: 'student',
+  lastName: 'Pratap',
+};
+
+const ME = SHIV;
+ME.lastName = 'Shekhawat'; //ALL things except the primitve types are stored in heaps or as reference
+console.log('me:', ME);
+console.log('shiv:', SHIV);
+
+//Shallow copying using Object.assign()
+
+const singh = {
+  name: 'shiv',
+  firstName: 'shiv',
+  lastName: 'Pratap',
+};
+const singh02 = Object.assign({}, singh); //------>>>> it will create a shallow copy of the singh object in an empty object that will not copy any other nested objects/reference types in the singh if present or that nested object will still point to the same memory address in the heap
+
+console.log('singh02:', singh02);
+
+singh02.name = 'Shiv Pratap Singh';
+console.log('singh:', singh);
+console.log('singh02:', singh02);
+
+const singh01 = {
+  name: 'shiv',
+  firstName: 'shiv',
+  lastName: 'Pratap',
+  family: ['brother', 'sister'],
+};
+
+const singh03 = Object.assign({}, singh01);
+singh03.family.push('Mother', 'father');
+
+console.log('singh03:', singh03);
+console.log('singh01:', singh01);
