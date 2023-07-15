@@ -38,47 +38,84 @@ const restaurant = {
 
 //Destructuring objects
 
-const { categories, mainMenu, openingHours } = restaurant;
-console.log(categories, mainMenu, openingHours);
+// const { categories, mainMenu, openingHours } = restaurant;
+// console.log(categories, mainMenu, openingHours);
 
-restaurant.o({
-  starterIndex: 2,
-  mainIndex: 0,
-  time: '22:00',
-  address: 'Mundru, via Shrimadhopur',
-});
+// restaurant.o({
+//   starterIndex: 2,
+//   mainIndex: 0,
+//   time: '22:00',
+//   address: 'Mundru, via Shrimadhopur',
+// });
 
-const LOCAL_FORECAST = {
-  yesterday: { low: 61, high: 75 },
-  today: { low: 64, high: 77 },
-  tomorrow: { low: 68, high: 80 },
-};
-const { low: lowToday } = LOCAL_FORECAST.today;
-const { high: highToday } = LOCAL_FORECAST.today;
-console.log(lowToday, highToday);
+// const LOCAL_FORECAST = {
+//   yesterday: { low: 61, high: 75 },
+//   today: { low: 64, high: 77 },
+//   tomorrow: { low: 68, high: 80 },
+// };
+// const { low: lowToday } = LOCAL_FORECAST.today;
+// const { high: highToday } = LOCAL_FORECAST.today;
+// console.log(lowToday, highToday);
 //Destructuring objects using destructuring symbol [, , , , . . . . . ]
-const [, category2, , category4] = restaurant.categories;
-console.log(category2, category4);
+// const [, category2, , category4] = restaurant.categories;
+// console.log(category2, category4);
 
 //Destructuring using function
-let [main, starter] = restaurant.f(2, 1);
-console.log(main, starter);
+// let [main, starter] = restaurant.f(2, 1);
+// console.log(main, starter);
 
 //swapping using destructuring
-[starter, main] = [main, starter]; //------------------------->Nice trick for swapping two values using destructuring
-console.log(main, starter);
+// [starter, main] = [main, starter]; //------------------------->Nice trick for swapping two values using destructuring
+// console.log(main, starter);
 
 /*Spread syntax*/
 
-const printNumbers = function () {
-  let str = '';
-  for (let i = 0; i < arguments.length; i++) {
-    str += `Element no. ${arguments[i]} = ${arguments[i]}
-  `;
-  }
-  return str;
-};
+// const printNumbers = function () {
+//   let str = '';
+//   for (let i = 0; i < arguments.length; i++) {
+//     str += `Element no. ${arguments[i]} = ${arguments[i]}
+//   `;
+//   }
+//   return str;
+// };
 
-const arrCounting = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const realCounting = printNumbers(...arrCounting);
-console.log(realCounting);
+// const arrCounting = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// const realCounting = printNumbers(...arrCounting);
+// console.log(realCounting);
+
+//Spread because on right side of =
+const arr = [1, 2, ...[3, 4, 5]];
+console.log(arr);
+
+//The REST pattern
+const num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const [a, b, c, ...others] = num;
+console.log(a, b, others);
+
+const [focaccia, , Garlic_Bread, ...leftOver] = [
+  ...restaurant.starterMenu,
+  ...restaurant.mainMenu,
+];
+
+console.log(leftOver);
+
+const { sat, ...weekDays } = restaurant.openingHours;
+console.log(weekDays);
+
+//Function use for REST
+
+function add(...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  console.log(sum);
+}
+
+add(2, 3, 4, 5);
+add(2, 3, 4, 5, 6);
+add(2, 3, 4, 5, 6, 7);
+add(2, 3, 4, 5, 6, 7, 8);
+
+const sum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+add(...sum); //use of spread operator for opening array

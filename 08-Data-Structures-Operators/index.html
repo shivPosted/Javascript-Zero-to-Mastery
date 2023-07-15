@@ -10,8 +10,26 @@
         height: 100vh;
         display: flex;
         align-items: center;
-        background: linear-gradient(to top left, #28b487, #7dd56f);
+        background-image: linear-gradient(
+          10deg,
+          hsl(314deg 100% 5%) 1%,
+          hsl(322deg 73% 12%) 38%,
+          hsl(327deg 97% 17%) 46%,
+          hsl(333deg 100% 24%) 49%,
+          hsl(339deg 100% 31%) 51%,
+          hsl(345deg 100% 38%) 51%,
+          hsl(351deg 100% 45%) 51%,
+          hsl(0deg 100% 50%) 50%,
+          hsl(353deg 100% 60%) 49%,
+          hsl(347deg 100% 67%) 49%,
+          hsl(340deg 100% 74%) 49%,
+          hsl(332deg 100% 80%) 51%,
+          hsl(322deg 100% 86%) 54%,
+          hsl(312deg 100% 92%) 62%,
+          hsl(292deg 100% 97%) 99%
+        );
       }
+
       h1 {
         font-family: sans-serif;
         font-size: 50px;
@@ -19,7 +37,10 @@
         width: 100%;
         padding: 30px;
         text-align: center;
-        color: white;
+        color: hsl(312deg 100% 92%);
+      }
+      #color {
+        color: hsl(327deg 97% 17%);
       }
       button {
         width: 50px;
@@ -33,7 +54,7 @@
     </style>
   </head>
   <body>
-    <h1>Data Structures and Modern Operators</h1>
+    <h1>Data Structures and <span id="color">Modern Operators</span></h1>
     <script src="script.js"></script>
     <script src="exercise.js"></script>
   </body>
