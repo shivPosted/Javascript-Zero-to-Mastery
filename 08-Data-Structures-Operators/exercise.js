@@ -130,3 +130,41 @@ console.log(author);
 /*Solution 3*/
 // const [, [[, title]]] = getBooksAsArrays();
 // console.log(title);
+
+/*
+ *  ********************************************
+ *  3) THE SPREAD SYNTAX                       *
+ *  ********************************************
+ */
+
+/* A) The getBookAuthors() function returns an array of authors from the 'books' array.
+      Reassign the 'authors' variable below so that it contains both — already existing authors,
+      and authors returned from the getBookAuthors() function. Use the spread syntax. */
+let authors = ['George Orwell', 'Aldous Huxley'];
+const gotAuthors = getBookAuthors();
+authors.push(...gotAuthors);
+console.log(authors);
+
+/* B) The console.log() method can take multiple arguments and log them to the console.
+            First, log the 'authors' array as it is (as one argument).
+            Second, log the elements of the 'authors' array, but this time use the spread syntax.
+            Compare the outputs. */
+console.log(authors);
+console.log(...authors);
+
+/* C) The spread syntax can be used with other iterables, for example, strings.
+            Create a new variable called 'firstNameArray', and spread the 'firstName' string
+            so that each letter becomes an element of the 'firstNameArray' like ['J', 'o', 'h', 'n']. */
+const firstName = 'Shiv';
+const firstNameArray = [...firstName];
+console.log(firstNameArray);
+console.log(...firstNameArray);
+
+/* D) Now it's time to spread some objects. Create a new variable called 'cyberiad',
+            and assign an object to it. This object should have all the properties of the second book from the 'books' array,
+            plus the missing 'filmAdaptation' property set to false. */
+const cyberiad = {
+  ...books[1],
+  filmAdaptation: false,
+};
+console.log(cyberiad);

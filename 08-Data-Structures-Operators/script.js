@@ -67,3 +67,18 @@ console.log(main, starter);
 //swapping using destructuring
 [starter, main] = [main, starter]; //------------------------->Nice trick for swapping two values using destructuring
 console.log(main, starter);
+
+/*Spread syntax*/
+
+const printNumbers = function () {
+  let str = '';
+  for (let i = 0; i < arguments.length; i++) {
+    str += `Element no. ${arguments[i]} = ${arguments[i]}
+  `;
+  }
+  return str;
+};
+
+const arrCounting = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const realCounting = printNumbers(...arrCounting);
+console.log(realCounting);
