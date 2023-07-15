@@ -211,3 +211,76 @@ const listItems = [
   '...',
 ];
 list(...listItems);
+
+/*
+ *  ********************************************
+ *  5) SHORT CIRCUITING (&& and ||)            *
+ *  ********************************************
+ */
+
+/* A) Each book has the 'otherLanguagesTitle' property, which stores an object containing the language as a key,
+      and the title of the book in that language as a value.
+      Example 'otherLanguagesTitle' property:
+      otherLanguagesTitle: {
+        spanish: 'El señor de los anillos',
+        chinese: '魔戒',
+        french: 'Le Seigneur des anneaux'
+      }
+      Write a function called 'getTitleInSpanish' that takes a 'book' object as an argument,
+      and returns a title in Spanish or a string "No data available" if there is no title in Spanish.
+      Using the 'if' statement or the ternary operator is not allowed. */
+function getTitleInSpanish(book) {
+  return book.otherLanguagesTitle.spanish || 'No Data  Available';
+}
+
+const book = {
+  otherLanguagesTitle: {
+    spanish: 'El señor de los anillos',
+    chinese: '魔戒',
+    french: 'Le Seigneur des anneaux',
+  },
+};
+const book02 = {
+  otherLanguagesTitle: {
+    chinese: '魔戒',
+    french: 'Le Seigneur des anneaux',
+  },
+};
+console.log(getTitleInSpanish(book));
+console.log(getTitleInSpanish(book02));
+/* B) Loop over the 'books' array, and for each book check if it has the title in Spanish and Korean.
+      If it's true, log a string "<title> by <author> has title in Spanish and Korean" to the console,
+      where <title> is the book title (in English), and <author> is the author of the book.
+      Using the 'if' statement or the ternary operator is not allowed.
+      Example output:
+      "A Game of Thrones by George R. R. Martin has translations in Spanish and Korean."
+      */
+console.log('Solution B');
+function inSpanishAndKorean(books) {
+  for (let i = 0; i < books.length; i++) {
+    const rstr =
+      books[i].otherLanguagesTitle.spanish &&
+      books[i].otherLanguagesTitle.korean &&
+      `${books[i].title} by ${books[i].author} has translation in Spanish and Korean`;
+    console.log(rstr);
+  }
+}
+inSpanishAndKorean(books);
+
+/* C) Loop over the 'books' array, and for each book check if it has the title in Portuguese or Spanish, but not in both.
+      If it's true, log a string "<title> by <author> has title in Portuguese or Spanish, but not in both" to the console,
+      where <title> is the book title (in English), and <author> is the author of the book.
+      Using the 'if' statement or the ternary operator is not allowed.
+      Example output:
+      "A Game of Thrones by George R. R. Martin has translations in Spanish and Korean."
+      */
+console.log('Solution C');
+function inSpanishOrPortuguese(books) {
+  for (let i = 0; i < books.length; i++) {
+    const rstr =
+      books[i].otherLanguagesTitle.spanish &&
+      books[i].otherLanguagesTitle.portuguese &&
+      `${books[i].title} by ${books[i].author} has translation in Spanish and Korean`;
+    console.log(rstr);
+  }
+}
