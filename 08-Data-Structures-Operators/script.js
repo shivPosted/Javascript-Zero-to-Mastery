@@ -29,8 +29,33 @@ const restaurant = {
   f: function (mainIndex, starterIndex) {
     return [this.mainMenu[mainIndex], this.starterMenu[starterIndex]];
   },
+  o: function ({ address, time, starterIndex, mainIndex }) {
+    console.log(
+      `Food ${this.mainMenu[mainIndex]} and ${this.starterMenu[starterIndex]} is delivered at ${address} on ${time}`
+    );
+  },
 };
 
+//Destructuring objects
+
+const { categories, mainMenu, openingHours } = restaurant;
+console.log(categories, mainMenu, openingHours);
+
+restaurant.o({
+  starterIndex: 2,
+  mainIndex: 0,
+  time: '22:00',
+  address: 'Mundru, via Shrimadhopur',
+});
+
+const LOCAL_FORECAST = {
+  yesterday: { low: 61, high: 75 },
+  today: { low: 64, high: 77 },
+  tomorrow: { low: 68, high: 80 },
+};
+const { low: lowToday } = LOCAL_FORECAST.today;
+const { high: highToday } = LOCAL_FORECAST.today;
+console.log(lowToday, highToday);
 //Destructuring objects using destructuring symbol [, , , , . . . . . ]
 const [, category2, , category4] = restaurant.categories;
 console.log(category2, category4);

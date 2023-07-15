@@ -70,7 +70,36 @@ const getBooksByGenre = genre =>
   books.filter(book => book.genres.includes(genre));
 const getBooksAsArrays = () => books.map(book => Object.entries(book));
 const getBookAuthors = () => books.map(book => book.author);
+/*
+ *  ********************************************
+ *  2) DESTRUCTURING OBJECTS                    *
+ *  ********************************************
+ */
 
+/* A) Take the first object from the 'books' array, and assign the author to the 'author' variable using destructuring.
+      Use the 'let' statement because the 'author' variable may change later. */
+
+/* B) Take the second object from the 'books' array, and destructure the title into a variable called 'bookTitle'. */
+
+/* C) The book objects aren't consistent in their form.
+      For example, the second book doesn't have the 'filmAdaptation' property.
+      Destructure it into a variable called 'hasFilmAdaptation' with a default value of false. */
+
+/* D) Remember the 'author' variable from exercise A? It's time to reassign it.
+      Destructure the author of the third book into existing variable called 'author'. */
+
+let { author } = books[0];
+
+console.log(author);
+
+let { title: bookTitle } = books[1];
+console.log(bookTitle);
+
+let { hasFilmAdoptation = false } = books[1];
+console.log(hasFilmAdoptation);
+
+({ author } = books[2]);
+console.log(author);
 /*
  *  ********************************************
  *  1) DESTRUCTURING ARRAYS                    *
@@ -90,14 +119,14 @@ const getBookAuthors = () => books.map(book => book.author);
 
 //Solution 1
 
-const [a, b, c, d] = books;
-console.log(a, b, c, d);
+// const [a, b, c, d] = books;
+// console.log(a, b, c, d);
 
 /*Solution 2*/
 
-const [, second, third] = books;
-console.log(second, third);
+// const [, second, third] = books;
+// console.log(second, third);
 
 /*Solution 3*/
-const [, [[, title]]] = getBooksAsArrays();
-console.log(title);
+// const [, [[, title]]] = getBooksAsArrays();
+// console.log(title);
