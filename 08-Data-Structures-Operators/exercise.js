@@ -1,6 +1,6 @@
 'use strict';
 /* Data used in exercises */
-const books = [
+/*const books = [
   {
     title: 'The Lord of the Rings',
     publicationDate: '1954-07-29',
@@ -58,7 +58,7 @@ const books = [
       spanish: 'Juego de tronos',
     },
   },
-];
+];*/
 
 /* ⚠️ YOU WILL CALL THE FUNCTIONS BELOW IN EXERCISES.
      DON'T WORRY IF THEY DON'T MAKE SENSE FOR NOW.
@@ -66,15 +66,15 @@ const books = [
      FOR NOW TREAT THEM AS BLACK BOXES (focus on the values they return).
      YOU CAN CALL THEM AND LOG THE RETURNED VALUE TO THE CONSOLE TO SEE WHAT EXACTLY THEY RETURN. */
 
-const getBooksByGenre = genre =>
-  books.filter(book => book.genres.includes(genre));
-const getBooksAsArrays = () => books.map(book => Object.entries(book));
-const getBookAuthors = () => books.map(book => book.author);
-/*
- *  ********************************************
- *  2) DESTRUCTURING OBJECTS                    *
- *  ********************************************
- */
+// const getBooksByGenre = genre =>
+//   books.filter(book => book.genres.includes(genre));
+// const getBooksAsArrays = () => books.map(book => Object.entries(book));
+// const getBookAuthors = () => books.map(book => book.author);
+// /*
+//  *  ********************************************
+//  *  2) DESTRUCTURING OBJECTS                    *
+//  *  ********************************************
+//  */
 
 /* A) Take the first object from the 'books' array, and assign the author to the 'author' variable using destructuring.
       Use the 'let' statement because the 'author' variable may change later. */
@@ -88,23 +88,23 @@ const getBookAuthors = () => books.map(book => book.author);
 /* D) Remember the 'author' variable from exercise A? It's time to reassign it.
       Destructure the author of the third book into existing variable called 'author'. */
 
-let { author } = books[0];
+// let { author } = books[0];
 
-console.log(author);
+// console.log(author);
 
-let { title: bookTitle } = books[1];
-console.log(bookTitle);
+// let { title: bookTitle } = books[1];
+// console.log(bookTitle);
 
-let { hasFilmAdoptation = false } = books[1];
-console.log(hasFilmAdoptation);
+// let { hasFilmAdoptation = false } = books[1];
+// console.log(hasFilmAdoptation);
 
-({ author } = books[2]);
-console.log(author);
-/*
- *  ********************************************
- *  1) DESTRUCTURING ARRAYS                    *
- *  ********************************************
- */
+// ({ author } = books[2]);
+// console.log(author);
+// /*
+//  *  ********************************************
+//  *  1) DESTRUCTURING ARRAYS                    *
+//  *  ********************************************
+//  */
 
 /* A) Destructure the 'books' array into four variables called 'a', 'b', 'c' and 'd'.
       Leave the rest of the books unused. */
@@ -140,31 +140,252 @@ console.log(author);
 /* A) The getBookAuthors() function returns an array of authors from the 'books' array.
       Reassign the 'authors' variable below so that it contains both — already existing authors,
       and authors returned from the getBookAuthors() function. Use the spread syntax. */
-let authors = ['George Orwell', 'Aldous Huxley'];
-const gotAuthors = getBookAuthors();
-authors.push(...gotAuthors);
-console.log(authors);
+// let authors = ['George Orwell', 'Aldous Huxley'];
+// const gotAuthors = getBookAuthors();
+// authors.push(...gotAuthors);
+// console.log(authors);
 
 /* B) The console.log() method can take multiple arguments and log them to the console.
             First, log the 'authors' array as it is (as one argument).
             Second, log the elements of the 'authors' array, but this time use the spread syntax.
             Compare the outputs. */
-console.log(authors);
-console.log(...authors);
+// console.log(authors);
+// console.log(...authors);
 
 /* C) The spread syntax can be used with other iterables, for example, strings.
             Create a new variable called 'firstNameArray', and spread the 'firstName' string
             so that each letter becomes an element of the 'firstNameArray' like ['J', 'o', 'h', 'n']. */
-const firstName = 'Shiv';
-const firstNameArray = [...firstName];
-console.log(firstNameArray);
-console.log(...firstNameArray);
+// const firstName = 'Shiv';
+// const firstNameArray = [...firstName];
+// console.log(firstNameArray);
+// console.log(...firstNameArray);
 
 /* D) Now it's time to spread some objects. Create a new variable called 'cyberiad',
             and assign an object to it. This object should have all the properties of the second book from the 'books' array,
             plus the missing 'filmAdaptation' property set to false. */
-const cyberiad = {
-  ...books[1],
-  filmAdaptation: false,
+// const cyberiad = {
+//   ...books[1],
+//   filmAdaptation: false,
+// };
+// console.log(cyberiad);
+
+/*
+ *  ********************************************
+ *  4) REST PATTERN AND PARAMETERS             *
+ *  ********************************************
+ */
+
+/* A) The getBooksByGenre() function returns an array of books based on the genre you pass as the argument.
+      Use it to get all 'fantasy' books. Destructure the returned array into two variables — the first one called 'theLordOfTheRings',
+      and the second one called 'otherFantasyBooks' (an array containing all other values from the returned array). */
+
+/* B) This time you'll write a function utilizing the power of rest parameters.
+      This function named as list() should output a list with a title to the console.
+      The first argument it takes is the "title" of the list (string),
+      the rest of arguments are list "items" (as many as you want) that will be displayed under the title.
+      Example:
+      list('My favorite books', 'Brave New World', 'The Great Gatsby', 'Pride and Prejudice');
+      Output:
+      My favorite books:          <-- title
+      1) Brave New World          <-- list item
+      2) The Great Gatsby         <-- list item
+      3) Pride and Prejudice      <-- list item
+      ...
+     */
+
+// const [theLordOfTheRings, ...otherFantasyBooks] = getBooksByGenre('fantasy');
+// console.log(theLordOfTheRings, otherFantasyBooks);
+
+// function list(title, ...items) {
+//   console.log(title);
+//   for (let i = 0; i < items.length; i++) {
+//     console.log(items[i]);
+//   }
+// }
+
+// const listItems = [
+//   'My favourite books:',
+//   '1)Brave New World',
+//   '2)The Great Fantasy',
+//   '3)Pride and Prejudice',
+//   '...',
+// ];
+// list(...listItems);
+
+/*
+ *  ********************************************
+ *  5) SHORT CIRCUITING (&& and ||)            *
+ *  ********************************************
+ */
+
+/* A) Each book has the 'otherLanguagesTitle' property, which stores an object containing the language as a key,
+      and the title of the book in that language as a value.
+      Example 'otherLanguagesTitle' property:
+      otherLanguagesTitle: {
+        spanish: 'El señor de los anillos',
+        chinese: '魔戒',
+        french: 'Le Seigneur des anneaux'
+      }
+      Write a function called 'getTitleInSpanish' that takes a 'book' object as an argument,
+      and returns a title in Spanish or a string "No data available" if there is no title in Spanish.
+      Using the 'if' statement or the ternary operator is not allowed. */
+// function getTitleInSpanish(book) {
+//   return book.otherLanguagesTitle.spanish || 'No Data  Available';
+// }
+
+// const book = {
+//   otherLanguagesTitle: {
+//     spanish: 'El señor de los anillos',
+//     chinese: '魔戒',
+//     french: 'Le Seigneur des anneaux',
+//   },
+// };
+// const book02 = {
+//   otherLanguagesTitle: {
+//     chinese: '魔戒',
+//     french: 'Le Seigneur des anneaux',
+//   },
+// };
+// console.log(getTitleInSpanish(book));
+// console.log(getTitleInSpanish(book02));
+/* B) Loop over the 'books' array, and for each book check if it has the title in Spanish and Korean.
+      If it's true, log a string "<title> by <author> has title in Spanish and Korean" to the console,
+      where <title> is the book title (in English), and <author> is the author of the book.
+      Using the 'if' statement or the ternary operator is not allowed.
+      Example output:
+      "A Game of Thrones by George R. R. Martin has translations in Spanish and Korean."
+      */
+// console.log('Solution B');
+// function inSpanishAndKorean(books) {
+//   for (let i = 0; i < books.length; i++) {
+//     const rstr =
+//       books[i].otherLanguagesTitle.spanish &&
+//       books[i].otherLanguagesTitle.korean &&
+//       `${books[i].title} by ${books[i].author} has translation in Spanish and Korean`;
+//     console.log(rstr);
+//   }
+// }
+// inSpanishAndKorean(books);
+
+/* C) Loop over the 'books' array, and for each book check if it has the title in Portuguese or Spanish, but not in both.
+      If it's true, log a string "<title> by <author> has title in Portuguese or Spanish, but not in both" to the console,
+      where <title> is the book title (in English), and <author> is the author of the book.
+      Using the 'if' statement or the ternary operator is not allowed.
+      Example output:
+      "A Game of Thrones by George R. R. Martin has translations in Spanish and Korean."
+      */
+// console.log('Solution C');
+// function inSpanishOrPortuguese(books) {
+//   for (let i = 0; i < books.length; i++) {
+//     const rstr =
+//       books[i].otherLanguagesTitle.spanish &&
+//       books[i].otherLanguagesTitle.portuguese &&
+//       `${books[i].title} by ${books[i].author} has translation in Spanish and Korean`;
+//     console.log(rstr);
+//   }
+// }
+
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
 };
-console.log(cyberiad);
+
+// Coding Challenge #1
+
+// We're building a football betting app (soccer for my American friends 😅)!
+// Suppose we get data from a web service about a certain game ('game' variable on
+// next page). In this challenge we're gonna work with that data.
+// Your tasks:
+// 1. Create one player array for each team (variables 'players1' and
+// 'players2')
+// 2. The first player in any player array is the goalkeeper and the others are field
+// players. For Bayern Munich (team 1) create one variable ('gk') with the
+// goalkeeper's name, and one array ('fieldPlayers') with all the remaining 10
+// field players
+// 3. Create an array 'allPlayers' containing all players of both teams (22
+// players)
+// 4. During the game, Bayern Munich (team 1) used 3 substitute players. So create a
+// new array ('players1Final') containing all the original team1 players plus
+// 'Thiago', 'Coutinho' and 'Perisic'
+// 5. Based on the game.odds object, create one variable for each odd (called
+// 'team1', 'draw' and 'team2')
+// 6. Write a function ('printGoals') that receives an arbitrary number of player
+// names (not an array) and prints each of them to the console, along with the
+// number of goals that were scored in total (number of player names passed in)
+// 7. The team with the lower odd is more likely to win. Print to the console which
+// team is more likely to win, without using an if/else statement or the ternary
+// operator.
+// Test data for 6.: First, use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'.
+// Then, call the function again with players from game.scored
+
+// GOOD LUCK 😀
+
+//1.
+console.log('Challenge#1');
+const {
+  players: [players1, players2],
+} = game;
+console.log(players1, players2);
+//2.
+const [gk, ...fieldPlayers] = players1;
+console.log(gk, fieldPlayers);
+//3.
+const [...allPlayers] = [...players1, ...players2];
+console.log(allPlayers);
+//4.
+const [...players1Final] = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+console.log(players1Final);
+//5.
+const {
+  odds: { team1, x: draw, team2 },
+} = game;
+console.log(team1, draw, team2);
+//6.
+function printGoals(...players) {
+  console.log('The goals were scored by:-');
+  for (let i = 0; i < players.length; i++) {
+    console.log(players[i]);
+  }
+  console.log('Number of players scored are:-' + players.length);
+}
+printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
+printGoals(...game.scored);
+//7.
+team1 > team2 && console.log('Team 2 is more likely will win');
+team1 < team2 && console.log('Team 1 is more likely will win');
