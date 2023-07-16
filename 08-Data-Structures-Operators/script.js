@@ -119,3 +119,15 @@ add(2, 3, 4, 5, 6, 7, 8);
 
 const sum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 add(...sum); //use of spread operator for opening array
+
+/*Logical assignment*/
+console.log('Logical Assignment');
+let x = 10;
+let y = 0;
+x ||= y;
+console.log(x);
+x &&= y;
+console.log(x);
+y = 10;
+x ??= y;
+console.log(x);
