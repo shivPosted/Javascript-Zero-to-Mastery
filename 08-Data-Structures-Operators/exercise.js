@@ -414,3 +414,29 @@ Hummels: 1,
 Lewandowski: 2
 }
 GOOD LUCK 😀*/
+//1.
+for (const [i, player] of game.scored.entries()) {
+  console.log(`Goal ${i + 1}: ${player}`);
+}
+//2.
+console.log(Object.values(game.odds));
+let total = 0;
+for (const odd of Object.values(game.odds)) {
+  total += odd;
+}
+console.log(Math.trunc(total / Object.values(game.odds).length));
+//3
+for (const [team, odds] of Object.entries(game.odds)) {
+  const str =
+    team === 'x'
+      ? `The odds of draw is ${odds}`
+      : `The odds of winning of ${game[team]}: ${odds}`;
+  console.log(str);
+}
+//4.
+const scorers = {
+  [game.scored[0]]: 2,
+  [game.scored[1]]: 1,
+  [game.scored[3]]: 1,
+};
+console.log(scorers);
