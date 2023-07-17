@@ -259,3 +259,25 @@ for (const [key, value] of redundant.entries()) {
 console.log([...question]);
 console.log([...question.keys()]);
 console.log([...question.values()]);
+
+//Working with strings
+console.log('Working with Strings');
+const firstName = 'Shiv Pratap';
+const lastName = 'Singh Shekhawat';
+console.log(firstName.length);
+console.log(firstName.indexOf('P'));
+console.log(firstName.lastIndexOf(' '));
+console.log(firstName.slice(0, firstName.indexOf(' ')));
+console.log(firstName.slice(firstName.indexOf('P')));
+
+const isMiddleSeat = function (seat) {
+  //B and E are middle Seats
+  if (seat.slice(-1) === 'B' || seat.slice(-1) === 'E')
+    console.log('You got the middle seat 🥳');
+  else console.log('Your luck is quite bad 🥲');
+};
+
+isMiddleSeat('23A');
+isMiddleSeat('26B');
+isMiddleSeat('15E');
+isMiddleSeat('133C');
