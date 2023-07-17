@@ -38,28 +38,14 @@ const restaurant = {
     );
   },
 };
+console.log('Looping over objects');
+const properties = Object.keys(restaurant);
+const values = Object.values(restaurant);
+const entries = Object.entries(restaurant);
+console.log(properties);
+console.log(values);
+console.log(entries);
 
-/*****/ console.log('Optional Chaining'); /*********/
-
-// console.log(restaurant.openingHours.mon.open); //-------> will create an error because mon doesn't exist in openingHours
-if (restaurant.openingHours.mon && restaurant.openingHours.mon.open)
-  console.log(restaurant.openingHours.mon.open);
-//Using optional chaining
-// console.log(restaurant.openingHours.mon?.open ?? 'Value does not exist');
-console.log(restaurant.openingHours.thu?.open ?? 'Value does not exist');
-
-//chaining in methods
-// console.log(restaurant.f?.(0, 2) ?? 'Function does not exist');
-console.log(restaurant.x?.(1, 3) ?? 'Function does not exist');
-
-//Chaining in arrays
-
-console.log('Chaining in arrays');
-for (const Day of Days) {
-  // console.log(Day);
-  const open = restaurant.openingHours[Day]?.open ?? 'Not open';
-  console.log(`On ${Day} we open at:- ${open}`);
-}
 //Destructuring objects
 
 // const { categories, mainMenu, openingHours } = restaurant;
@@ -158,4 +144,24 @@ console.log(x);
 
 //Optional Chaining
 
-//with if-else
+/*****/ console.log('Optional Chaining'); /*********/
+
+// console.log(restaurant.openingHours.mon.open); //-------> will create an error because mon doesn't exist in openingHours
+if (restaurant.openingHours.mon && restaurant.openingHours.mon.open)
+  console.log(restaurant.openingHours.mon.open);
+//Using optional chaining
+// console.log(restaurant.openingHours.mon?.open ?? 'Value does not exist');
+console.log(restaurant.openingHours.thu?.open ?? 'Value does not exist');
+
+//chaining in methods
+// console.log(restaurant.f?.(0, 2) ?? 'Function does not exist');
+console.log(restaurant.x?.(1, 3) ?? 'Function does not exist');
+
+//Chaining in arrays
+
+console.log('Chaining in arrays');
+for (const Day of Days) {
+  // console.log(Day);
+  const open = restaurant.openingHours[Day]?.open ?? 'Not open';
+  console.log(`On ${Day} we open at:- ${open}`);
+}
