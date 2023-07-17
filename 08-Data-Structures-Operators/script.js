@@ -165,3 +165,25 @@ for (const Day of Days) {
   const open = restaurant.openingHours[Day]?.open ?? 'Not open';
   console.log(`On ${Day} we open at:- ${open}`);
 }
+
+//Sets
+const redundant = [
+  'pizza',
+  'macronni',
+  'rissoto',
+  'pizza',
+  'macronni',
+  'pizza',
+  'pizza',
+  'pasta',
+];
+console.log(redundant);
+const orderSet = new Set(redundant);
+console.log(orderSet);
+
+console.log(orderSet.size);
+orderSet.delete('pasta');
+orderSet.add('maggi');
+console.log(orderSet);
+console.log(orderSet.has('pizza'));
+console.log(orderSet.has('burger'));
