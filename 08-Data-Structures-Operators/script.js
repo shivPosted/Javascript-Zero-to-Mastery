@@ -187,3 +187,69 @@ orderSet.add('maggi');
 console.log(orderSet);
 console.log(orderSet.has('pizza'));
 console.log(orderSet.has('burger'));
+
+//Maps
+const learningMaps = new Map();
+learningMaps.set('first', 'It is just the first value with string type key');
+// learningMaps.set(2, 'It is second value with number type key');
+// learningMaps.set('pizza', 'Yeah it is good');
+// learningMaps.set(false, 'This is value with boolean key and it is false');
+// learningMaps.set(true, 'This is value with boolean key and it is true');
+// learningMaps.set('iterable', [
+//   'pizza',
+//   'macronni',
+//   'rissoto',
+//   'pizza',
+//   'macronni',
+//   'pizza',
+//   'pizza',
+//   'pasta',
+// ]);
+
+learningMaps
+  .set(2, 'It is second value with number type key')
+  .set('pizza', 'Yeah it is good')
+  .set(false, 'This is value with boolean key and it is false')
+  .set(true, 'This is value with boolean key and it is true')
+  .set('iterable', [
+    'pizza',
+    'macronni',
+    'rissoto',
+    'pizza',
+    'macronni',
+    'pizza',
+    'pizza',
+    'pasta',
+  ]); //---------->> we can chain set method in maps
+console.log(learningMaps);
+console.log(learningMaps.get(2));
+console.log(learningMaps.get(3 > 2));
+console.log(learningMaps.get(3 === 2));
+
+console.log(learningMaps.get('iterable'));
+console.log('Quiz is here');
+const question = new Map([
+  ['question', 'Which is the best programming language'],
+  [1, 'C++'],
+  [2, 'Java'],
+  [3, 'Javascript'],
+  [4, 'Golang'],
+  ['correct', 3],
+  [true, 'Correct answer 🥳'],
+  [false, 'Try again 😅'],
+]);
+// console.log(question);
+console.log(question.get('question'));
+for (const [key, value] of question) {
+  if (typeof key === 'number') {
+    console.log(`Answer ${key}: ${value}`);
+  }
+}
+const answer = Number(prompt('What is your answer?'));
+console.log(
+  question.get('correct') === answer ? question.get(true) : question.get(false)
+);
+
+for (const [key, value] of redundant.entries()) {
+  console.log(`${key + 1}: ${value}`);
+}
