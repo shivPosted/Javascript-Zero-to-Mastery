@@ -5,6 +5,21 @@ const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 // Data needed for first part of the section
+const Days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+const openingHours = {
+  [Days[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [Days[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [Days[Days.length - 2]]: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -12,29 +27,24 @@ const restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
-  f: function (mainIndex, starterIndex) {
+  // openingHours: openingHours,
+  openingHours, //------->>ES6 feature
+  f(mainIndex, starterIndex) {
     return [this.mainMenu[mainIndex], this.starterMenu[starterIndex]];
   },
-  o: function ({ address, time, starterIndex, mainIndex }) {
+  o({ address, time, starterIndex, mainIndex }) {
     console.log(
       `Food ${this.mainMenu[mainIndex]} and ${this.starterMenu[starterIndex]} is delivered at ${address} on ${time}`
     );
   },
 };
+console.log('Looping over objects');
+const properties = Object.keys(restaurant);
+const values = Object.values(restaurant);
+const entries = Object.entries(restaurant);
+console.log(properties);
+console.log(values);
+console.log(entries);
 
 //Destructuring objects
 
@@ -131,3 +141,49 @@ console.log(x);
 y = 10;
 x ??= y;
 console.log(x);
+
+//Optional Chaining
+
+/*****/ console.log('Optional Chaining'); /*********/
+
+// console.log(restaurant.openingHours.mon.open); //-------> will create an error because mon doesn't exist in openingHours
+if (restaurant.openingHours.mon && restaurant.openingHours.mon.open)
+  console.log(restaurant.openingHours.mon.open);
+//Using optional chaining
+// console.log(restaurant.openingHours.mon?.open ?? 'Value does not exist');
+console.log(restaurant.openingHours.thu?.open ?? 'Value does not exist');
+
+//chaining in methods
+// console.log(restaurant.f?.(0, 2) ?? 'Function does not exist');
+console.log(restaurant.x?.(1, 3) ?? 'Function does not exist');
+
+//Chaining in arrays
+
+console.log('Chaining in arrays');
+for (const Day of Days) {
+  // console.log(Day);
+  const open = restaurant.openingHours[Day]?.open ?? 'Not open';
+  console.log(`On ${Day} we open at:- ${open}`);
+}
+
+//Sets
+const redundant = [
+  'pizza',
+  'macronni',
+  'rissoto',
+  'pizza',
+  'macronni',
+  'pizza',
+  'pizza',
+  'pasta',
+];
+console.log(redundant);
+const orderSet = new Set(redundant);
+console.log(orderSet);
+
+console.log(orderSet.size);
+orderSet.delete('pasta');
+orderSet.add('maggi');
+console.log(orderSet);
+console.log(orderSet.has('pizza'));
+console.log(orderSet.has('burger'));
