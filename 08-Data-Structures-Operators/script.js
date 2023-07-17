@@ -245,7 +245,8 @@ for (const [key, value] of question) {
     console.log(`Answer ${key}: ${value}`);
   }
 }
-const answer = Number(prompt('What is your answer?'));
+// const answer = Number(prompt('What is your answer?'));
+const answer = 3;
 console.log(
   question.get('correct') === answer ? question.get(true) : question.get(false)
 );
@@ -253,3 +254,8 @@ console.log(
 for (const [key, value] of redundant.entries()) {
   console.log(`${key + 1}: ${value}`);
 }
+
+//Maps to arrays
+console.log([...question]);
+console.log([...question.keys()]);
+console.log([...question.values()]);
