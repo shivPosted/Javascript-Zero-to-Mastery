@@ -1,9 +1,5 @@
 'use strict';
 
-// Data needed for a later exercise
-const flights =
-  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
-
 // Data needed for first part of the section
 const Days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 const openingHours = {
@@ -187,3 +183,189 @@ orderSet.add('maggi');
 console.log(orderSet);
 console.log(orderSet.has('pizza'));
 console.log(orderSet.has('burger'));
+
+//Maps
+const learningMaps = new Map();
+learningMaps.set('first', 'It is just the first value with string type key');
+// learningMaps.set(2, 'It is second value with number type key');
+// learningMaps.set('pizza', 'Yeah it is good');
+// learningMaps.set(false, 'This is value with boolean key and it is false');
+// learningMaps.set(true, 'This is value with boolean key and it is true');
+// learningMaps.set('iterable', [
+//   'pizza',
+//   'macronni',
+//   'rissoto',
+//   'pizza',
+//   'macronni',
+//   'pizza',
+//   'pizza',
+//   'pasta',
+// ]);
+
+learningMaps
+  .set(2, 'It is second value with number type key')
+  .set('pizza', 'Yeah it is good')
+  .set(false, 'This is value with boolean key and it is false')
+  .set(true, 'This is value with boolean key and it is true')
+  .set('iterable', [
+    'pizza',
+    'macronni',
+    'rissoto',
+    'pizza',
+    'macronni',
+    'pizza',
+    'pizza',
+    'pasta',
+  ]); //---------->> we can chain set method in maps
+console.log(learningMaps);
+console.log(learningMaps.get(2));
+console.log(learningMaps.get(3 > 2));
+console.log(learningMaps.get(3 === 2));
+
+console.log(learningMaps.get('iterable'));
+console.log('Quiz is here');
+const question = new Map([
+  ['question', 'Which is the best programming language'],
+  [1, 'C++'],
+  [2, 'Java'],
+  [3, 'Javascript'],
+  [4, 'Golang'],
+  ['correct', 3],
+  [true, 'Correct answer 🥳'],
+  [false, 'Try again 😅'],
+]);
+// console.log(question);
+console.log(question.get('question'));
+for (const [key, value] of question) {
+  if (typeof key === 'number') {
+    console.log(`Answer ${key}: ${value}`);
+  }
+}
+// const answer = Number(prompt('What is your answer?'));
+const answer = 3;
+console.log(
+  question.get('correct') === answer ? question.get(true) : question.get(false)
+);
+
+for (const [key, value] of redundant.entries()) {
+  console.log(`${key + 1}: ${value}`);
+}
+
+//Maps to arrays
+console.log([...question]);
+console.log([...question.keys()]);
+console.log([...question.values()]);
+
+//Working with strings
+console.log('Working with Strings');
+const firstName = 'Shiv Pratap';
+const lastName = 'Singh Shekhawat';
+console.log(firstName.length);
+console.log(firstName.indexOf('P'));
+console.log(firstName.lastIndexOf(' '));
+console.log(firstName.slice(0, firstName.indexOf(' ')));
+console.log(firstName.slice(firstName.indexOf('P')));
+
+const isMiddleSeat = function (seat) {
+  //B and E are middle Seats
+  if (seat.slice(-1) === 'B' || seat.slice(-1) === 'E')
+    console.log('You got the middle seat 🥳');
+  else console.log('Your luck is quite bad 🥲');
+};
+
+isMiddleSeat('23A');
+isMiddleSeat('26B');
+isMiddleSeat('15E');
+isMiddleSeat('133C');
+
+const normaLisingString = function (str) {
+  const convertedStr = str[0].toUpperCase() + str.toLowerCase().slice(1);
+  return convertedStr;
+};
+
+console.log(normaLisingString('sHiV'));
+
+const normaLisingEmail = function (email) {
+  const convertedEmail = email.toLowerCase().trim();
+  return convertedEmail;
+};
+console.log(normaLisingEmail('    shivPratap621@gmail.com    \t'));
+
+const replaceString = function (str, oldStr, newStr, replaceArgument) {
+  replaceArgument == 'replaceAll'
+    ? (str = str.replaceAll(oldStr, newStr))
+    : (str = str.replace(oldStr, newStr));
+
+  return str;
+};
+
+console.log(
+  replaceString(
+    'What the fuck is all of this, what the fuck do you mean, huh?',
+    'fuck',
+    'hell',
+    'replaceAll'
+  )
+);
+
+const toCapital = function (name) {
+  const NAME = name.split(' ');
+  const upper = [];
+  for (const n of NAME) {
+    upper.push(n[0].toUpperCase() + n.slice(1));
+  }
+  return upper.join(' ');
+};
+console.log(toCapital('shiv pratap singh shekhawat'));
+
+console.log('shiv pratap singh'.padStart(23, '+').padEnd(30, '-'));
+
+const maskCredit = function (number) {
+  let maskedNumber = String(number);
+  maskedNumber = maskedNumber.slice(-4).padStart(maskedNumber.length, '*');
+
+  return maskedNumber;
+};
+console.log(maskCredit(23569874125));
+console.log(maskCredit(2565486321997562));
+
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+const text = document.querySelector('textarea');
+const button = document.querySelector('button');
+
+button.addEventListener('click', function () {
+  const value = text.value;
+  const rows = value.split('\n');
+  const newRows = [];
+  for (let row of rows) {
+    row = row.trim();
+    const firstHalf = row.slice(0, row.indexOf('_')).toLowerCase();
+    let secondHalf = row.slice(row.indexOf('_')).toLowerCase().replace('_', '');
+    secondHalf = secondHalf[0].toUpperCase() + secondHalf.slice(1);
+    // console.log(firstHalf, secondHalf);
+
+    newRows.push(firstHalf + secondHalf);
+  }
+  for (const [key, value] of newRows.entries()) {
+    console.log(`${value.padEnd(25, ' ')}${'✅'.repeat(key + 1)}`);
+  }
+});
+
+// Data needed for a later exercise
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+
+for (const flight of flights.split('+')) {
+  const [type, from, to, time] = flight.split(';');
+  console.log(
+    `${
+      type.includes('Delayed')
+        ? '🔴 ' + type.replaceAll('_', '')
+        : type.replaceAll('_', '')
+    } from ${from.slice(0, 3).toUpperCase()} to ${to
+      .slice(0, 3)
+      .toUpperCase()} (${time.replace(':', 'h')})`.padStart(48, ' ')
+  );
+}
