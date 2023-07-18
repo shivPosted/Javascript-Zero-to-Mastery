@@ -281,3 +281,54 @@ isMiddleSeat('23A');
 isMiddleSeat('26B');
 isMiddleSeat('15E');
 isMiddleSeat('133C');
+
+const normaLisingString = function (str) {
+  const convertedStr = str[0].toUpperCase() + str.toLowerCase().slice(1);
+  return convertedStr;
+};
+
+console.log(normaLisingString('sHiV'));
+
+const normaLisingEmail = function (email) {
+  const convertedEmail = email.toLowerCase().trim();
+  return convertedEmail;
+};
+console.log(normaLisingEmail('    shivPratap621@gmail.com    \t'));
+
+const replaceString = function (str, oldStr, newStr, replaceArgument) {
+  replaceArgument == 'replaceAll'
+    ? (str = str.replaceAll(oldStr, newStr))
+    : (str = str.replace(oldStr, newStr));
+
+  return str;
+};
+
+console.log(
+  replaceString(
+    'What the fuck is all of this, what the fuck do you mean, huh?',
+    'fuck',
+    'hell',
+    'replaceAll'
+  )
+);
+
+const toCapital = function (name) {
+  const NAME = name.split(' ');
+  const upper = [];
+  for (const n of NAME) {
+    upper.push(n[0].toUpperCase() + n.slice(1));
+  }
+  return upper.join(' ');
+};
+console.log(toCapital('shiv pratap singh shekhawat'));
+
+console.log('shiv pratap singh'.padStart(23, '+').padEnd(30, '-'));
+
+const maskCredit = function (number) {
+  let maskedNumber = String(number);
+  maskedNumber = maskedNumber.slice(-4).padStart(maskedNumber.length, '*');
+
+  return maskedNumber;
+};
+console.log(maskCredit(23569874125));
+console.log(maskCredit(2565486321997562));
