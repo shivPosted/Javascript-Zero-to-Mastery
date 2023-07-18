@@ -332,3 +332,27 @@ const maskCredit = function (number) {
 };
 console.log(maskCredit(23569874125));
 console.log(maskCredit(2565486321997562));
+
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+const text = document.querySelector('textarea');
+const button = document.querySelector('button');
+
+button.addEventListener('click', function () {
+  const value = text.value;
+  const rows = value.split('\n');
+  const newRows = [];
+  for (let row of rows) {
+    row = row.trim();
+    const firstHalf = row.slice(0, row.indexOf('_')).toLowerCase();
+    let secondHalf = row.slice(row.indexOf('_')).toLowerCase().replace('_', '');
+    secondHalf = secondHalf[0].toUpperCase() + secondHalf.slice(1);
+    // console.log(firstHalf, secondHalf);
+
+    newRows.push(firstHalf + secondHalf);
+  }
+  for (const [key, value] of newRows.entries()) {
+    console.log(`${value.padEnd(25, ' ')}${'✅'.repeat(key + 1)}`);
+  }
+});
