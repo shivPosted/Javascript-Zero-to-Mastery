@@ -135,3 +135,36 @@ bookIn.call(freedomAngels, 56, 'Lucas Bloodborn');
 const customer = [56, 'Rias Grimmory'];
 bookIn.apply(unionWings, customer);
 bookIn.call(freedomAngels, ...customer); //same can be achieved with call method that's why apply is not used anymore
+
+//Bind Method
+const customerUW = bookIn.bind(unionWings);
+customerUW(26, 'Hashwalth');
+const customerFA = bookIn.bind(freedomAngels);
+customerFA(56, 'Ichigo Kurosaki');
+const customerLA = bookIn.bind(lufthansa);
+customerLA(95, 'Mia Lancelot');
+
+//Partial application in bind method
+const customerUW56 = bookIn.bind(unionWings, 56);
+const customerFA26 = bookIn.bind(freedomAngels, 26);
+const customerLA95 = bookIn.bind(lufthansa, 95);
+customerFA26('Albedos');
+customerLA95('Aria Icin');
+customerUW56('Denish Losther');
+
+//With event handlers
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  this.planes++;
+  console.log(`Total planes now are: ${this.planes}`);
+};
+document
+  .querySelector('.buy')
+  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+//Challenge
+const addTax = (rate, value) => {
+  console.log(`Tax on defined rate is: ${value + value * rate}`);
+  return addTax.bind(null, 0.18);
+};
+
+addTax(300)(300);
