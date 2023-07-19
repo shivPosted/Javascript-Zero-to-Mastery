@@ -75,3 +75,20 @@ console.log(
     filterEven
   )
 );
+
+//Function returning another function
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+
+const greeter = greet('hello');
+greeter('Shiv');
+greeter('Shivam');
+
+greet('hey')('Shiv');
+
+const greetArrow = greeting => name => console.log(`${greeting} ${name}`);
+
+greetArrow('Hola')('Shiv');
