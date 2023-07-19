@@ -92,3 +92,46 @@ greet('hey')('Shiv');
 const greetArrow = greeting => name => console.log(`${greeting} ${name}`);
 
 greetArrow('Hola')('Shiv');
+
+//The call and apply method
+
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a ticket from ${this.airline} airline with number ${flightNum}`
+    );
+    this.bookings.push({
+      airline: this.airline,
+      code: this.iataCode,
+      passengerName: name,
+    });
+  },
+};
+
+lufthansa.book('LGH453', 'Shiv Pratap');
+
+const unionWings = {
+  airline: 'UnionWings',
+  iataCode: 'UW',
+  bookings: [],
+};
+const freedomAngels = {
+  airline: 'Freedom_Angels',
+  iataCode: 'FA',
+  bookings: [],
+};
+
+const bookIn = lufthansa.book;
+// bookIn(23, 'Sarah Williams');  //------>bookIn is a regular function and not a method so this will be undefined in it
+
+//Call Method on function
+bookIn.call(unionWings, 23, 'SarahWilliams');
+bookIn.call(freedomAngels, 56, 'Lucas Bloodborn');
+
+//Apply method
+const customer = [56, 'Rias Grimmory'];
+bookIn.apply(unionWings, customer);
+bookIn.call(freedomAngels, ...customer); //same can be achieved with call method that's why apply is not used anymore
