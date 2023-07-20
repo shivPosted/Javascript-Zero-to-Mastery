@@ -170,34 +170,6 @@ console.log(flightName, shiv);*/
 // addTax(300)(300);
 
 //Challenge#1
-const poll = {
-  question: 'What is your favourite programming language?',
-  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
-  // This generates [0, 0, 0, 0]. More in the next section!
-  answers: new Array(4).fill(0),
-};
-const option = poll.options.join('\n');
-poll.registerNewAnswer = function () {
-  let i = true;
-  while (i) {
-    let answer = prompt(`${this.question}\n ${option}`);
-    if (answer >= 0 && answer <= 3) {
-      this.answers[answer] += 1;
-      i = false;
-    }
-  }
-  console.log(poll.displayResults.call(poll, 'string'));
-};
-
-document
-  .querySelector('.poll')
-  .addEventListener('click', poll.registerNewAnswer.bind(poll));
-poll.displayResults = function (type) {
-  if (type === 'string') {
-    const str = this.answers.join(',');
-    return `Poll results are: ${str}`;
-  } else return this.answers;
-};
 
 // Coding Challenge #1
 // Let's build a simple poll app!
@@ -235,3 +207,93 @@ poll.displayResults = function (type) {
 // § Data 1: [5, 2, 3]
 // § Data 2: [1, 5, 3, 9, 6, 1]
 // Hints: Use many of the tools you learned about in this and the last section 😉
+
+// const poll = {
+//   question: 'What is your favourite programming language?',
+//   options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+//   // This generates [0, 0, 0, 0]. More in the next section!
+//   answers: new Array(4).fill(0),
+// };
+// const option = poll.options.join('\n');
+// poll.registerNewAnswer = function () {
+//   let i = true;
+//   while (i) {
+//     let answer = prompt(`${this.question}\n ${option}`);
+//     if (answer >= 0 && answer <= 3) {
+//       this.answers[answer] += 1;
+//       i = false;
+//     }
+//   }
+//   console.log(poll.displayResults.call(poll, 'string'));
+// };
+
+// document
+//   .querySelector('.poll')
+//   .addEventListener('click', poll.registerNewAnswer.bind(poll));
+// poll.displayResults = function (type) {
+//   if (type === 'string') {
+//     const str = this.answers.join(',');
+//     return `Poll results are: ${str}`;
+//   } else return this.answers;
+// };
+
+//IIFE (Immediately Invoked Function Expressions)
+
+(function () {
+  console.log('This function will run only once');
+})(() => {
+  console.log('This arrow function will also run only at once');
+});
+
+//Closures in JS
+
+const bookPassengers = function () {
+  let passengerCount = 0;
+
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  };
+};
+
+const booker = bookPassengers();
+booker();
+booker();
+
+//Some examples of closures
+//Example-1
+let f;
+const g = function () {
+  const value = 10;
+  f = function () {
+    console.log(value * 2);
+  };
+};
+
+g();
+f(); //Even after g() is finished executing f() is able to access value varible
+
+const h = function () {
+  const value = 20;
+  f = function () {
+    console.log(value * 2);
+  };
+};
+h();
+f(); //Now the closure of f contain value = 20
+
+//Example-2
+const demo = function (n, groupStrength, timeInSecond) {
+  const groups = n / groupStrength;
+  setTimeout(function () {
+    console.log(
+      `After function is done executing this inner function is still able to access the closed over variable of demo called closures`
+    );
+    console.log(`There are ${n} passengers`);
+    console.log(`There are ${groups} groups`);
+  }, timeInSecond * 3000);
+
+  console.log(`The function is done executing`);
+};
+
+demo(500, 50, 5);
