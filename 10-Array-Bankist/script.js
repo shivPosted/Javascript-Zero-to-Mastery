@@ -71,7 +71,7 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
@@ -102,3 +102,23 @@ console.log([...arr, ...arr2]);
 
 //join
 console.log(letters.join('---'));
+
+//forEach, difference between forEach and for-of loop
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// for (const movement of movements) {
+for (const [index, value] of movements.entries()) {
+  if (value > 0)
+    console.log(`On movement ${index + 1} You deposited $${value}`);
+  else console.log(`On movement ${index + 1} You withdrew $${Math.abs(value)}`);
+}
+
+//usng forEach loop
+console.log('---- FOR-EACH ----');
+movements.forEach(function (value, index, array) {
+  //------------> arguments are passed in order as--> currentElement, currentIndex, wholeArray
+  if (value > 0)
+    console.log(`On movement ${index + 1} You deposited $${value}`);
+  else console.log(`On movement ${index + 1} You withdrew $${Math.abs(value)}`);
+});
