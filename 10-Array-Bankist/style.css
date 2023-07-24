@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*:focus {
+  border: none;
+  outline: none;
+  border: 1px solid #aaa;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+}
+.b-login {
+  background-image: url(background-illustration.jpg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.overlay-whole-body {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #ffffff50;
+  backdrop-filter: blur(2px);
+  z-index: -1000;
+  position: absolute;
+}
+.logo {
+  width: 3rem;
+}
+.logo-img {
+  width: 100%;
+}
+.welcome {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4.8rem;
+  gap: 3.2rem;
+}
+h1 {
+  color: #222;
+  font-size: 2.4rem;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.landing-login {
+  max-width: 80rem;
+  height: 40rem;
+  /* background-color: #eeeeeeca; */
+  backdrop-filter: blur(6px);
+  /* gap: 3.2rem; */
+  /* padding: 6.4rem 4.4rem; */
+  box-shadow: 6px 6px 12px 6px rgba(0, 0, 0, 0.252);
+  border-radius: 10px;
+}
+.heading-login {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 3.6rem;
+}
+.description {
+  background-color: rgba(197, 197, 197, 0.15);
+  color: #555;
+  backdrop-filter: blur(600px);
+  padding: 6.4rem 4.4rem;
+}
+.description p {
+  font-size: 1.6rem;
+  line-height: 1.4;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.login {
+  background-color: #fff;
+  padding: 6.4rem 4.4rem;
+  border-radius: 0 10px 10px 0;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  align-items: center;
+}
+.user,
+.password {
+  background-color: #fff;
+  color: #555;
+  height: 3.2rem;
+  font-size: 1.8rem;
+  border: none;
+  border: 1.5px solid #aaa;
+  outline: none;
+  border-radius: 9px;
+  padding: 1.2rem;
+  padding-left: 1rem;
+  transition: all 0.3s;
+  width: 80%;
+}
+.login-btn {
+  background-color: #222;
+  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 1.6rem;
+  padding: 1.2rem 2.4rem;
+  border-radius: 9px;
+  font-weight: 700;
+  width: 80%;
+  cursor: pointer;
+  /* align-self: center; */
+}
+.login-btn:hover {
+  color: #222;
+  background-color: #fff;
+  border: 1px solid #222;
+}
+.user:focus,
+.password:focus {
+  trans.login-form: scale(0.99);
+}
+
+/*HIDDEN*/
+.hidden {
+  display: none;
+}
+
+/*Main*/
+.a-login {
+  background-image: url(main-background.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+}
+
+.main-section-welcome {
+  font-size: 2.6rem;
+  padding-left: 3.2rem;
+  font-weight: 500;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.main-transaction {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 130rem;
+  column-gap: 3.2rem;
+  row-gap: 4.8rem;
+}
+.summary_account {
+  display: flex;
+  justify-content: space-between;
+}
