@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="shortcut icon" href="icon.png" type="image/png" />
+    <link rel="shortcut icon" href="logo.png" type="image/png" />
 
     <link
       href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap"
@@ -14,7 +14,100 @@
     <link rel="stylesheet" href="style.css" />
     <title>Bankist</title>
   </head>
-  <body>
+  <body class="a-login">
+    <section class="landing-login grid hidden">
+      <div class="description">
+        <div class="welcome">
+          <img src="logo.png" alt="bank-logo" class="logo" />
+          <h1>Welcome to Bankify</h1>
+        </div>
+        <p>
+          Empower your finances with ease! Transfer money, take loans, and
+          manage your account hassle-free. Experience secure and seamless
+          banking for a brighter financial future.
+        </p>
+      </div>
+      <div class="login">
+        <h2 class="heading-login">Login</h2>
+        <form action="#" class="login-form">
+          <input class="user" placeholder="👤 user" type="text" />
+          <input class="password" placeholder="🔑 pin" type="password" />
+          <button class="login-btn">Login</button>
+        </form>
+      </div>
+    </section>
+    <main>
+      <h2 class="main-section-welcome">Welcome back, Shiv</h2>
+      <section class="main-transaction">
+        <div class="current-balance-update">
+          <h2>Current balance</h2>
+          <p>As of 24-07-2023, 23:04</p>
+        </div>
+        <div class="current-balance-display">₹ 50,000</div>
+        <div class="transaction-history">
+          <div class="transaction-row">
+            <div>
+              <div class="type_deposit">4 Deposited</div>
+              <div class="date_transaction">24/07/2023</div>
+              <div class="transaction_amount">₹10,000</div>
+            </div>
+            <div>
+              <div class="type_withdrawl">3 withdrawl</div>
+              <div class="date_transaction">24/07/2023</div>
+              <div class="transaction_amount">-₹5,000</div>
+            </div>
+          </div>
+        </div>
+        <div class="provided-functions">
+          <div class="transfer_money">
+            <h3>Transfer money</h3>
+            <form action="#" class="money-function-form">
+              <input type="text" />
+              <input type="number" />
+              <button class="function-btn">&rightarrow;</button>
+              <div>Transfer to</div>
+              <div>Amount</div>
+            </form>
+          </div>
+          <div class="request_loan">
+            <h3>Transfer money</h3>
+            <form action="#" class="money-function-form">
+              <input type="number" />
+              <button class="function-btn">&rightarrow;</button>
+            </form>
+          </div>
+          <div class="close_account">
+            <h3>Close account</h3>
+            <form action="#" class="money-function-form">
+              <input type="text" />
+              <input type="number" />
+              <button class="function-btn">&rightarrow;</button>
+              <div>Confirm user</div>
+              <div>Confirm pin</div>
+            </form>
+          </div>
+        </div>
+        <div class="summary_account">
+          <div>
+            IN<span  class="input_amount">₹00,000</span>
+          </div>
+          <div>
+            OUT<span  class="output_amount">₹00,000</span>
+          </div>
+          <div>
+            INTEREST<span  class="interest_amount">₹00,000</span>
+          </div>
+          <div>
+            <ion-icon name="funnel-outline"></ion-icon>
+            sort
+          </div>
+        </div>
+        <div class="log-out-timer">You will be logged out in <span class="timer">2:00</span></div>
+        </div>
+
+      </section>
+    </main>
     <script src="script.js"></script>
+    <div class="overlay-whole-body hidden"></div>
   </body>
 </html>
