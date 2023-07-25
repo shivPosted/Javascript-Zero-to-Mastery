@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -109,7 +109,6 @@ h1 {
   font-weight: 700;
   width: 80%;
   cursor: pointer;
-  /* align-self: center; */
 }
 .login-btn:hover {
   color: #222;
@@ -134,6 +133,7 @@ h1 {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  /* transition: all 1s; */
 }
 .welcome-message {
   display: flex;
@@ -163,7 +163,6 @@ h3 {
   display: grid;
   grid-template-columns: 3fr 2fr;
   grid-template-rows: auto repeat(3, 15rem) auto;
-  /* max-width: 130rem; */
   column-gap: 3.2rem;
   row-gap: 2.4rem;
 }
@@ -186,17 +185,23 @@ h3 {
 /*transaction-history*/
 .transaction-history {
   background-image: url(transaction.jpg);
-  /* background-color: rgb(255, 255, 255); */
   background-position: center;
   background-size: contain;
   backdrop-filter: blur(500px);
   border-radius: 10px 0 0 10px;
   box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
-  /* overflow: scroll;
-   */
+  scrollbar-width: 0;
   overflow-y: auto;
   grid-row: 2 / 5;
   position: relative;
+}
+.transaction-history::-webkit-scrollbar {
+  width: 0.5px;
+}
+
+.transaction-history::-webkit-scrollbar-thumb {
+  border-radius: 100vw;
+  height: 10px;
 }
 .overlay-transaction {
   position: absolute;
