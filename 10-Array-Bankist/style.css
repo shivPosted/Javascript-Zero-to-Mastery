@@ -130,6 +130,7 @@ h1 {
 .a-login {
   height: 100vh;
   background-image: url(main-background.jpg);
+  backdrop-filter: blur(10px);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -164,7 +165,7 @@ h3 {
 }
 .current-balance-update p {
   font-size: 1.4rem;
-  color: #777;
+  color: #555;
 }
 .current-balance-display {
   font-size: 4.4rem;
@@ -173,13 +174,29 @@ h3 {
 
 /*transaction-history*/
 .transaction-history {
-  background-color: #fff;
+  background-image: url(transaction.jpg);
+  /* background-color: rgb(255, 255, 255); */
+  background-position: center;
+  background-size: contain;
+  backdrop-filter: blur(500px);
   border-radius: 10px 0 0 10px;
   box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
-  overflow: scroll;
+  /* overflow: scroll;
+   */
+  overflow-y: auto;
   grid-row: 2 / 5;
+  position: relative;
 }
-
+.overlay-transaction {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(255, 255, 255, 0.3);
+  backdrop-filter: blur(3px);
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
 .transaction-row {
   display: flex;
   align-items: center;
@@ -217,6 +234,7 @@ h3 {
 .close_account {
   border-radius: 9px;
   padding: 1.4rem 2.8rem;
+  box-shadow: 2px 2px 4px rgb(85, 85, 85, 0.3);
 }
 
 .transfer_money {
@@ -299,7 +317,7 @@ h3 {
 }
 
 .input_amount {
-  color: #94d82d;
+  color: #a1ec32;
 }
 .output_amount {
   color: #f06595;
