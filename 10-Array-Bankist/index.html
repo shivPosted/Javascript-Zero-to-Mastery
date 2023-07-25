@@ -36,7 +36,7 @@
         </form>
       </div>
     </section>
-    <main>
+    <main class="">
       <h2 class="main-section-welcome">Welcome back, Shiv</h2>
       <section class="main-transaction">
         <div class="current-balance-update">
@@ -45,28 +45,28 @@
         </div>
         <div class="current-balance-display">₹ 50,000</div>
         <div class="transaction-history">
-          <div class="transaction-row">
-            <div>
-              <div class="type_deposit">4 Deposited</div>
+          <!-- <div class="transaction-row"> -->
+            <div class="transaction-row">
+              <div class="type_deposit">4 Deposit</div>
               <div class="date_transaction">24/07/2023</div>
-              <div class="transaction_amount">₹10,000</div>
+              <div class="transaction_amount">₹ 10,000</div>
             </div>
-            <div>
+            <div class="transaction-row">
               <div class="type_withdrawl">3 withdrawl</div>
               <div class="date_transaction">24/07/2023</div>
-              <div class="transaction_amount">-₹5,000</div>
+              <div class="transaction_amount">-₹ 5,000</div>
             </div>
-          </div>
+          <!-- </div> -->
         </div>
-        <div class="provided-functions">
+        <!-- <div class="provided-functions"> -->
           <div class="transfer_money">
             <h3>Transfer money</h3>
             <form action="#" class="money-function-form">
               <input type="text" />
               <input type="number" />
               <button class="function-btn">&rightarrow;</button>
-              <div>Transfer to</div>
-              <div>Amount</div>
+              <div class="tranfer-to">Transfer to</div>
+              <div class="amount">Amount</div>
             </form>
           </div>
           <div class="request_loan">
@@ -74,6 +74,7 @@
             <form action="#" class="money-function-form">
               <input type="number" />
               <button class="function-btn">&rightarrow;</button>
+              <div class="amount">Amount</div>
             </form>
           </div>
           <div class="close_account">
@@ -86,7 +87,7 @@
               <div>Confirm pin</div>
             </form>
           </div>
-        </div>
+        <!-- </div> -->
         <div class="summary_account">
           <div>
             IN<span  class="input_amount">₹00,000</span>
@@ -97,8 +98,11 @@
           <div>
             INTEREST<span  class="interest_amount">₹00,000</span>
           </div>
-          <div>
-            <ion-icon name="funnel-outline"></ion-icon>
+          <div class="sort">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="sort-icon">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+            </svg>
+            
             sort
           </div>
         </div>
@@ -108,6 +112,5 @@
       </section>
     </main>
     <script src="script.js"></script>
-    <div class="overlay-whole-body hidden"></div>
   </body>
 </html>
