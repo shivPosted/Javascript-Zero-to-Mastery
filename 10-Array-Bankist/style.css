@@ -135,6 +135,16 @@ h1 {
   background-position: center;
   background-repeat: no-repeat;
 }
+.welcome-message {
+  display: flex;
+  max-width: 50%;
+  align-items: center;
+}
+.welcome-message img {
+  margin-left: auto;
+  width: 4rem;
+  padding-top: 1.4rem;
+}
 
 h3 {
   margin: 1.6rem;
@@ -144,6 +154,7 @@ h3 {
 .main-section-welcome {
   font-size: 2.6rem;
   padding-left: 3.2rem;
+  padding-top: 1.2rem;
   font-weight: 500;
 }
 .main-transaction {
