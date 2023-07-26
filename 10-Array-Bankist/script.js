@@ -195,4 +195,11 @@ const displayBalance = function (arr) {
   currentBalanceDisplay.textContent = `₹ ${balance}`;
 };
 displayBalance(account1.movements);
+
+//Maximum value using reduce method
+
+const maxValue = arr =>
+  arr.reduce((accum, current) => (accum > current ? accum : current), 0);
+
+console.log(maxValue(account1.movements));
 // console.log(balance);
