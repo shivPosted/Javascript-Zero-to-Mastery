@@ -158,13 +158,14 @@ h3 {
   font-weight: 500;
 }
 .main-transaction {
-  max-width: 100rem;
+  max-width: 120rem;
   margin: 3rem auto;
   display: grid;
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 4fr 2fr;
   grid-template-rows: auto repeat(3, 15rem) auto;
   column-gap: 3.2rem;
   row-gap: 2.4rem;
+  padding: 0 1rem;
 }
 .current-balance-update {
   align-self: center;
@@ -186,7 +187,8 @@ h3 {
 .transaction-history {
   background-image: url(transaction.jpg);
   background-position: center;
-  background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
   backdrop-filter: blur(500px);
   border-radius: 10px 0 0 10px;
   box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);

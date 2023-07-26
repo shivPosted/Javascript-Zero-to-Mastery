@@ -72,7 +72,7 @@ const displayMovements = function (movements) {
       amount > 0 ? `₹ ${amount}` : `-₹ ${amount - amount * 2}`
     }</div>
     </div>`;
-    console.log(html);
+    // console.log(html);
     transactionHistory.insertAdjacentHTML('afterbegin', html);
     // transactionHistory.insertAdjacentHTML('afterbegin', overlay);
   });
@@ -94,10 +94,10 @@ const currencies = new Map([
 
 //Simple array methods
 //slice()
-let arr = ['a', 'b', 'c', 'd', 'e'];
-console.log(arr.slice(1, arr.indexOf('d')));
-console.log(arr);
-console.log(arr.slice());
+// let arr = ['a', 'b', 'c', 'd', 'e'];
+// console.log(arr.slice(1, arr.indexOf('d')));
+// console.log(arr);
+// console.log(arr.slice());
 
 //splice()
 // console.log(arr.splice(1, 2));
@@ -106,36 +106,36 @@ console.log(arr.slice());
 // console.log(arr);
 
 //reverse
-console.log(arr.reverse());
-console.log(arr);
-console.log(arr.reverse());
-let arr2 = ['j', 'i', 'h', 'g', 'f'];
-console.log(arr2.reverse());
+// console.log(arr.reverse());
+// console.log(arr);
+// console.log(arr.reverse());
+// let arr2 = ['j', 'i', 'h', 'g', 'f'];
+// console.log(arr2.reverse());
 
 //concat
-let letters = arr.concat(arr2);
-console.log(letters);
-console.log([...arr, ...arr2]);
+// let letters = arr.concat(arr2);
+// console.log(letters);
+// console.log([...arr, ...arr2]);
 
 //join
-console.log(letters.join('---'));
+// console.log(letters.join('---'));
 
 //forEach, difference between forEach and for-of loop
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // for (const movement of movements) {
-for (const [index, value] of movements.entries()) {
-  if (value > 0)
-    console.log(`On movement ${index + 1} You deposited $${value}`);
-  else console.log(`On movement ${index + 1} You withdrew $${Math.abs(value)}`);
-}
+// for (const [index, value] of movements.entries()) {
+//   if (value > 0)
+//     console.log(`On movement ${index + 1} You deposited $${value}`);
+//   else console.log(`On movement ${index + 1} You withdrew $${Math.abs(value)}`);
+// }
 
 //usng forEach loop
-console.log('---- FOR-EACH ----');
-movements.forEach(function (value, index, array) {
-  //------------> arguments are passed in order as--> currentElement, currentIndex, wholeArray
-  if (value > 0)
-    console.log(`On movement ${index + 1} You deposited $${value}`);
-  else console.log(`On movement ${index + 1} You withdrew $${Math.abs(value)}`);
-});
+// console.log('---- FOR-EACH ----');
+// movements.forEach(function (value, index, array) {
+//   //------------> arguments are passed in order as--> currentElement, currentIndex, wholeArray
+//   if (value > 0)
+//     console.log(`On movement ${index + 1} You deposited $${value}`);
+//   else console.log(`On movement ${index + 1} You withdrew $${Math.abs(value)}`);
+// });
