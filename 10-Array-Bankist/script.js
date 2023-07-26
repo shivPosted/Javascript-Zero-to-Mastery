@@ -64,6 +64,9 @@ const transactionHistory = document.querySelector('.transaction-history');
 const currentBalanceDisplay = document.querySelector(
   '.current-balance-display'
 );
+const summaryIncome = document.querySelector('.input_amount');
+const summaryOutcome = document.querySelector('.output_amount');
+const summaryInterest = document.querySelector('.interest_amount');
 // console.log(transactionHistory);
 const displayMovements = function (movements) {
   transactionHistory.innerHTML = '<div class="overlay-transaction"></div>';
@@ -81,6 +84,35 @@ const displayMovements = function (movements) {
   });
 };
 displayMovements(account1.movements);
+
+const displayBalance = function (arr) {
+  const balance = arr.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0
+  );
+  currentBalanceDisplay.textContent = `₹ ${balance}`;
+};
+displayBalance(account1.movements);
+
+const displaySummaryData = function (arr) {
+  const income = arr
+    .filter(elem => elem >= 0)
+    .reduce((accum, current) => accum + current);
+  summaryIncome.textContent = `₹ ${income}`;
+
+  const outcome = arr
+    .filter(elem => elem < 0)
+    .reduce((accum, current) => accum + current);
+  summaryOutcome.textContent = `₹ ${Math.abs(outcome)}`;
+
+  const interest = arr
+    .filter(elem => elem >= 0)
+    .map(elem => elem * 0.012)
+    .reduce((accum, current) => accum + current);
+
+  summaryInterest.textContent = `₹ ${interest}`;
+};
+displaySummaryData(account1.movements);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -187,14 +219,6 @@ const deposits = movements.filter(mov => mov > 0);
 // }
 
 //Use of reduce method
-const displayBalance = function (arr) {
-  const balance = arr.reduce(
-    (accumulator, currentValue) => accumulator + currentValue,
-    0
-  );
-  currentBalanceDisplay.textContent = `₹ ${balance}`;
-};
-displayBalance(account1.movements);
 
 //Maximum value using reduce method
 
