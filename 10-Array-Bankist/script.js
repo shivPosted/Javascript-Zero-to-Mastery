@@ -79,20 +79,6 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
-//Computing username using map method
-const user = account1.owner;
-const userName = function (accs) {
-  accs.forEach(function (acc) {
-    acc.userName = acc.owner
-      .toLowerCase()
-      .split(' ')
-      .map(elem => elem[0])
-      .join('');
-  });
-};
-
-userName(accounts);
-console.log(accounts);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -161,5 +147,38 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // const eurToUSD = movements.map(function (value) {
 //   return Math.trunc(value * 1.1);
 // });
-const eurToUSD = movements.map(value => Math.trunc(value * 1.1));
-console.log(eurToUSD);
+// const eurToUSD = movements.map(value => Math.trunc(value * 1.1));
+// console.log(eurToUSD);
+
+//Computing username using map method
+const userName = function (accs) {
+  accs.forEach(function (acc) {
+    acc.userName = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(elem => elem[0])
+      .join('');
+  });
+};
+
+userName(accounts);
+console.log(accounts);
+
+//Use of filter methods
+
+// const withdrawls = movements.filter(function(mov) {
+//   return mov < 0;
+// })
+const withdrawls = movements.filter(mov => mov < 0); //if the returning value is true than only it will be stored in the new array, hence the name filter
+
+// const deposits = movements.filter(function(mov) {
+//   return mov > 0;
+// })
+
+const deposits = movements.filter(mov => mov > 0);
+
+//same with the for-of loop
+// const deposits = [];
+// for(const mov of movements){
+//   if(mov > 0) deposits.push(mov);
+// }
