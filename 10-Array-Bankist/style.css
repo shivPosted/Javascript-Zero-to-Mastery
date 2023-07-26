@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -109,7 +109,6 @@ h1 {
   font-weight: 700;
   width: 80%;
   cursor: pointer;
-  /* align-self: center; */
 }
 .login-btn:hover {
   color: #222;
@@ -130,10 +129,11 @@ h1 {
 .a-login {
   height: 100vh;
   background-image: url(main-background.jpg);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  /* transition: all 1s; */
 }
 .welcome-message {
   display: flex;
@@ -158,14 +158,14 @@ h3 {
   font-weight: 500;
 }
 .main-transaction {
-  max-width: 100rem;
+  max-width: 120rem;
   margin: 3rem auto;
   display: grid;
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 4fr 2fr;
   grid-template-rows: auto repeat(3, 15rem) auto;
-  /* max-width: 130rem; */
   column-gap: 3.2rem;
   row-gap: 2.4rem;
+  padding: 0 1rem;
 }
 .current-balance-update {
   align-self: center;
@@ -186,24 +186,31 @@ h3 {
 /*transaction-history*/
 .transaction-history {
   background-image: url(transaction.jpg);
-  /* background-color: rgb(255, 255, 255); */
   background-position: center;
-  background-size: contain;
-  backdrop-filter: blur(500px);
+  background-size: cover;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(1000px);
   border-radius: 10px 0 0 10px;
   box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
-  /* overflow: scroll;
-   */
+  scrollbar-width: 0;
   overflow-y: auto;
   grid-row: 2 / 5;
   position: relative;
+}
+.transaction-history::-webkit-scrollbar {
+  width: 0.5px;
+}
+
+.transaction-history::-webkit-scrollbar-thumb {
+  border-radius: 100vw;
+  height: 10px;
 }
 .overlay-transaction {
   position: absolute;
   height: 100%;
   width: 100%;
   background-color: rgb(255, 255, 255, 0.3);
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(8px);
   z-index: -1;
   top: 0;
   left: 0;
