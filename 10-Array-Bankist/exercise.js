@@ -55,19 +55,18 @@ const sourceWithoutFirstTwo = removeFirstTwo(source);
 // § Data 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
 // Hints: Use tools from all lectures in this section so far 😉
 // GOOD LUCK 😀
-const dogsJulia = [3, 5, 2, 12, 7];
-const dogsKate = [4, 1, 15, 8, 3];
+// const dogsJulia = [3, 5, 2, 12, 7];
+// const dogsKate = [4, 1, 15, 8, 3];
 
-const checkDogs = function (dogsJulia, dogsKate) {
-  const [...copyDogsJulia] = dogsJulia;
-  const [...copyDogsKate] = dogsKate;
-  copyDogsJulia.splice(-2, 2);
-  copyDogsJulia.splice(0, 1);
-  copyDogsJulia.concat(copyDogsKate).forEach(function (value, i) {
-    const dogOrPuppy = value >= 3 ? 'adult' : 'puppy';
-    console.log(`Dog number ${i + 1} is ${dogOrPuppy}`);
-  });
-  // console.log(copyDogsJulia, copyDogsKate);
-};
+// const checkDogs = function (dogsJulia, dogsKate) {
+//   const [...copyDogsJulia] = dogsJulia;
+//   const [...copyDogsKate] = dogsKate;
+//   copyDogsJulia.splice(-2, 2);
+//   copyDogsJulia.splice(0, 1);
+//   copyDogsJulia.concat(copyDogsKate).forEach(function (value, i) {
+//     const dogOrPuppy = value >= 3 ? 'adult' : 'puppy';
+//     console.log(`Dog number ${i + 1} is ${dogOrPuppy}`);
+//   });
+// };
 
-checkDogs(dogsJulia, dogsKate);
+// checkDogs(dogsJulia, dogsKate);

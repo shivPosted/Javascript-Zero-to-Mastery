@@ -129,7 +129,7 @@ h1 {
 .a-login {
   height: 100vh;
   background-image: url(main-background.jpg);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -189,7 +189,7 @@ h3 {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  backdrop-filter: blur(500px);
+  backdrop-filter: blur(1000px);
   border-radius: 10px 0 0 10px;
   box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.3);
   scrollbar-width: 0;
@@ -210,7 +210,7 @@ h3 {
   height: 100%;
   width: 100%;
   background-color: rgb(255, 255, 255, 0.3);
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(8px);
   z-index: -1;
   top: 0;
   left: 0;

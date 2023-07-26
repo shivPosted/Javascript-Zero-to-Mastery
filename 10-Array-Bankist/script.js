@@ -78,6 +78,15 @@ const displayMovements = function (movements) {
   });
 };
 displayMovements(account1.movements);
+
+const user = account1.owner;
+const userName = user
+  .toLowerCase()
+  .split(' ')
+  .map(elem => elem[0])
+  .join('');
+
+console.log(userName);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -139,3 +148,12 @@ const currencies = new Map([
 //     console.log(`On movement ${index + 1} You deposited $${value}`);
 //   else console.log(`On movement ${index + 1} You withdrew $${Math.abs(value)}`);
 // });
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+//Map method
+// const eurToUSD = movements.map(function (value) {
+//   return Math.trunc(value * 1.1);
+// });
+const eurToUSD = movements.map(value => Math.trunc(value * 1.1));
+console.log(eurToUSD);
