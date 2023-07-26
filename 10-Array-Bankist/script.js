@@ -61,6 +61,9 @@ const accounts = [account1, account2, account3, account4];
 // const inputCloseUsername = document.querySelector('.form__input--user');
 // const inputClosePin = document.querySelector('.form__input--pin');
 const transactionHistory = document.querySelector('.transaction-history');
+const currentBalanceDisplay = document.querySelector(
+  '.current-balance-display'
+);
 // console.log(transactionHistory);
 const displayMovements = function (movements) {
   transactionHistory.innerHTML = '<div class="overlay-transaction"></div>';
@@ -182,3 +185,14 @@ const deposits = movements.filter(mov => mov > 0);
 // for(const mov of movements){
 //   if(mov > 0) deposits.push(mov);
 // }
+
+//Use of reduce method
+const displayBalance = function (arr) {
+  const balance = arr.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0
+  );
+  currentBalanceDisplay.textContent = `₹ ${balance}`;
+};
+displayBalance(account1.movements);
+// console.log(balance);
