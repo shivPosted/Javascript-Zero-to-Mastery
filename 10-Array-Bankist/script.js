@@ -199,7 +199,7 @@ displayBalance(account1.movements);
 //Maximum value using reduce method
 
 const maxValue = arr =>
-  arr.reduce((accum, current) => (accum > current ? accum : current), 0);
+  arr.reduce((accum, current) => (accum > current ? accum : current), arr[0]);
 
 console.log(maxValue(account1.movements));
 // console.log(balance);
