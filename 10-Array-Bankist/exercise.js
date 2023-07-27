@@ -94,7 +94,7 @@ const data1 = [5, 2, 4, 1, 15, 8, 3];
 const data2 = [16, 6, 10, 5, 6, 1, 4];
 const calcAverageHumanAge = (...arr) =>
   arr
-    .map(elem => (elem <= 2 ? elem * 2 : 16 + elem * 4))
+    .map(elem => (elem <= 2 ? 2 * elem : 16 + elem * 4))
     .filter(elem => elem >= 18)
     .reduce((accum, current, index, arr) => accum + current / arr.length, 0);
 

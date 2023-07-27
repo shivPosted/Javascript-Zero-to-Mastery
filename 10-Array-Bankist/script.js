@@ -108,6 +108,7 @@ const displaySummaryData = function (arr) {
   const interest = arr
     .filter(elem => elem >= 0)
     .map(elem => elem * 0.012)
+    .filter(elem => elem >= 1) //-----------------------------------------------> bank only pay interest if interest itself is greater than INR 1.00
     .reduce((accum, current) => accum + current);
 
   summaryInterest.textContent = `₹ ${interest}`;
@@ -227,3 +228,17 @@ const maxValue = arr =>
 
 console.log(maxValue(account1.movements));
 // console.log(balance);
+
+//Use of find method
+
+// const account = accounts.find(acc => acc.owner === 'Rengoku Kyojiro');
+// console.log(account);
+
+let account;
+for (const acc of accounts) {
+  if (acc.owner === 'Rengoku Kyojiro') {
+    account = acc;
+    break;
+  }
+}
+console.log(account);
