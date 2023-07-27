@@ -64,7 +64,22 @@ const transactionHistory = document.querySelector('.transaction-history');
 const currentBalanceDisplay = document.querySelector(
   '.current-balance-display'
 );
-// console.log(transactionHistory);
+const summaryIncome = document.querySelector('.input_amount');
+const summaryOutcome = document.querySelector('.output_amount');
+const summaryInterest = document.querySelector('.interest_amount');
+const loginPage = document.querySelector('.landing-login');
+const displayUserData = document.querySelector('.main-landing-page');
+const loginUserName = document.querySelector('.user');
+const loginPIN = document.querySelector('.password');
+const loginButton = document.querySelector('.login-btn');
+const welcomeMessage = document.querySelector('.main-section-welcome');
+const logoutButton = document.querySelector('.logout');
+const logoutConfirmation = document.querySelector('.logout-cofirm');
+const logoutOK = document.querySelector('.ok');
+const logoutCancel = document.querySelector('.cancel');
+const logoutCross = document.querySelector('.cross-button');
+const logoutOverlay = document.querySelector('.');
+
 const displayMovements = function (movements) {
   transactionHistory.innerHTML = '<div class="overlay-transaction"></div>';
   movements.forEach(function (amount, index) {
@@ -80,8 +95,74 @@ const displayMovements = function (movements) {
     // transactionHistory.insertAdjacentHTML('afterbegin', overlay);
   });
 };
-displayMovements(account1.movements);
+// displayMovements(account1.movements);
 
+const displayBalance = function (arr) {
+  const balance = arr.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0
+  );
+  currentBalanceDisplay.textContent = `₹ ${balance}`;
+};
+// displayBalance(account1.movements);
+
+const displaySummaryData = function (account) {
+  const income = account.movements
+    .filter(elem => elem >= 0)
+    .reduce((accum, current) => accum + current);
+  summaryIncome.textContent = `₹ ${income}`;
+
+  const outcome = account.movements
+    .filter(elem => elem < 0)
+    .reduce((accum, current) => accum + current);
+  summaryOutcome.textContent = `₹ ${Math.abs(outcome)}`;
+
+  const interest = account.movements
+    .filter(elem => elem >= 0)
+    .map(elem => (elem * account.interestRate) / 100)
+    .filter(elem => elem >= 1) //-----------------------------------------------> bank only pay interest if interest itself is greater than INR 1.00
+    .reduce((accum, current) => accum + current);
+
+  summaryInterest.textContent = `₹ ${interest}`;
+};
+// displaySummaryData(account1.movements);
+
+//Displaying all of the user account
+
+loginButton.addEventListener('click', function (e) {
+  e.preventDefault();
+  // console.log(loginUserName.value);
+  const currentAccount = accounts.find(
+    account => loginUserName.value === account.userName
+  );
+
+  if (currentAccount?.pin === Number(loginPIN.value)) {
+    loginPage.classList.add('hidden');
+    displayUserData.classList.remove('hidden');
+    document.body.classList.remove('b-login');
+    document.body.classList.add('.a-login');
+    loginUserName.value = loginPIN.value = '';
+    //display welcome message
+    welcomeMessage.textContent = `Welcome back, ${
+      currentAccount.owner.split(' ')[0]
+    }!`;
+    //calculate balance of the currentuser
+    displayBalance(currentAccount.movements);
+
+    //display summary of the account
+    displaySummaryData(currentAccount);
+    //display transaction
+    displayMovements(currentAccount.movements);
+  }
+});
+
+logoutButton.addEventListener('click', function () {
+  loginPage.classList.remove('hidden');
+  displayUserData.classList.add('hidden');
+  document.body.classList.add('b-login');
+  document.body.classList.remove('.a-login');
+  logoutConfirmation.classList.remove('hidden');
+});
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -187,19 +268,25 @@ const deposits = movements.filter(mov => mov > 0);
 // }
 
 //Use of reduce method
-const displayBalance = function (arr) {
-  const balance = arr.reduce(
-    (accumulator, currentValue) => accumulator + currentValue,
-    0
-  );
-  currentBalanceDisplay.textContent = `₹ ${balance}`;
-};
-displayBalance(account1.movements);
 
 //Maximum value using reduce method
 
 const maxValue = arr =>
-  arr.reduce((accum, current) => (accum > current ? accum : current), 0);
+  arr.reduce((accum, current) => (accum > current ? accum : current), arr[0]);
 
 console.log(maxValue(account1.movements));
 // console.log(balance);
+
+//Use of find method
+
+// const account = accounts.find(acc => acc.owner === 'Rengoku Kyojiro');
+// console.log(account);
+
+let account;
+for (const acc of accounts) {
+  if (acc.owner === 'Rengoku Kyojiro') {
+    account = acc;
+    break;
+  }
+}
+console.log(account);

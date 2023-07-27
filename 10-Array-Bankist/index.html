@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="style.css" />
     <title>Bankify</title>
   </head>
-  <body class="a-login">
-    <section class="landing-login grid hidden">
+  <body class="b-login">
+    <section class="landing-login grid">
       <div class="description">
         <div class="welcome">
           <img src="logo.png" alt="bank-logo" class="logo" />
@@ -36,10 +36,13 @@
         </form>
       </div>
     </section>
-    <main class="">
+
+    <!-- main account section -->
+    <main class="main-landing-page hidden">
       <nav class="welcome-message">
         <h2 class="main-section-welcome">Welcome back, Shiv!</h2>
         <img src="logo.png" alt="" class="logo">
+        <button class="logout login-btn">logout</button>
       </nav>
       <section class="main-transaction">
         <div class="current-balance-update">
@@ -115,6 +118,16 @@
 
       </section>
     </main>
+    <div class="logout-confirm hidden">
+      <h4>Do you want to logout?</h4>
+      
+      <div class="response">
+        <button class="ok login-btn">Ok</button>
+        <button class="cancel login-btn">Cancel</button>
+      </div>
+      <button class="cross-button">&times;</button>
+    </div>
+    <div class="overlay-logout"></div>
     <script src="script.js"></script>
     <script src="exercise.js"></script>
   </body>
