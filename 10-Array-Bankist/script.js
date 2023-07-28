@@ -360,3 +360,17 @@ for (const acc of accounts) {
   }
 }
 console.log(account);
+
+//Use of some and every
+
+//By value
+console.log(movements.includes(-130));
+
+//by condition
+
+//SOME
+console.log(movements.some(current => current > 1500));
+console.log(movements.some(current => current < -1500));
+//EVERY
+console.log(account4.movements.every(current => current > 0));
+console.log(account4.movements.every(current => current < 0));
