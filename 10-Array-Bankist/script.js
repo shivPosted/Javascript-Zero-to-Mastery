@@ -398,3 +398,25 @@ console.log(movements.some(current => current < -1500));
 //EVERY
 console.log(account4.movements.every(current => current > 0));
 console.log(account4.movements.every(current => current < 0));
+
+//FLAT and FLATMAP
+
+//flat();
+const arr = [1, [2, 3], 4, [5, 6], [7, 8, 9], 10];
+console.log(arr);
+console.log(arr.flat());
+
+const arrDeep = [[1, [2, 3]], 4, [5, 6], [[7, 8, 9], 10]];
+console.log(arrDeep.flat());
+console.log(arrDeep.flat(2));
+
+// const arrMovements = accounts.map(acc => acc.movements);
+// console.log(arrMovements);
+// const overallMovements = arrMovements.flat();
+// console.log(overallMovements);
+const overallMovements = accounts.map(acc => acc.movements).flat();
+console.log(overallMovements);
+
+//flatMap();
+const overallMovements2 = accounts.flatMap(acc => acc.movements);
+console.log(overallMovements);
