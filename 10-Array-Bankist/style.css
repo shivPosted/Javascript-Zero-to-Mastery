@@ -11,11 +11,12 @@
 }
 html {
   font-size: 62.5%;
+  position: relative;
 }
 body {
   font-family: 'Poppins', sans-serif;
 
-  position: relative;
+  /* position: relative; */
 }
 .b-login {
   background-image: url(background-illustration.jpg);
@@ -111,6 +112,7 @@ h1 {
   font-weight: 700;
   width: 80%;
   cursor: pointer;
+  transition: all 0.3s;
 }
 .login-btn:hover {
   color: #222;
@@ -119,7 +121,7 @@ h1 {
 }
 .user:focus,
 .password:focus {
-  transform: scale(0.99);
+  width: 78%;
 }
 
 /*HIDDEN*/
@@ -143,12 +145,14 @@ h1 {
   /* max-width: 50%; */
   margin: 0 auto;
   align-items: center;
+  padding-top: 1.4rem;
   justify-content: space-between;
 }
 .welcome-message img {
   /* margin-left: auto; */
   width: 4rem;
-  padding-top: 1.4rem;
+  height: 100%;
+  margin-left: -18rem;
 }
 .logout {
   width: auto;
@@ -358,6 +362,17 @@ h3 {
   font-size: 1.4rem;
 }
 
+.logout {
+  background-color: #fff;
+  color: #222;
+  box-shadow: inset 0 0 0 0.5px #222;
+  transition: all 0.3s;
+}
+.logout:hover {
+  border: none;
+  background-color: #222;
+  color: #fff;
+}
 .logout-confirm {
   position: absolute;
   top: 50%;
@@ -412,7 +427,6 @@ h3 {
   width: 100%;
   top: 0;
   left: 0;
-  background-color: #00000081;
-  backdrop-filter: blur(1000px);
-  z-index: 999;
+  background-color: #ffffff2d;
+  backdrop-filter: blur(8px);
 }

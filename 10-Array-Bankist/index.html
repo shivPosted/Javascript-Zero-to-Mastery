@@ -42,7 +42,7 @@
       <nav class="welcome-message">
         <h2 class="main-section-welcome">Welcome back, Shiv!</h2>
         <img src="logo.png" alt="" class="logo">
-        <button class="logout login-btn">logout</button>
+        <button class="logout login-btn">Logout</button>
       </nav>
       <section class="main-transaction">
         <div class="current-balance-update">
@@ -69,11 +69,11 @@
           <div class="transfer_money">
             <h3>Transfer Money</h3>
             <form action="#" class="money-function-form">
-              <input type="text" />
-              <input type="number" />
-              <button class="function-btn">&rightarrow;</button>
-              <div class="tranfer-to">Transfer to</div>
-              <div class="amount">Amount</div>
+              <input  class="transfer-to" type="text" />
+              <input  class="transfer-amount" type="number" />
+              <button class="transfer-btn function-btn">&rightarrow;</button>
+              <div>Transfer to</div>
+              <div>Amount</div>
             </form>
           </div>
           <div class="request_loan">
@@ -127,7 +127,7 @@
       </div>
       <button class="cross-button">&times;</button>
     </div>
-    <div class="overlay-logout"></div>
+    <div class="overlay-logout hidden"></div>
     <script src="script.js"></script>
     <script src="exercise.js"></script>
   </body>
