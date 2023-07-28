@@ -74,12 +74,16 @@ const loginPIN = document.querySelector('.password');
 const loginButton = document.querySelector('.login-btn');
 const welcomeMessage = document.querySelector('.main-section-welcome');
 const logoutButton = document.querySelector('.logout');
-const logoutConfirmation = document.querySelector('.logout-cofirm');
+const logoutConfirmation = document.querySelector('.logout-confirm');
 const logoutOK = document.querySelector('.ok');
 const logoutCancel = document.querySelector('.cancel');
 const logoutCross = document.querySelector('.cross-button');
-const logoutOverlay = document.querySelector('.');
+const logoutOverlay = document.querySelector('.overlay-logout');
 
+//transfer-money-elements
+const trnasferMoneyTo = document.querySelector('.transfer-to');
+const transferAmount = document.querySelector('.transfer-amount');
+const transferButton = document.querySelector('.transfer-btn');
 const displayMovements = function (movements) {
   transactionHistory.innerHTML = '<div class="overlay-transaction"></div>';
   movements.forEach(function (amount, index) {
@@ -97,12 +101,14 @@ const displayMovements = function (movements) {
 };
 // displayMovements(account1.movements);
 
-const displayBalance = function (arr) {
-  const balance = arr.reduce(
+// let currentBalance;
+const displayBalance = function (acc) {
+  acc.balance = acc.movements.reduce(
     (accumulator, currentValue) => accumulator + currentValue,
     0
   );
-  currentBalanceDisplay.textContent = `₹ ${balance}`;
+  // acc.balance = currentBalance;
+  currentBalanceDisplay.textContent = `₹ ${acc.balance}`;
 };
 // displayBalance(account1.movements);
 
@@ -114,7 +120,7 @@ const displaySummaryData = function (account) {
 
   const outcome = account.movements
     .filter(elem => elem < 0)
-    .reduce((accum, current) => accum + current);
+    .reduce((accum, current) => accum + current, 0);
   summaryOutcome.textContent = `₹ ${Math.abs(outcome)}`;
 
   const interest = account.movements
@@ -128,11 +134,11 @@ const displaySummaryData = function (account) {
 // displaySummaryData(account1.movements);
 
 //Displaying all of the user account
-
+let currentAccount;
 loginButton.addEventListener('click', function (e) {
   e.preventDefault();
   // console.log(loginUserName.value);
-  const currentAccount = accounts.find(
+  currentAccount = accounts.find(
     account => loginUserName.value === account.userName
   );
 
@@ -147,7 +153,7 @@ loginButton.addEventListener('click', function (e) {
       currentAccount.owner.split(' ')[0]
     }!`;
     //calculate balance of the currentuser
-    displayBalance(currentAccount.movements);
+    displayBalance(currentAccount);
 
     //display summary of the account
     displaySummaryData(currentAccount);
@@ -156,13 +162,55 @@ loginButton.addEventListener('click', function (e) {
   }
 });
 
-logoutButton.addEventListener('click', function () {
+const logout = function () {
   loginPage.classList.remove('hidden');
   displayUserData.classList.add('hidden');
   document.body.classList.add('b-login');
   document.body.classList.remove('.a-login');
+  logoutConfirmation.classList.add('hidden');
+  logoutOverlay.classList.add('hidden');
+};
+
+const closeLogoutWindow = function () {
+  logoutConfirmation.classList.add('hidden');
+  logoutOverlay.classList.add('hidden');
+};
+
+logoutButton.addEventListener('click', function () {
   logoutConfirmation.classList.remove('hidden');
+  logoutOverlay.classList.remove('hidden');
 });
+logoutCancel.addEventListener('click', closeLogoutWindow);
+logoutCross.addEventListener('click', closeLogoutWindow);
+logoutOK.addEventListener('click', logout);
+
+//transfer money function
+transferButton.addEventListener('click', function (e) {
+  // console.log('clicked');
+  e.preventDefault();
+  const transferAccount = accounts.find(
+    acc => trnasferMoneyTo.value === acc.userName
+  );
+  // console.log(transferAccount);
+  // displayBalance(transferAccount);
+  // console.log(transferAccount.balance);
+  const amount = Number(transferAmount.value);
+  if (
+    amount > 0 &&
+    currentAccount.balance >= amount &&
+    transferAccount &&
+    transferAccount.userName !== currentAccount.userName
+  ) {
+    // console.log('success');
+    currentAccount.movements.push(-amount);
+    displayBalance(currentAccount);
+    displaySummaryData(currentAccount);
+    displayMovements(currentAccount.movements);
+    transferAccount.movements.push(amount);
+    trnasferMoneyTo.value = transferAmount.value = '';
+  }
+});
+// logoutOK.addEventListener('click', logout);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
