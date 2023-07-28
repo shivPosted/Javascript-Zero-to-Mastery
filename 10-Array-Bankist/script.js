@@ -84,6 +84,12 @@ const logoutOverlay = document.querySelector('.overlay-logout');
 const trnasferMoneyTo = document.querySelector('.transfer-to');
 const transferAmount = document.querySelector('.transfer-amount');
 const transferButton = document.querySelector('.transfer-btn');
+//close-account buttons
+const accountToClose = document.querySelector('.confirm-user');
+const accountToClosePin = document.querySelector('.confirm-pin');
+const accountCloseButtton = document.querySelector('.close-account-btn');
+
+//EVENT HANDLERS
 const displayMovements = function (movements) {
   transactionHistory.innerHTML = '<div class="overlay-transaction"></div>';
   movements.forEach(function (amount, index) {
@@ -208,6 +214,22 @@ transferButton.addEventListener('click', function (e) {
     displayMovements(currentAccount.movements);
     transferAccount.movements.push(amount);
     trnasferMoneyTo.value = transferAmount.value = '';
+  }
+});
+
+//CLOSE ACCOUNT and FINDINDEX method
+accountCloseButtton.addEventListener('click', function (e) {
+  e.preventDefault();
+  if (
+    accountToClose.value === currentAccount.userName &&
+    Number(accountToClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(
+      acc => acc.userName === accountToClose.value
+    );
+    accounts.splice(index, 1);
+    logout();
+    accountToClose.value = accountToClosePin.value = '';
   }
 });
 // logoutOK.addEventListener('click', logout);
