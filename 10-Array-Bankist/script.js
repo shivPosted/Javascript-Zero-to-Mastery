@@ -84,11 +84,13 @@ const logoutOverlay = document.querySelector('.overlay-logout');
 const trnasferMoneyTo = document.querySelector('.transfer-to');
 const transferAmount = document.querySelector('.transfer-amount');
 const transferButton = document.querySelector('.transfer-btn');
-//close-account buttons
+//close-account elements
 const accountToClose = document.querySelector('.confirm-user');
 const accountToClosePin = document.querySelector('.confirm-pin');
 const accountCloseButtton = document.querySelector('.close-account-btn');
-
+//Taking Loan elements
+const loanAmount = document.querySelector('.loan-amount');
+const loanButton = document.querySelector('.loan-btn');
 //EVENT HANDLERS
 const displayMovements = function (movements) {
   transactionHistory.innerHTML = '<div class="overlay-transaction"></div>';
@@ -137,6 +139,12 @@ const displaySummaryData = function (account) {
 
   summaryInterest.textContent = `₹ ${interest}`;
 };
+
+const updateUI = function (account) {
+  displayBalance(account);
+  displaySummaryData(account);
+  displayMovements(account.movements);
+};
 // displaySummaryData(account1.movements);
 
 //Displaying all of the user account
@@ -159,12 +167,13 @@ loginButton.addEventListener('click', function (e) {
       currentAccount.owner.split(' ')[0]
     }!`;
     //calculate balance of the currentuser
-    displayBalance(currentAccount);
+    updateUI(currentAccount);
+    // displayBalance(currentAccount);
 
     //display summary of the account
-    displaySummaryData(currentAccount);
+    // displaySummaryData(currentAccount);
     //display transaction
-    displayMovements(currentAccount.movements);
+    // displayMovements(currentAccount.movements);
   }
 });
 
@@ -209,9 +218,10 @@ transferButton.addEventListener('click', function (e) {
   ) {
     // console.log('success');
     currentAccount.movements.push(-amount);
-    displayBalance(currentAccount);
-    displaySummaryData(currentAccount);
-    displayMovements(currentAccount.movements);
+    updateUI(currentAccount);
+    // displayBalance(currentAccount);
+    // displaySummaryData(currentAccount);
+    // displayMovements(currentAccount.movements);
     transferAccount.movements.push(amount);
     trnasferMoneyTo.value = transferAmount.value = '';
   }
@@ -230,6 +240,20 @@ accountCloseButtton.addEventListener('click', function (e) {
     accounts.splice(index, 1);
     logout();
     accountToClose.value = accountToClosePin.value = '';
+  }
+});
+
+//Taking Loan
+loanButton.addEventListener('click', function (e) {
+  e.preventDefault();
+  const lAmount = Number(loanAmount.value);
+  if (
+    currentAccount.movements.some(current => current >= lAmount * 0.1) && //-------------------------->loan will be provided if user have at least one deposit greater than or equal to 10% of the requested amount
+    lAmount > 0
+  ) {
+    currentAccount.movements.push(lAmount);
+    updateUI(currentAccount);
+    loanAmount.value = '';
   }
 });
 // logoutOK.addEventListener('click', logout);
