@@ -91,6 +91,9 @@ const accountCloseButtton = document.querySelector('.close-account-btn');
 //Taking Loan elements
 const loanAmount = document.querySelector('.loan-amount');
 const loanButton = document.querySelector('.loan-btn');
+//sorting
+const sortTransactions = document.querySelector('.sort');
+let isSorted = false;
 //EVENT HANDLERS
 const displayMovements = function (movements) {
   transactionHistory.innerHTML = '<div class="overlay-transaction"></div>';
@@ -254,6 +257,19 @@ loanButton.addEventListener('click', function (e) {
     currentAccount.movements.push(lAmount);
     updateUI(currentAccount);
     loanAmount.value = '';
+  }
+});
+
+//sort feature implementation
+sortTransactions.addEventListener('click', function () {
+  const [...sortingArray] = [...currentAccount.movements];
+  console.log(sortingArray);
+  if (!isSorted) {
+    displayMovements(sortingArray.sort((a, b) => a - b));
+    isSorted = true;
+  } else {
+    displayMovements(sortingArray);
+    isSorted = false;
   }
 });
 // logoutOK.addEventListener('click', logout);
@@ -445,3 +461,27 @@ movements.sort((a, b) => a - b); //a-b > 0 => a>b =>  change order   //a-b<0 => 
 console.log(movements);
 
 movements.sort((a, b) => b - a); //b-a > 0 => b>a => change order // b-a<0 => b>a => keep order
+
+//Empty array+fill
+const x = new Array(7); //Empty array with 7 elements, can't use any method on it except fill()
+console.log(x);
+
+//fill
+x.fill(4, 2, 5);
+console.log(x);
+// const y = new Array();
+
+//from
+const y = Array.from({ length: 10 }, (_, i) => i + 1);
+console.log(y);
+const iterable = 'Shiv Pratap';
+const fromIterable = Array.from(iterable, elem => elem);
+console.log(fromIterable);
+
+currentBalanceDisplay.addEventListener('click', function () {
+  const overallMovementsFromScreen = Array.from(
+    document.querySelectorAll('.transaction_amount'),
+    elem => elem.textContent.replace('₹', '')
+  );
+  console.log(overallMovementsFromScreen);
+});
