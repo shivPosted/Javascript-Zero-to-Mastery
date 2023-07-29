@@ -420,3 +420,28 @@ console.log(overallMovements);
 //flatMap();
 const overallMovements2 = accounts.flatMap(acc => acc.movements);
 console.log(overallMovements);
+
+//sort method
+
+//sort in strings
+const names = ['Shiv', 'Matsumoto', 'Kyojiro', 'Akaza'];
+console.log(names.sort());
+console.log(names); //array got mutated
+
+//sort in numbers
+console.log(movements);
+movements.sort();
+console.log(movements); //will sort just like it do with strings, will not work for numbers
+
+//return < 0 a,b (keep order)  (change order? <0 means no, >0 means yes)
+//return > 0 b,a (change order)
+
+// movements.sort((a, b) => { //------------------>ascending order
+//   if (a > b) return 2;
+//   if (b > a) return -1;
+// });
+
+movements.sort((a, b) => a - b); //a-b > 0 => a>b =>  change order   //a-b<0 => a<b => keep order
+console.log(movements);
+
+movements.sort((a, b) => b - a); //b-a > 0 => b>a => change order // b-a<0 => b>a => keep order
