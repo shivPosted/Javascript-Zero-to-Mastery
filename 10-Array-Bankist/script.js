@@ -485,3 +485,30 @@ currentBalanceDisplay.addEventListener('click', function () {
   );
   console.log(overallMovementsFromScreen);
 });
+
+//Array exercise
+//1)total of all the deposits in all the accounts
+
+const overallDeposits = accounts
+  .flatMap(mov => mov.movements)
+  .filter(allTransactions => allTransactions > 0)
+  .reduce((accum, current) => accum + current);
+console.log(overallDeposits);
+
+//2)Number of deposits with >= 1000 in all the accouts
+
+// const numberOfDeposits = accounts
+//   .flatMap(mov => mov.movements)
+//   .filter(rqdDeposits => rqdDeposits >= 1000).length;
+// console.log(numberOfDeposits);
+
+let counter = 0;
+accounts
+  .flatMap(mov => mov.movements)
+  .reduce((accum, current) => {
+    if (current >= 1000) {
+      counter++;
+      return accum + current;
+    }
+  });
+console.log(counter);
