@@ -84,6 +84,17 @@ const logoutOverlay = document.querySelector('.overlay-logout');
 const trnasferMoneyTo = document.querySelector('.transfer-to');
 const transferAmount = document.querySelector('.transfer-amount');
 const transferButton = document.querySelector('.transfer-btn');
+//close-account elements
+const accountToClose = document.querySelector('.confirm-user');
+const accountToClosePin = document.querySelector('.confirm-pin');
+const accountCloseButtton = document.querySelector('.close-account-btn');
+//Taking Loan elements
+const loanAmount = document.querySelector('.loan-amount');
+const loanButton = document.querySelector('.loan-btn');
+//sorting
+const sortTransactions = document.querySelector('.sort');
+let isSorted = false;
+//EVENT HANDLERS
 const displayMovements = function (movements) {
   transactionHistory.innerHTML = '<div class="overlay-transaction"></div>';
   movements.forEach(function (amount, index) {
@@ -131,6 +142,12 @@ const displaySummaryData = function (account) {
 
   summaryInterest.textContent = `₹ ${interest}`;
 };
+
+const updateUI = function (account) {
+  displayBalance(account);
+  displaySummaryData(account);
+  displayMovements(account.movements);
+};
 // displaySummaryData(account1.movements);
 
 //Displaying all of the user account
@@ -153,12 +170,13 @@ loginButton.addEventListener('click', function (e) {
       currentAccount.owner.split(' ')[0]
     }!`;
     //calculate balance of the currentuser
-    displayBalance(currentAccount);
+    updateUI(currentAccount);
+    // displayBalance(currentAccount);
 
     //display summary of the account
-    displaySummaryData(currentAccount);
+    // displaySummaryData(currentAccount);
     //display transaction
-    displayMovements(currentAccount.movements);
+    // displayMovements(currentAccount.movements);
   }
 });
 
@@ -203,11 +221,55 @@ transferButton.addEventListener('click', function (e) {
   ) {
     // console.log('success');
     currentAccount.movements.push(-amount);
-    displayBalance(currentAccount);
-    displaySummaryData(currentAccount);
-    displayMovements(currentAccount.movements);
+    updateUI(currentAccount);
+    // displayBalance(currentAccount);
+    // displaySummaryData(currentAccount);
+    // displayMovements(currentAccount.movements);
     transferAccount.movements.push(amount);
     trnasferMoneyTo.value = transferAmount.value = '';
+  }
+});
+
+//CLOSE ACCOUNT and FINDINDEX method
+accountCloseButtton.addEventListener('click', function (e) {
+  e.preventDefault();
+  if (
+    accountToClose.value === currentAccount.userName &&
+    Number(accountToClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(
+      acc => acc.userName === accountToClose.value
+    );
+    accounts.splice(index, 1);
+    logout();
+    accountToClose.value = accountToClosePin.value = '';
+  }
+});
+
+//Taking Loan
+loanButton.addEventListener('click', function (e) {
+  e.preventDefault();
+  const lAmount = Number(loanAmount.value);
+  if (
+    currentAccount.movements.some(current => current >= lAmount * 0.1) && //-------------------------->loan will be provided if user have at least one deposit greater than or equal to 10% of the requested amount
+    lAmount > 0
+  ) {
+    currentAccount.movements.push(lAmount);
+    updateUI(currentAccount);
+    loanAmount.value = '';
+  }
+});
+
+//sort feature implementation
+sortTransactions.addEventListener('click', function () {
+  const [...sortingArray] = [...currentAccount.movements];
+  console.log(sortingArray);
+  if (!isSorted) {
+    displayMovements(sortingArray.sort((a, b) => a - b));
+    isSorted = true;
+  } else {
+    displayMovements(sortingArray);
+    isSorted = false;
   }
 });
 // logoutOK.addEventListener('click', logout);
@@ -338,3 +400,88 @@ for (const acc of accounts) {
   }
 }
 console.log(account);
+
+//Use of some and every
+
+//By value
+console.log(movements.includes(-130));
+
+//by condition
+
+//SOME
+console.log(movements.some(current => current > 1500));
+console.log(movements.some(current => current < -1500));
+//EVERY
+console.log(account4.movements.every(current => current > 0));
+console.log(account4.movements.every(current => current < 0));
+
+//FLAT and FLATMAP
+
+//flat();
+const arr = [1, [2, 3], 4, [5, 6], [7, 8, 9], 10];
+console.log(arr);
+console.log(arr.flat());
+
+const arrDeep = [[1, [2, 3]], 4, [5, 6], [[7, 8, 9], 10]];
+console.log(arrDeep.flat());
+console.log(arrDeep.flat(2));
+
+// const arrMovements = accounts.map(acc => acc.movements);
+// console.log(arrMovements);
+// const overallMovements = arrMovements.flat();
+// console.log(overallMovements);
+const overallMovements = accounts.map(acc => acc.movements).flat();
+console.log(overallMovements);
+
+//flatMap();
+const overallMovements2 = accounts.flatMap(acc => acc.movements);
+console.log(overallMovements);
+
+//sort method
+
+//sort in strings
+const names = ['Shiv', 'Matsumoto', 'Kyojiro', 'Akaza'];
+console.log(names.sort());
+console.log(names); //array got mutated
+
+//sort in numbers
+console.log(movements);
+movements.sort();
+console.log(movements); //will sort just like it do with strings, will not work for numbers
+
+//return < 0 a,b (keep order)  (change order? <0 means no, >0 means yes)
+//return > 0 b,a (change order)
+
+// movements.sort((a, b) => { //------------------>ascending order
+//   if (a > b) return 2;
+//   if (b > a) return -1;
+// });
+
+movements.sort((a, b) => a - b); //a-b > 0 => a>b =>  change order   //a-b<0 => a<b => keep order
+console.log(movements);
+
+movements.sort((a, b) => b - a); //b-a > 0 => b>a => change order // b-a<0 => b>a => keep order
+
+//Empty array+fill
+const x = new Array(7); //Empty array with 7 elements, can't use any method on it except fill()
+console.log(x);
+
+//fill
+x.fill(4, 2, 5);
+console.log(x);
+// const y = new Array();
+
+//from
+const y = Array.from({ length: 10 }, (_, i) => i + 1);
+console.log(y);
+const iterable = 'Shiv Pratap';
+const fromIterable = Array.from(iterable, elem => elem);
+console.log(fromIterable);
+
+currentBalanceDisplay.addEventListener('click', function () {
+  const overallMovementsFromScreen = Array.from(
+    document.querySelectorAll('.transaction_amount'),
+    elem => elem.textContent.replace('₹', '')
+  );
+  console.log(overallMovementsFromScreen);
+});
