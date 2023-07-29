@@ -502,13 +502,24 @@ console.log(overallDeposits);
 //   .filter(rqdDeposits => rqdDeposits >= 1000).length;
 // console.log(numberOfDeposits);
 
-let counter = 0;
-accounts
+const length = accounts
   .flatMap(mov => mov.movements)
-  .reduce((accum, current) => {
-    if (current >= 1000) {
-      counter++;
-      return accum + current;
-    }
-  });
-console.log(counter);
+  .reduce((accum, current) => (current >= 1000 ? ++accum : accum), 0); //-------------> if you use accum++ this will return 0 cause accum++ is postfix and 0 will return again and again, so use ++accum or accum+1
+console.log(length);
+
+//3)Create an object using reduce that contains all the deposits and withdrawls as different properties
+
+const depositAndWithdrawlOBJ = accounts
+  .flatMap(mov => mov.movements)
+  .reduce(
+    (accum, current) => {
+      // current > 0 ? (accum.deposits += current) : (accum.withdrawls += current);
+      accum[current > 0 ? 'deposits' : 'withdrawls'] += current;
+      return accum;
+    },
+    { deposits: 0, withdrawls: 0 }
+  );
+
+console.log(depositAndWithdrawlOBJ);
+
+//4)
