@@ -522,4 +522,35 @@ const depositAndWithdrawlOBJ = accounts
 
 console.log(depositAndWithdrawlOBJ);
 
-//4)
+//4)Capitalize the title with titleCases
+
+const capitalizingTitles = function (title) {
+  const exceptions = [
+    'a',
+    'an',
+    'the',
+    'by',
+    'with',
+    'at',
+    'but',
+    'or',
+    'on',
+    'with',
+    'and',
+    'is',
+  ];
+  const changedTitle = title
+    .toLowerCase()
+    .split(' ')
+    .map((elem, i) =>
+      exceptions.includes(elem) && i !== 0
+        ? elem
+        : elem[0].toUpperCase() + elem.slice(1)
+    )
+    .join(' ');
+  console.log(changedTitle);
+};
+
+capitalizingTitles('this is the first TITLE');
+capitalizingTitles('second title cOMING up');
+capitalizingTitles('and this is the Third and the lASt title');
