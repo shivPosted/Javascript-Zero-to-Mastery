@@ -485,3 +485,72 @@ currentBalanceDisplay.addEventListener('click', function () {
   );
   console.log(overallMovementsFromScreen);
 });
+
+//Array exercise
+//1)total of all the deposits in all the accounts
+
+const overallDeposits = accounts
+  .flatMap(mov => mov.movements)
+  .filter(allTransactions => allTransactions > 0)
+  .reduce((accum, current) => accum + current);
+console.log(overallDeposits);
+
+//2)Number of deposits with >= 1000 in all the accouts
+
+// const numberOfDeposits = accounts
+//   .flatMap(mov => mov.movements)
+//   .filter(rqdDeposits => rqdDeposits >= 1000).length;
+// console.log(numberOfDeposits);
+
+const length = accounts
+  .flatMap(mov => mov.movements)
+  .reduce((accum, current) => (current >= 1000 ? ++accum : accum), 0); //-------------> if you use accum++ this will return 0 cause accum++ is postfix and 0 will return again and again, so use ++accum or accum+1
+console.log(length);
+
+//3)Create an object using reduce that contains all the deposits and withdrawls as different properties
+
+const depositAndWithdrawlOBJ = accounts
+  .flatMap(mov => mov.movements)
+  .reduce(
+    (accum, current) => {
+      // current > 0 ? (accum.deposits += current) : (accum.withdrawls += current);
+      accum[current > 0 ? 'deposits' : 'withdrawls'] += current;
+      return accum;
+    },
+    { deposits: 0, withdrawls: 0 }
+  );
+
+console.log(depositAndWithdrawlOBJ);
+
+//4)Capitalize the title with titleCases
+
+const capitalizingTitles = function (title) {
+  const exceptions = [
+    'a',
+    'an',
+    'the',
+    'by',
+    'with',
+    'at',
+    'but',
+    'or',
+    'on',
+    'with',
+    'and',
+    'is',
+  ];
+  const changedTitle = title
+    .toLowerCase()
+    .split(' ')
+    .map((elem, i) =>
+      exceptions.includes(elem) && i !== 0
+        ? elem
+        : elem[0].toUpperCase() + elem.slice(1)
+    )
+    .join(' ');
+  console.log(changedTitle);
+};
+
+capitalizingTitles('this is the first TITLE');
+capitalizingTitles('second title cOMING up');
+capitalizingTitles('and this is the Third and the lASt title');
