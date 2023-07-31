@@ -178,7 +178,7 @@ loginButton.addEventListener('click', function (e) {
     account => loginUserName.value === account.userName
   );
 
-  if (currentAccount?.pin === Number(loginPIN.value)) {
+  if (currentAccount?.pin === +loginPIN.value) {
     loginPage.classList.add('hidden');
     displayUserData.classList.remove('hidden');
     document.body.classList.remove('b-login');
@@ -216,7 +216,7 @@ transferButton.addEventListener('click', function (e) {
   // console.log(transferAccount);
   // displayBalance(transferAccount);
   // console.log(transferAccount.balance);
-  const amount = Number(transferAmount.value);
+  const amount = +transferAmount.value;
   if (
     amount > 0 &&
     currentAccount.balance >= amount &&
@@ -239,7 +239,7 @@ accountCloseButtton.addEventListener('click', function (e) {
   e.preventDefault();
   if (
     accountToClose.value === currentAccount.userName &&
-    Number(accountToClosePin.value) === currentAccount.pin
+    +accountToClosePin.value === currentAccount.pin
   ) {
     const index = accounts.findIndex(
       acc => acc.userName === accountToClose.value
@@ -253,7 +253,7 @@ accountCloseButtton.addEventListener('click', function (e) {
 //Taking Loan
 loanButton.addEventListener('click', function (e) {
   e.preventDefault();
-  const lAmount = Number(loanAmount.value);
+  const lAmount = +loanAmount.value;
   if (
     currentAccount.movements.some(current => current >= lAmount * 0.1) && //-------------------------->loan will be provided if user have at least one deposit greater than or equal to 10% of the requested amount
     lAmount > 0
@@ -279,3 +279,32 @@ sortTransactions.addEventListener('click', function () {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
+
+console.log(23 === 23.0);
+//conversion
+console.log('23');
+console.log(+'23'); //By adding + in front strng will change to number
+
+// console.log('23' + '245' + '12');
+
+//Parsing
+console.log(Number.parseInt('27px'));
+console.log(Number.parseInt('e27px'));
+console.log(Number.parseFloat('25.65rem'));
+console.log(Number.parseInt('25.65rem'));
+
+//Check if a value is not a number
+console.log(Number.isNaN('105')); //will change the string to number, this is not a good practice to check if a value is a number or not
+console.log(Number.isNaN(+'23x'));
+console.log(Number.isNaN(23 / 0));
+
+//check if a value is a number
+console.log(Number.isFinite(23));
+console.log(Number.isFinite('23'));
+console.log(Number.isFinite(+'23'));
+console.log(Number.isFinite(23 / 0));
+
+//check if a value is integer
+console.log(Number.isInteger(23.0)); //true
+console.log(Number.isInteger(23.21)); //false
+console.log(Number.isInteger(+'33254'));
