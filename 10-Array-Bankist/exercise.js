@@ -190,7 +190,15 @@ console.table(
 
 // 7. sort Exercise
 // Sort the people alphabetically by last name
+const half = people.map(current => (current + ',').split(' '));
+console.log(
+  half
+    .map(current => current[1] + current[0])
+    .map(current => current.slice(0, current.length - 1).replace(',', ', '))
+    .sort()
+);
 
+// .map((_, _, arr) => arr[1] + arr[0])
 // 8. Reduce Exercise
 // Sum up the instances of each of these
 const data = [
@@ -209,3 +217,144 @@ const data = [
   'car',
   'truck',
 ];
+
+// Coding Challenge #4
+// Julia and Kate are still studying dogs, and this time they are studying if dogs are
+// eating too much or too little.
+// Eating too much means the dog's current food portion is larger than the
+// recommended portion, and eating too little is the opposite.
+// Eating an okay amount means the dog's current food portion is within a range 10%
+// above and 10% below the recommended portion (see hint).
+// Your tasks:
+// 1. Loop over the 'dogs' array containing dog objects, and for each dog, calculate
+// the recommended food portion and add it to the object as a new property. Do
+// not create a new array, simply loop over the array. Forumla:
+// recommendedFood = weight ** 0.75 * 28. (The result is in grams of
+// food, and the weight needs to be in kg)
+// 2. Find Sarah's dog and log to the console whether it's eating too much or too
+// little. Hint: Some dogs have multiple owners, so you first need to find Sarah in
+// the owners array, and so this one is a bit tricky (on purpose) 🤓
+// 3. Create an array containing all owners of dogs who eat too much
+// ('ownersEatTooMuch') and an array with all owners of dogs who eat too little
+// ('ownersEatTooLittle').
+// 4. Log a string to the console for each array created in 3., like this: "Matilda and
+// Alice and Bob's dogs eat too much!" and "Sarah and John and Michael's dogs eat
+// too little!"
+// 5. Log to the console whether there is any dog eating exactly the amount of food
+// that is recommended (just true or false)
+// 6. Log to the console whether there is any dog eating an okay amount of food
+// (just true or false)
+// 7. Create an array containing the dogs that are eating an okay amount of food (try
+// to reuse the condition used in 6.)
+// 8. Create a shallow copy of the 'dogs' array and sort it by recommended food
+// portion in an ascending order (keep in mind that the portions are inside the
+// array's objects 😉)
+
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+];
+//1.
+dogs.forEach(function (current) {
+  current.recommendedFood = Math.trunc(current.weight ** 0.75 * 28);
+});
+//2.
+const index = dogs.findIndex(current => current.owners.includes('Sarah'));
+console.log(index);
+
+console.log(
+  dogs[index].curFood > dogs[index].recommendedFood
+    ? 'Dog is eating too much'
+    : 'Dog is eating too little'
+);
+// dogs[].
+//3.
+let ownersEatTooMuch = [];
+let ownersEatTooLess = [];
+const eatingMuchLittle = function (arr) {
+  arr.forEach(function (current) {
+    current.curFood > current.recommendedFood
+      ? ownersEatTooMuch.push(current.owners)
+      : ownersEatTooLess.push(current.owners);
+  });
+  ownersEatTooLess = ownersEatTooLess.flat();
+  ownersEatTooMuch = ownersEatTooMuch.flat();
+};
+
+eatingMuchLittle(dogs);
+
+console.log(ownersEatTooLess, ownersEatTooMuch);
+
+//4.
+const printTooMuchLittle = function (arr, str) {
+  let rqdStr = '';
+  arr.forEach(function (current, i, arr) {
+    i !== arr.length - 1
+      ? (rqdStr += current + ' and ')
+      : (rqdStr += current + ` ${str}`);
+  });
+  return rqdStr;
+};
+
+console.log(printTooMuchLittle(ownersEatTooMuch, 'eat to much'));
+console.log(printTooMuchLittle(ownersEatTooLess, 'eat too little'));
+
+//5.
+console.log(dogs.some(current => current.recommendedFood === current.curFood));
+//6.
+console.log(
+  dogs.some(
+    current =>
+      current.curFood >= current.recommendedFood * 0.9 &&
+      current.curFood <= current.recommendedFood * 1.1
+  )
+);
+
+//7.
+const okayDogs = dogs.filter(
+  current =>
+    current.curFood >= current.recommendedFood * 0.9 &&
+    current.curFood <= current.recommendedFood * 1.1
+);
+console.log(okayDogs);
+
+//8.
+const sortedByRecommended = dogs.sort(
+  (a, b) => a.recommendedFood - b.recommendedFood
+);
+console.log(sortedByRecommended);
+
+// ## Array Cardio Day 2
+
+const people01 = [
+  { name: 'Wes', year: 1988 },
+  { name: 'Kait', year: 1986 },
+  { name: 'Irv', year: 1970 },
+  { name: 'Lux', year: 2015 },
+];
+
+const comments = [
+  { text: 'Love this!', id: 523423 },
+  { text: 'Super good', id: 823423 },
+  { text: 'You are the best', id: 2039842 },
+  { text: 'Ramen is my fav food ever', id: 123523 },
+  { text: 'Nice Nice Nice!', id: 542328 },
+];
+
+// Some and Every Checks
+// Array.prototype.some() // is at least one person 19 or older?
+console.log(people01.some(current => 2023 - current.year >= 19));
+// Array.prototype.every() // is everyone 19 or older?
+console.log(people01.every(current => 2023 - current.year >= 19));
+
+// Array.prototype.find()
+// Find is like filter, but instead returns just the one you are looking for
+// find the comment with the ID of 823423
+console.log(comments.find(current => current.id === 823423));
+
+// Array.prototype.findIndex()
+// Find the comment with this ID
+// delete the comment with the ID of 823423
+console.log(comments.findIndex(current => current.id === 823423));
