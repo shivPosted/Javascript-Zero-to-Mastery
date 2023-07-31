@@ -286,7 +286,8 @@ console.log('23');
 console.log(+'23'); //By adding + in front strng will change to number
 
 // console.log('23' + '245' + '12');
-
+console.log(0.1 + 0.2 === 0.3); //this is fun 😂😂
+console.log(0.1 + 0.2);
 //Parsing
 console.log(Number.parseInt('27px'));
 console.log(Number.parseInt('e27px'));
@@ -308,3 +309,25 @@ console.log(Number.isFinite(23 / 0));
 console.log(Number.isInteger(23.0)); //true
 console.log(Number.isInteger(23.21)); //false
 console.log(Number.isInteger(+'33254'));
+
+//Math methods
+console.log(Math.sqrt(25));
+console.log(25 ** (1 / 2));
+console.log(216 ** (1 / 3));
+console.log(Math.max(5, 6, 8, 1, 2, 30, 887));
+console.log(Math.max(5, 6, 8, 1, 2, '30'));
+
+//constants
+console.log(Math.PI ** Number.parseFloat('23.25cm')); //in cm
+
+console.log(Math.random() * 6); //between 0-6
+console.log(Math.random() * 6 + 1); //from 1-6    including decimals
+console.log(Math.floor(Math.random() * 6) + 1); //from 1-6    only integers
+
+//function to get random numbers from min-max
+const randomNumber = function (min, max) {
+  //------------------------->funcition to create a random number from min to max
+  return Math.floor(Math.random() * (max - min) + min);
+};
+
+console.log(randomNumber(50, 70));
