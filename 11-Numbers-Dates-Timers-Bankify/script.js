@@ -107,7 +107,9 @@ const displayMovements = function (movements) {
     const html = `<div class="transaction-row">
     <div class="type_${transactionType}">${index + 1} ${transactionType}</div>
     <div class="transaction_amount">${
-      amount > 0 ? `₹ ${amount}` : `-₹ ${amount - amount * 2}`
+      amount > 0
+        ? `₹ ${amount.toFixed(2)}`
+        : `-₹ ${(amount - amount * 2).toFixed(2)}`
     }</div>
     </div>`;
     // console.log(html);
@@ -124,7 +126,7 @@ const displayBalance = function (acc) {
     0
   );
   // acc.balance = currentBalance;
-  currentBalanceDisplay.textContent = `₹ ${acc.balance}`;
+  currentBalanceDisplay.textContent = `₹ ${acc.balance.toFixed(2)}`;
 };
 // displayBalance(account1.movements);
 
@@ -132,12 +134,12 @@ const displaySummaryData = function (account) {
   const income = account.movements
     .filter(elem => elem >= 0)
     .reduce((accum, current) => accum + current);
-  summaryIncome.textContent = `₹ ${income}`;
+  summaryIncome.textContent = `₹ ${income.toFixed(2)}`;
 
   const outcome = account.movements
     .filter(elem => elem < 0)
     .reduce((accum, current) => accum + current, 0);
-  summaryOutcome.textContent = `₹ ${Math.trunc(Math.abs(outcome))}`;
+  summaryOutcome.textContent = `₹ ${Math.abs(outcome).toFixed(2)}`;
 
   const interest = account.movements
     .filter(elem => elem >= 0)
@@ -145,7 +147,7 @@ const displaySummaryData = function (account) {
     .filter(elem => elem >= 1) //-----------------------------------------------> bank only pay interest if interest itself is greater than INR 1.00
     .reduce((accum, current) => accum + current);
 
-  summaryInterest.textContent = `₹ ${Math.trunc(interest)}`;
+  summaryInterest.textContent = `₹ ${interest.toFixed(2)}`;
 };
 
 const updateUI = function (account) {
@@ -258,7 +260,7 @@ loanButton.addEventListener('click', function (e) {
     currentAccount.movements.some(current => current >= lAmount * 0.1) && //-------------------------->loan will be provided if user have at least one deposit greater than or equal to 10% of the requested amount
     lAmount > 0
   ) {
-    currentAccount.movements.push(lAmount);
+    currentAccount.movements.push(Math.floor(lAmount));
     updateUI(currentAccount);
     loanAmount.value = '';
   }
@@ -331,3 +333,21 @@ const randomNumber = function (min, max) {
 };
 
 console.log(randomNumber(50, 70));
+
+//floor, ceil, trunc  Rouding integers
+console.log(Math.ceil(23.9));
+console.log(Math.ceil(23.1));
+console.log(Math.floor(23.1));
+console.log(Math.floor(23.9));
+
+console.log(Math.trunc(23.5));
+console.log(Math.trunc(23.9));
+console.log(Math.trunc(23.1));
+
+console.log(Math.floor(-23.4)); //-24 -23.4 -23  -24< -23
+console.log(Math.trunc(-23.4));
+console.log(Math.ceil(-23.4));
+
+//Rounding decimals
+console.log((23.90096).toFixed(2)); //toFixed() generate string
+console.log(+(23.90096).toFixed(2));
