@@ -351,3 +351,16 @@ console.log(Math.ceil(-23.4));
 //Rounding decimals
 console.log((23.90096).toFixed(2)); //toFixed() generate string
 console.log(+(23.90096).toFixed(2));
+console.log((2356.2315248).toFixed(3));
+
+//Creating dates
+const now = new Date();
+console.log(now);
+
+console.log(new Date('June 11, 2001')); //passing string to Date() constructor to get the whole date format
+console.log(new Date('2021 January 01'));
+
+console.log(new Date(2001, 6, 11, 23, 59, 59)); // year, month, date, hour, minutes, seconds ------------> 0 based indexing for months and day 0 being sunday
+console.log(new Date(0)); //---------> 0 millisecond represent the starting of the unix time i.e. Jan 01 1970, so we can pass millisecond based on starting from this date
+//5 days after this date
+console.log(new Date(5 * 24 * 60 * 60 * 1000)); //converting 5 days to millisecond 1sec = 1000ms -----------------> 5 * 24 * 60 * 60 * 1000 refers to timestamp
