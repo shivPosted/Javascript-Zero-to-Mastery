@@ -282,85 +282,106 @@ sortTransactions.addEventListener('click', function () {
 /////////////////////////////////////////////////
 // LECTURES
 
-console.log(23 === 23.0);
+// console.log(23 === 23.0);
 //conversion
-console.log('23');
-console.log(+'23'); //By adding + in front strng will change to number
+// console.log('23');
+// console.log(+'23'); //By adding + in front strng will change to number
 
 // console.log('23' + '245' + '12');
-console.log(0.1 + 0.2 === 0.3); //this is fun 😂😂
-console.log(0.1 + 0.2);
+// console.log(0.1 + 0.2 === 0.3); //this is fun 😂😂
+// console.log(0.1 + 0.2);
 //Parsing
-console.log(Number.parseInt('27px'));
-console.log(Number.parseInt('e27px'));
-console.log(Number.parseFloat('25.65rem'));
-console.log(Number.parseInt('25.65rem'));
+// console.log(Number.parseInt('27px'));
+// console.log(Number.parseInt('e27px'));
+// console.log(Number.parseFloat('25.65rem'));
+// console.log(Number.parseInt('25.65rem'));
 
 //Check if a value is not a number
-console.log(Number.isNaN('105')); //will change the string to number, this is not a good practice to check if a value is a number or not
-console.log(Number.isNaN(+'23x'));
-console.log(Number.isNaN(23 / 0));
+// console.log(Number.isNaN('105')); //will change the string to number, this is not a good practice to check if a value is a number or not
+// console.log(Number.isNaN(+'23x'));
+// console.log(Number.isNaN(23 / 0));
 
 //check if a value is a number
-console.log(Number.isFinite(23));
-console.log(Number.isFinite('23'));
-console.log(Number.isFinite(+'23'));
-console.log(Number.isFinite(23 / 0));
+// console.log(Number.isFinite(23));
+// console.log(Number.isFinite('23'));
+// console.log(Number.isFinite(+'23'));
+// console.log(Number.isFinite(23 / 0));
 
 //check if a value is integer
-console.log(Number.isInteger(23.0)); //true
-console.log(Number.isInteger(23.21)); //false
-console.log(Number.isInteger(+'33254'));
+// console.log(Number.isInteger(23.0)); //true
+// console.log(Number.isInteger(23.21)); //false
+// console.log(Number.isInteger(+'33254'));
 
 //Math methods
-console.log(Math.sqrt(25));
-console.log(25 ** (1 / 2));
-console.log(216 ** (1 / 3));
-console.log(Math.max(5, 6, 8, 1, 2, 30, 887));
-console.log(Math.max(5, 6, 8, 1, 2, '30'));
+// console.log(Math.sqrt(25));
+// console.log(25 ** (1 / 2));
+// console.log(216 ** (1 / 3));
+// console.log(Math.max(5, 6, 8, 1, 2, 30, 887));
+// console.log(Math.max(5, 6, 8, 1, 2, '30'));
 
 //constants
-console.log(Math.PI ** Number.parseFloat('23.25cm')); //in cm
+// console.log(Math.PI ** Number.parseFloat('23.25cm')); //in cm
 
-console.log(Math.random() * 6); //between 0-6
-console.log(Math.random() * 6 + 1); //from 1-6    including decimals
-console.log(Math.floor(Math.random() * 6) + 1); //from 1-6    only integers
+// console.log(Math.random() * 6); //between 0-6
+// console.log(Math.random() * 6 + 1); //from 1-6    including decimals
+// console.log(Math.floor(Math.random() * 6) + 1); //from 1-6    only integers
 
 //function to get random numbers from min-max
-const randomNumber = function (min, max) {
-  //------------------------->funcition to create a random number from min to max
-  return Math.floor(Math.random() * (max - min) + min);
-};
+// const randomNumber = function (min, max) {
+//------------------------->funcition to create a random number from min to max
+//   return Math.floor(Math.random() * (max - min) + min);
+// };
 
-console.log(randomNumber(50, 70));
+// console.log(randomNumber(50, 70));
 
 //floor, ceil, trunc  Rouding integers
-console.log(Math.ceil(23.9));
-console.log(Math.ceil(23.1));
-console.log(Math.floor(23.1));
-console.log(Math.floor(23.9));
+// console.log(Math.ceil(23.9));
+// console.log(Math.ceil(23.1));
+// console.log(Math.floor(23.1));
+// console.log(Math.floor(23.9));
 
-console.log(Math.trunc(23.5));
-console.log(Math.trunc(23.9));
-console.log(Math.trunc(23.1));
+// console.log(Math.trunc(23.5));
+// console.log(Math.trunc(23.9));
+// console.log(Math.trunc(23.1));
 
-console.log(Math.floor(-23.4)); //-24 -23.4 -23  -24< -23
-console.log(Math.trunc(-23.4));
-console.log(Math.ceil(-23.4));
+// console.log(Math.floor(-23.4)); //-24 -23.4 -23  -24< -23
+// console.log(Math.trunc(-23.4));
+// console.log(Math.ceil(-23.4));
 
 //Rounding decimals
-console.log((23.90096).toFixed(2)); //toFixed() generate string
-console.log(+(23.90096).toFixed(2));
-console.log((2356.2315248).toFixed(3));
+// console.log((23.90096).toFixed(2)); //toFixed() generate string
+// console.log(+(23.90096).toFixed(2));
+// console.log((2356.2315248).toFixed(3));
 
 //Creating dates
-const now = new Date();
-console.log(now);
+// const now = new Date();
+// console.log(now);
 
-console.log(new Date('June 11, 2001')); //passing string to Date() constructor to get the whole date format
-console.log(new Date('2021 January 01'));
+// console.log(new Date('June 11, 2001')); //passing string to Date() constructor to get the whole date format
+// console.log(new Date('2021 January 01'));
 
-console.log(new Date(2001, 6, 11, 23, 59, 59)); // year, month, date, hour, minutes, seconds ------------> 0 based indexing for months and day 0 being sunday
-console.log(new Date(0)); //---------> 0 millisecond represent the starting of the unix time i.e. Jan 01 1970, so we can pass millisecond based on starting from this date
+// console.log(new Date(2001, 6, 11, 23, 59, 59)); // year, month, date, hour, minutes, seconds ------------> 0 based indexing for months and day 0 being sunday
+// console.log(new Date(0)); //---------> 0 millisecond represent the starting of the unix time i.e. Jan 01 1970, so we can pass millisecond based on starting from this date
 //5 days after this date
-console.log(new Date(5 * 24 * 60 * 60 * 1000)); //converting 5 days to millisecond 1sec = 1000ms -----------------> 5 * 24 * 60 * 60 * 1000 refers to timestamp
+// console.log(new Date(5 * 24 * 60 * 60 * 1000)); //converting 5 days to millisecond 1sec = 1000ms -----------------> 5 * 24 * 60 * 60 * 1000 refers to timestamp
+
+//Working with dates in JS
+const future = new Date('2019-11-18T21:31:17.178Z');
+console.log(future);
+//getters
+console.log(future.getFullYear());
+console.log(future.getMonth()); //---->returns a index from 0-11
+console.log(future.getDate());
+console.log(future.getDay()); // -------> returns an index from 0-6 0 being sunday
+console.log(future.getHours());
+console.log(future.getMinutes());
+console.log(future.getSeconds());
+
+console.log(future.toISOString()); // TO GET A WHOLE STRING FROM DATE
+console.log(future.getTime()); //GET THE NUMBER OF millisecond passed since JAN 01 1970 ---> represents timestamp
+console.log(new Date(future.getTime()));
+console.log(Date.now()); //return timestamp of now from JAN 01 1970
+
+//setters
+console.log(future.setFullYear(2045)); //rest are also same
+console.log(future.getFullYear());
