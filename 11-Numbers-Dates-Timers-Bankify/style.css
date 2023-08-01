@@ -104,7 +104,7 @@ h1 {
 .login-btn {
   background-color: #222;
   color: #fff;
-  border: none;
+  border: 1px solid #222;
   outline: none;
   font-size: 1.6rem;
   padding: 1.2rem 2.4rem;
@@ -117,7 +117,7 @@ h1 {
 .login-btn:hover {
   color: #222;
   background-color: #fff;
-  border: 1px solid #222;
+  /* box-shadow: inset 0 0 0 1px #222; */
 }
 .user:focus,
 .password:focus {
