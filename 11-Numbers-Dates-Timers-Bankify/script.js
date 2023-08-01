@@ -88,6 +88,8 @@ const loanButton = document.querySelector('.loan-btn');
 //sorting
 const sortTransactions = document.querySelector('.sort');
 let isSorted = false;
+
+//Date
 // Functions
 
 const userName = function (accs) {
@@ -100,12 +102,19 @@ const userName = function (accs) {
   });
 };
 userName(accounts);
-const displayMovements = function (movements) {
+const displayMovements = function (acc) {
   transactionHistory.innerHTML = '<div class="overlay-transaction"></div>';
-  movements.forEach(function (amount, index) {
+  acc.movements.forEach(function (amount, index) {
+    const now = new Date(acc.movementsDates[index]);
+    const year = now.getFullYear();
+    const month = `${now.getMonth() + 1}`.padStart(2, '0');
+    const date = `${now.getDate()}`.padStart(2, '0');
+
     const transactionType = amount > 0 ? 'deposit' : 'withdrawl';
     const html = `<div class="transaction-row">
     <div class="type_${transactionType}">${index + 1} ${transactionType}</div>
+    <div class="date_transaction">${date}/${month}/${year}</div>
+    
     <div class="transaction_amount">${
       amount > 0
         ? `₹ ${amount.toFixed(2)}`
@@ -153,7 +162,7 @@ const displaySummaryData = function (account) {
 const updateUI = function (account) {
   displayBalance(account);
   displaySummaryData(account);
-  displayMovements(account.movements);
+  displayMovements(account);
 };
 const logout = function () {
   loginPage.classList.remove('hidden');
@@ -173,6 +182,34 @@ const closeLogoutWindow = function () {
 
 //EVENT HANDLERS
 let currentAccount;
+//Fake always login
+const fakeLogin = function (currentAccount) {
+  loginPage.classList.add('hidden');
+  displayUserData.classList.remove('hidden');
+  document.body.classList.remove('b-login');
+  document.body.classList.add('.a-login');
+  loginUserName.value = loginPIN.value = '';
+  //display welcome message
+  welcomeMessage.textContent = `Welcome back, ${
+    currentAccount.owner.split(' ')[0]
+  }!`;
+
+  updateUI(currentAccount);
+};
+fakeLogin(account1);
+
+const now = new Date();
+const year = now.getFullYear();
+const month = `${now.getMonth() + 1}`.padStart(2, '0');
+const date = `${now.getDate()}`.padStart(2, '0');
+const daysInWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+const day = daysInWeek[now.getDay()].toLowerCase();
+console.log(now);
+
+document.querySelector(
+  '.current-date-label'
+).textContent = `${date}/${month}/${year}, ${day}`;
+//login
 loginButton.addEventListener('click', function (e) {
   e.preventDefault();
   // console.log(loginUserName.value);
@@ -227,11 +264,13 @@ transferButton.addEventListener('click', function (e) {
   ) {
     // console.log('success');
     currentAccount.movements.push(-amount);
+    currentAccount.movementsDates.push(now.toISOString());
     updateUI(currentAccount);
     // displayBalance(currentAccount);
     // displaySummaryData(currentAccount);
     // displayMovements(currentAccount.movements);
     transferAccount.movements.push(amount);
+    transferAccount.movementsDates.push(now.toISOString());
     trnasferMoneyTo.value = transferAmount.value = '';
   }
 });
@@ -261,6 +300,7 @@ loanButton.addEventListener('click', function (e) {
     lAmount > 0
   ) {
     currentAccount.movements.push(Math.floor(lAmount));
+    currentAccount.movementsDates.push(now.toISOString());
     updateUI(currentAccount);
     loanAmount.value = '';
   }
@@ -366,22 +406,23 @@ sortTransactions.addEventListener('click', function () {
 // console.log(new Date(5 * 24 * 60 * 60 * 1000)); //converting 5 days to millisecond 1sec = 1000ms -----------------> 5 * 24 * 60 * 60 * 1000 refers to timestamp
 
 //Working with dates in JS
-const future = new Date('2019-11-18T21:31:17.178Z');
-console.log(future);
+// const future = new Date('2019-11-18T21:31:17.178Z');
+// console.log(future);
 //getters
-console.log(future.getFullYear());
-console.log(future.getMonth()); //---->returns a index from 0-11
-console.log(future.getDate());
-console.log(future.getDay()); // -------> returns an index from 0-6 0 being sunday
-console.log(future.getHours());
-console.log(future.getMinutes());
-console.log(future.getSeconds());
+// console.log(future.getFullYear());
+// console.log(future.getMonth()); //---->returns a index from 0-11
+// console.log(future.getDate());
+// console.log(future.getDay()); // -------> returns an index from 0-6 0 being sunday
+// console.log(future.getHours());
+// console.log(future.getMinutes());
+// console.log(future.getSeconds());
 
-console.log(future.toISOString()); // TO GET A WHOLE STRING FROM DATE
-console.log(future.getTime()); //GET THE NUMBER OF millisecond passed since JAN 01 1970 ---> represents timestamp
-console.log(new Date(future.getTime()));
-console.log(Date.now()); //return timestamp of now from JAN 01 1970
+// console.log(future.toISOString()); // TO GET A WHOLE STRING FROM DATE
+// console.log(future.getTime()); //GET THE NUMBER OF millisecond passed since JAN 01 1970 ---> represents timestamp
+// console.log(new Date(future.getTime()));
+// console.log(Date.now()); //return timestamp of now from JAN 01 1970
 
 //setters
-console.log(future.setFullYear(2045)); //rest are also same
-console.log(future.getFullYear());
+// console.log(future.setFullYear(2045)); //rest are also same
+// console.log(future.getFullYear());
+// console.log();
