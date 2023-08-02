@@ -25,8 +25,8 @@ const account1 = {
     '2023-07-30T23:36:17.929Z',
     '2023-08-02T10:51:36.790Z',
   ],
-  currency: 'EUR',
-  locale: 'pt-PT', // de-DE
+  currency: 'INR',
+  locale: 'en-IN', // de-DE
 };
 
 const account2 = {
@@ -96,10 +96,12 @@ const daysPassed = (date1, date2) => {
   return Math.abs((date2 - date1) / (1000 * 24 * 60 * 60));
 }; //--------->converting ms to days
 
-const displayMovementsDate = function (date) {
-  const year = date.getFullYear();
-  const month = `${date.getMonth() + 1}`.padStart(2, '0');
-  const dayOfMonth = `${date.getDate()}`.padStart(2, '0');
+const displayMovementsDate = function (date, locale) {
+  const intlDateFormat = new Intl.DateTimeFormat(locale, {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date());
 
   const daysPass = Math.floor(daysPassed(Date.now(), date));
 
@@ -107,7 +109,7 @@ const displayMovementsDate = function (date) {
   if (daysPass === 1) return `YESTERDAY`;
   if (daysPass <= 7) return `${daysPass} DAYS AGO`;
 
-  return `${dayOfMonth}/${month}/${year}`;
+  return intlDateFormat;
 };
 
 const userName = function (accs) {
@@ -124,7 +126,7 @@ const displayMovements = function (acc) {
   transactionHistory.innerHTML = '<div class="overlay-transaction"></div>';
   acc.movements.forEach(function (amount, index) {
     const date = new Date(acc.movementsDates[index]);
-    const displayDate = displayMovementsDate(date);
+    const displayDate = displayMovementsDate(date, acc.locale);
 
     const transactionType = amount > 0 ? 'deposit' : 'withdrawl';
     const html = `<div class="transaction-row">
@@ -214,16 +216,24 @@ const fakeLogin = function (currentAccount) {
 };
 fakeLogin(account1);
 
-const now = new Date();
-const year = now.getFullYear();
-const month = `${now.getMonth() + 1}`.padStart(2, '0');
-const date = `${now.getDate()}`.padStart(2, '0');
-const daysInWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
-const day = daysInWeek[now.getDay()].toLowerCase();
+// const now = new Date();
+// const year = now.getFullYear();
+// const month = `${now.getMonth() + 1}`.padStart(2, '0');
+// const date = `${now.getDate()}`.padStart(2, '0');
+// const daysInWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+// const day = daysInWeek[now.getDay()].toLowerCase();
 
-document.querySelector(
-  '.current-date-label'
-).textContent = `${date}/${month}/${year}, ${day}`;
+//current date and time
+const lan = navigator.language;
+const options = {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: 'numeric',
+  minute: 'numeric',
+};
+const date = new Intl.DateTimeFormat(lan, options).format();
+document.querySelector('.current-date-label').textContent = date;
 //login
 loginButton.addEventListener('click', function (e) {
   e.preventDefault();
@@ -472,3 +482,5 @@ console.log(day1);
 // const local = navigator.language; //give the locale string i.e. 'lan-Region' e.g. ;- 'en-IN' according to the region of the user
 // const formatterBrowser = new Intl.DateTimeFormat(local).format(new Date());
 // console.log(formatterBrowser);
+
+console.log(new Intl.DateTimeFormat('pt-PT').format(new Date()));
