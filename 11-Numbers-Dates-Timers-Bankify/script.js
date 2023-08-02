@@ -101,6 +101,7 @@ const displayMovementsDate = function (date, locale) {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
+    weekday: 'long',
   }).format(new Date());
 
   const daysPass = Math.floor(daysPassed(Date.now(), date));
@@ -483,4 +484,23 @@ console.log(day1);
 // const formatterBrowser = new Intl.DateTimeFormat(local).format(new Date());
 // console.log(formatterBrowser);
 
-console.log(new Intl.DateTimeFormat('pt-PT').format(new Date()));
+// console.log(new Intl.DateTimeFormat('pt-PT').format(new Date()));
+
+//Intl with numbers
+const num = 235658965.2324;
+const formattedNum = new Intl.NumberFormat('en-US').format(num);
+console.log(formattedNum);
+
+const currency = 256869575.3245;
+const formattedCurrency = new Intl.NumberFormat('en-In', {
+  style: 'currency',
+  currency: 'INR',
+}).format(currency);
+console.log(formattedCurrency);
+
+const speed = 25698;
+const formattedSpeed = new Intl.NumberFormat('en-IN', {
+  style: 'unit',
+  unit: 'kilometer-per-hour', //can be miles-per-hour, celcius, kelvin or other unit
+}).format(speed);
+console.log(formattedSpeed);
