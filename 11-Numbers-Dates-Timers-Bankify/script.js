@@ -450,3 +450,25 @@ sortTransactions.addEventListener('click', function () {
 const day1 = daysPassed(new Date(2023, 7, 2), new Date(2023, 6, 31));
 
 console.log(day1);
+
+//Internationalisation (Intl)
+// const formatter = new Intl.DateTimeFormat('en-IN'); //declaring a formatter for Intl API
+// const dateNow = formatter.format(new Date()); //format() will take a type of a date as an argument
+// console.log(dateNow);
+
+// const formatterWithOptions = new Intl.DateTimeFormat('en-IN', {
+//   //Intl formatter with options
+//   year: 'numeric',
+//   day: '2-digit',
+//   month: '2-digit',
+//   weekday: 'long',
+//   hour12: false,
+//   hour: 'numeric',
+//   minute: '2-digit',
+// }).format(new Date());
+
+// console.log(formatterWithOptions);
+
+// const local = navigator.language; //give the locale string i.e. 'lan-Region' e.g. ;- 'en-IN' according to the region of the user
+// const formatterBrowser = new Intl.DateTimeFormat(local).format(new Date());
+// console.log(formatterBrowser);
