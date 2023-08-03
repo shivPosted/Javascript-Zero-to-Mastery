@@ -172,7 +172,7 @@ h3 {
   max-width: 110rem;
   margin: 3rem auto;
   display: grid;
-  grid-template-columns: 4fr 2fr;
+  grid-template-columns: 60fr 40fr;
   grid-template-rows: auto repeat(3, 15rem) auto;
   column-gap: 3.2rem;
   row-gap: 2.4rem;
@@ -295,9 +295,12 @@ h3 {
   border: none;
   outline: none;
   border-radius: 9px;
-  opacity: 0.5;
+  opacity: 0.4;
   font-size: 2rem;
   padding-left: 1.2rem;
+}
+.money-function-form input:focus {
+  opacity: 0.6;
 }
 .money-function-form div {
   text-align: center;

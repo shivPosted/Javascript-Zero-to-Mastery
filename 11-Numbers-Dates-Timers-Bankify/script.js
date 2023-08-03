@@ -88,7 +88,10 @@ const loanButton = document.querySelector('.loan-btn');
 //sorting
 const sortTransactions = document.querySelector('.sort');
 let isSorted = false;
+let timerInterval;
 const now = new Date();
+//TIMER
+const timer = document.querySelector('.timer');
 
 //Date
 // Functions
@@ -206,6 +209,7 @@ const updateUI = function (account) {
   displayMovements(account);
 };
 const logout = function () {
+  clearInterval(timerInterval);
   loginPage.classList.remove('hidden');
   displayUserData.classList.add('hidden');
   document.body.classList.add('b-login');
@@ -217,27 +221,29 @@ const closeLogoutWindow = function () {
   logoutConfirmation.classList.add('hidden');
   logoutOverlay.classList.add('hidden');
 };
+
+const logoutTimer = function () {
+  let time = 300;
+  const tick = function () {
+    if (time === 0) {
+      logout();
+    }
+    const min = String(Math.trunc(time / 60)).padStart(2, '0');
+    const sec = String(time % 60).padStart(2, '0');
+    timer.textContent = `${min}:${sec}`;
+    time--;
+  };
+  tick();
+  timerInterval = setInterval(tick, 1000);
+
+  return timerInterval;
+};
 // displaySummaryData(account1.movements);
 
 //Displaying all of the user account
 
 //EVENT HANDLERS
 let currentAccount;
-//Fake always login
-const fakeLogin = function (currentAccount) {
-  loginPage.classList.add('hidden');
-  displayUserData.classList.remove('hidden');
-  document.body.classList.remove('b-login');
-  document.body.classList.add('.a-login');
-  loginUserName.value = loginPIN.value = '';
-  //display welcome message
-  welcomeMessage.textContent = `Welcome back, ${
-    currentAccount.owner.split(' ')[0]
-  }!`;
-
-  updateUI(currentAccount);
-};
-fakeLogin(account1);
 
 // const now = new Date();
 // const year = now.getFullYear();
@@ -257,7 +263,9 @@ const options = {
 };
 const date = new Intl.DateTimeFormat(lan, options).format();
 document.querySelector('.current-date-label').textContent = date;
+
 //login
+
 loginButton.addEventListener('click', function (e) {
   e.preventDefault();
   // console.log(loginUserName.value);
@@ -266,11 +274,12 @@ loginButton.addEventListener('click', function (e) {
   );
 
   if (currentAccount?.pin === +loginPIN.value) {
-    loginPage.classList.add('hidden');
-    displayUserData.classList.remove('hidden');
     document.body.classList.remove('b-login');
     document.body.classList.add('.a-login');
+    loginPage.classList.add('hidden');
+    displayUserData.classList.remove('hidden');
     loginUserName.value = loginPIN.value = '';
+
     //display welcome message
     welcomeMessage.textContent = `Welcome back, ${
       currentAccount.owner.split(' ')[0]
@@ -281,6 +290,8 @@ loginButton.addEventListener('click', function (e) {
     // displaySummaryData(currentAccount);
     //display transaction
     // displayMovements(currentAccount.movements);
+    if (timerInterval) clearInterval(timerInterval);
+    logoutTimer();
     updateUI(currentAccount);
   }
 });
@@ -347,10 +358,12 @@ loanButton.addEventListener('click', function (e) {
     currentAccount.movements.some(current => current >= lAmount * 0.1) && //-------------------------->loan will be provided if user have at least one deposit greater than or equal to 10% of the requested amount
     lAmount > 0
   ) {
-    currentAccount.movements.push(Math.floor(lAmount));
-    currentAccount.movementsDates.push(now.toISOString());
-    updateUI(currentAccount);
-    loanAmount.value = '';
+    setTimeout(function () {
+      currentAccount.movements.push(Math.floor(lAmount));
+      currentAccount.movementsDates.push(now.toISOString());
+      updateUI(currentAccount);
+      loanAmount.value = '';
+    }, 2500);
   }
 });
 
@@ -366,6 +379,7 @@ sortTransactions.addEventListener('click', function () {
     isSorted = false;
   }
 });
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -526,3 +540,31 @@ console.log(day1);
 //   unit: 'kilometer-per-hour', //can be miles-per-hour, celcius, kelvin or other unit
 // }).format(speed);
 // console.log(formattedSpeed);
+
+//setTimeout and setInterval
+// setTimeout(() => {
+//   console.log('This will print after 3 sec');
+// }, 3000);
+// console.log('waiting...'); //this will get in the meantimee 3sec passed , becaue first when the page is loaded the callback in setTimeout will be read and execution will continue but when the mentioned time limit passed the function will get executed
+
+// const ingredients = ['olives', 'spinach'];
+
+// const timer = setTimeout(
+//   function (ing1, ing2) {
+//     console.log(`Your pizza has arrived with ${ing1} and ${ing2}`);
+//   },
+//   2500,
+//   ...ingredients
+// ); //every argument given after the time is considered to be an agument that is passed to the callback function in the setTimeout
+
+// if (ingredients.includes('spinach')) clearTimeout(timer); //clearTimeout is used to cancel the execution of the setTimout before the set time is passed
+
+//setInterval
+// setInterval(function () {
+//   const now = new Date();
+//   const hour = now.getHours();
+//   const minutes = now.getMinutes();
+//   const seconds = now.getSeconds();
+
+//   console.log(`${hour}:${minutes}:${seconds}`);
+// }, 1000);
