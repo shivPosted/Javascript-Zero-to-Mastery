@@ -223,7 +223,7 @@ const closeLogoutWindow = function () {
 };
 
 const logoutTimer = function () {
-  let time = 10;
+  let time = 300;
   const tick = function () {
     if (time === 0) {
       logout();
