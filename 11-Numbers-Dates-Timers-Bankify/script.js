@@ -243,9 +243,11 @@ const logoutTimer = function () {
 const somethingWrong = function (str) {
   wrongInfoMessage.textContent = str;
   wrongInfoMessage.style.opacity = '100';
+  wrongInfoMessage.style.transform = 'translate(-50%, -10px)';
   setTimeout(() => {
     wrongInfoMessage.style.opacity = '0';
-  }, 3500);
+    wrongInfoMessage.style.transform = 'translate(-50%, 0)';
+  }, 5000);
 };
 // displaySummaryData(account1.movements);
 
