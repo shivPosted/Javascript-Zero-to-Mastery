@@ -85,6 +85,7 @@ const accountCloseButtton = document.querySelector('.close-account-btn');
 //Taking Loan elements
 const loanAmount = document.querySelector('.loan-amount');
 const loanButton = document.querySelector('.loan-btn');
+const wrongInfoMessage = document.querySelector('.wrong-info');
 //sorting
 const sortTransactions = document.querySelector('.sort');
 let isSorted = false;
@@ -238,6 +239,14 @@ const logoutTimer = function () {
 
   return timerInterval;
 };
+
+const somethingWrong = function (str) {
+  wrongInfoMessage.textContent = str;
+  wrongInfoMessage.style.opacity = '100';
+  setTimeout(() => {
+    wrongInfoMessage.style.opacity = '0';
+  }, 3500);
+};
 // displaySummaryData(account1.movements);
 
 //Displaying all of the user account
@@ -293,7 +302,7 @@ loginButton.addEventListener('click', function (e) {
     if (timerInterval) clearInterval(timerInterval);
     logoutTimer();
     updateUI(currentAccount);
-  }
+  } else somethingWrong('Wrong Username or Password');
 });
 
 logoutButton.addEventListener('click', function () {
@@ -328,10 +337,17 @@ transferButton.addEventListener('click', function (e) {
     // displayBalance(currentAccount);
     // displaySummaryData(currentAccount);
     // displayMovements(currentAccount.movements);
-    transferAccount.movements.push(amount);
+    transferAccount.movements.push(amount / 83);
     transferAccount.movementsDates.push(now.toISOString());
     trnasferMoneyTo.value = transferAmount.value = '';
+
+    //reset timer
+    clearInterval(timerInterval);
+    logoutTimer();
   }
+  if (currentAccount.balance < amount) somethingWrong('Insufficient Balance');
+  if (transferAccount === undefined)
+    somethingWrong('No user found by this name');
 });
 
 //CLOSE ACCOUNT and FINDINDEX method
@@ -364,7 +380,11 @@ loanButton.addEventListener('click', function (e) {
       updateUI(currentAccount);
       loanAmount.value = '';
     }, 2500);
-  }
+
+    //reset timer
+    clearInterval(timerInterval);
+    logoutTimer();
+  } else somethingWrong(`You are not elligible for loan`);
 });
 
 //sort feature implementation
