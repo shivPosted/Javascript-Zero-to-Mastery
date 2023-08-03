@@ -88,6 +88,7 @@ const loanButton = document.querySelector('.loan-btn');
 //sorting
 const sortTransactions = document.querySelector('.sort');
 let isSorted = false;
+const now = new Date();
 
 //Date
 // Functions
@@ -101,7 +102,6 @@ const displayMovementsDate = function (date, locale) {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
-    weekday: 'long',
   }).format(new Date());
 
   const daysPass = Math.floor(daysPassed(Date.now(), date));
@@ -134,11 +134,11 @@ const displayMovements = function (acc) {
     <div class="type_${transactionType}">${index + 1} ${transactionType}</div>
     <div class="date_transaction">${displayDate}</div>
     
-    <div class="transaction_amount">${
-      amount > 0
-        ? `₹ ${amount.toFixed(2)}`
-        : `-₹ ${(amount - amount * 2).toFixed(2)}`
-    }</div>
+    <div class="transaction_amount">${formattedCurrency(
+      amount,
+      acc.locale,
+      acc.currency
+    )}</div>
     </div>`;
     // console.log(html);
     transactionHistory.insertAdjacentHTML('afterbegin', html);
@@ -147,14 +147,24 @@ const displayMovements = function (acc) {
 };
 // displayMovements(account1.movements);
 
-// let currentBalance;
+const formattedCurrency = function (value, locale, currency) {
+  return new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency: currency,
+  }).format(value);
+};
+
 const displayBalance = function (acc) {
   acc.balance = acc.movements.reduce(
     (accumulator, currentValue) => accumulator + currentValue,
     0
   );
   // acc.balance = currentBalance;
-  currentBalanceDisplay.textContent = `₹ ${acc.balance.toFixed(2)}`;
+  currentBalanceDisplay.textContent = `${formattedCurrency(
+    acc.balance,
+    acc.locale,
+    acc.currency
+  )}`;
 };
 // displayBalance(account1.movements);
 
@@ -162,12 +172,20 @@ const displaySummaryData = function (account) {
   const income = account.movements
     .filter(elem => elem >= 0)
     .reduce((accum, current) => accum + current);
-  summaryIncome.textContent = `₹ ${income.toFixed(2)}`;
+  summaryIncome.textContent = `${formattedCurrency(
+    income,
+    account.locale,
+    account.currency
+  )}`;
 
   const outcome = account.movements
     .filter(elem => elem < 0)
     .reduce((accum, current) => accum + current, 0);
-  summaryOutcome.textContent = `₹ ${Math.abs(outcome).toFixed(2)}`;
+  summaryOutcome.textContent = `${formattedCurrency(
+    Math.abs(outcome),
+    account.locale,
+    account.currency
+  )}`;
 
   const interest = account.movements
     .filter(elem => elem >= 0)
@@ -175,7 +193,11 @@ const displaySummaryData = function (account) {
     .filter(elem => elem >= 1) //-----------------------------------------------> bank only pay interest if interest itself is greater than INR 1.00
     .reduce((accum, current) => accum + current);
 
-  summaryInterest.textContent = `₹ ${interest.toFixed(2)}`;
+  summaryInterest.textContent = `${formattedCurrency(
+    interest,
+    account.locale,
+    account.currency
+  )}`;
 };
 
 const updateUI = function (account) {
@@ -487,20 +509,20 @@ console.log(day1);
 // console.log(new Intl.DateTimeFormat('pt-PT').format(new Date()));
 
 //Intl with numbers
-const num = 235658965.2324;
-const formattedNum = new Intl.NumberFormat('en-US').format(num);
-console.log(formattedNum);
+// const num = 235658965.2324;
+// const formattedNum = new Intl.NumberFormat('en-US').format(num);
+// console.log(formattedNum);
 
-const currency = 256869575.3245;
-const formattedCurrency = new Intl.NumberFormat('en-In', {
-  style: 'currency',
-  currency: 'INR',
-}).format(currency);
-console.log(formattedCurrency);
+// const currency = 256869575.3245;
+// const formattedCurrency = new Intl.NumberFormat('en-In', {
+//   style: 'currency',
+//   currency: 'INR',
+// }).format(currency);
+// console.log(formattedCurrency);
 
-const speed = 25698;
-const formattedSpeed = new Intl.NumberFormat('en-IN', {
-  style: 'unit',
-  unit: 'kilometer-per-hour', //can be miles-per-hour, celcius, kelvin or other unit
-}).format(speed);
-console.log(formattedSpeed);
+// const speed = 25698;
+// const formattedSpeed = new Intl.NumberFormat('en-IN', {
+//   style: 'unit',
+//   unit: 'kilometer-per-hour', //can be miles-per-hour, celcius, kelvin or other unit
+// }).format(speed);
+// console.log(formattedSpeed);
