@@ -25,8 +25,8 @@ const account1 = {
     '2023-07-30T23:36:17.929Z',
     '2023-08-02T10:51:36.790Z',
   ],
-  currency: 'EUR',
-  locale: 'pt-PT', // de-DE
+  currency: 'INR',
+  locale: 'en-IN', // de-DE
 };
 
 const account2 = {
@@ -88,6 +88,7 @@ const loanButton = document.querySelector('.loan-btn');
 //sorting
 const sortTransactions = document.querySelector('.sort');
 let isSorted = false;
+const now = new Date();
 
 //Date
 // Functions
@@ -96,10 +97,12 @@ const daysPassed = (date1, date2) => {
   return Math.abs((date2 - date1) / (1000 * 24 * 60 * 60));
 }; //--------->converting ms to days
 
-const displayMovementsDate = function (date) {
-  const year = date.getFullYear();
-  const month = `${date.getMonth() + 1}`.padStart(2, '0');
-  const dayOfMonth = `${date.getDate()}`.padStart(2, '0');
+const displayMovementsDate = function (date, locale) {
+  const intlDateFormat = new Intl.DateTimeFormat(locale, {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date());
 
   const daysPass = Math.floor(daysPassed(Date.now(), date));
 
@@ -107,7 +110,7 @@ const displayMovementsDate = function (date) {
   if (daysPass === 1) return `YESTERDAY`;
   if (daysPass <= 7) return `${daysPass} DAYS AGO`;
 
-  return `${dayOfMonth}/${month}/${year}`;
+  return intlDateFormat;
 };
 
 const userName = function (accs) {
@@ -124,18 +127,18 @@ const displayMovements = function (acc) {
   transactionHistory.innerHTML = '<div class="overlay-transaction"></div>';
   acc.movements.forEach(function (amount, index) {
     const date = new Date(acc.movementsDates[index]);
-    const displayDate = displayMovementsDate(date);
+    const displayDate = displayMovementsDate(date, acc.locale);
 
     const transactionType = amount > 0 ? 'deposit' : 'withdrawl';
     const html = `<div class="transaction-row">
     <div class="type_${transactionType}">${index + 1} ${transactionType}</div>
     <div class="date_transaction">${displayDate}</div>
     
-    <div class="transaction_amount">${
-      amount > 0
-        ? `₹ ${amount.toFixed(2)}`
-        : `-₹ ${(amount - amount * 2).toFixed(2)}`
-    }</div>
+    <div class="transaction_amount">${formattedCurrency(
+      amount,
+      acc.locale,
+      acc.currency
+    )}</div>
     </div>`;
     // console.log(html);
     transactionHistory.insertAdjacentHTML('afterbegin', html);
@@ -144,14 +147,24 @@ const displayMovements = function (acc) {
 };
 // displayMovements(account1.movements);
 
-// let currentBalance;
+const formattedCurrency = function (value, locale, currency) {
+  return new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency: currency,
+  }).format(value);
+};
+
 const displayBalance = function (acc) {
   acc.balance = acc.movements.reduce(
     (accumulator, currentValue) => accumulator + currentValue,
     0
   );
   // acc.balance = currentBalance;
-  currentBalanceDisplay.textContent = `₹ ${acc.balance.toFixed(2)}`;
+  currentBalanceDisplay.textContent = `${formattedCurrency(
+    acc.balance,
+    acc.locale,
+    acc.currency
+  )}`;
 };
 // displayBalance(account1.movements);
 
@@ -159,12 +172,20 @@ const displaySummaryData = function (account) {
   const income = account.movements
     .filter(elem => elem >= 0)
     .reduce((accum, current) => accum + current);
-  summaryIncome.textContent = `₹ ${income.toFixed(2)}`;
+  summaryIncome.textContent = `${formattedCurrency(
+    income,
+    account.locale,
+    account.currency
+  )}`;
 
   const outcome = account.movements
     .filter(elem => elem < 0)
     .reduce((accum, current) => accum + current, 0);
-  summaryOutcome.textContent = `₹ ${Math.abs(outcome).toFixed(2)}`;
+  summaryOutcome.textContent = `${formattedCurrency(
+    Math.abs(outcome),
+    account.locale,
+    account.currency
+  )}`;
 
   const interest = account.movements
     .filter(elem => elem >= 0)
@@ -172,7 +193,11 @@ const displaySummaryData = function (account) {
     .filter(elem => elem >= 1) //-----------------------------------------------> bank only pay interest if interest itself is greater than INR 1.00
     .reduce((accum, current) => accum + current);
 
-  summaryInterest.textContent = `₹ ${interest.toFixed(2)}`;
+  summaryInterest.textContent = `${formattedCurrency(
+    interest,
+    account.locale,
+    account.currency
+  )}`;
 };
 
 const updateUI = function (account) {
@@ -214,16 +239,24 @@ const fakeLogin = function (currentAccount) {
 };
 fakeLogin(account1);
 
-const now = new Date();
-const year = now.getFullYear();
-const month = `${now.getMonth() + 1}`.padStart(2, '0');
-const date = `${now.getDate()}`.padStart(2, '0');
-const daysInWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
-const day = daysInWeek[now.getDay()].toLowerCase();
+// const now = new Date();
+// const year = now.getFullYear();
+// const month = `${now.getMonth() + 1}`.padStart(2, '0');
+// const date = `${now.getDate()}`.padStart(2, '0');
+// const daysInWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+// const day = daysInWeek[now.getDay()].toLowerCase();
 
-document.querySelector(
-  '.current-date-label'
-).textContent = `${date}/${month}/${year}, ${day}`;
+//current date and time
+const lan = navigator.language;
+const options = {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: 'numeric',
+  minute: 'numeric',
+};
+const date = new Intl.DateTimeFormat(lan, options).format();
+document.querySelector('.current-date-label').textContent = date;
 //login
 loginButton.addEventListener('click', function (e) {
   e.preventDefault();
@@ -450,3 +483,46 @@ sortTransactions.addEventListener('click', function () {
 const day1 = daysPassed(new Date(2023, 7, 2), new Date(2023, 6, 31));
 
 console.log(day1);
+
+//Internationalisation (Intl)
+// const formatter = new Intl.DateTimeFormat('en-IN'); //declaring a formatter for Intl API
+// const dateNow = formatter.format(new Date()); //format() will take a type of a date as an argument
+// console.log(dateNow);
+
+// const formatterWithOptions = new Intl.DateTimeFormat('en-IN', {
+//   //Intl formatter with options
+//   year: 'numeric',
+//   day: '2-digit',
+//   month: '2-digit',
+//   weekday: 'long',
+//   hour12: false,
+//   hour: 'numeric',
+//   minute: '2-digit',
+// }).format(new Date());
+
+// console.log(formatterWithOptions);
+
+// const local = navigator.language; //give the locale string i.e. 'lan-Region' e.g. ;- 'en-IN' according to the region of the user
+// const formatterBrowser = new Intl.DateTimeFormat(local).format(new Date());
+// console.log(formatterBrowser);
+
+// console.log(new Intl.DateTimeFormat('pt-PT').format(new Date()));
+
+//Intl with numbers
+// const num = 235658965.2324;
+// const formattedNum = new Intl.NumberFormat('en-US').format(num);
+// console.log(formattedNum);
+
+// const currency = 256869575.3245;
+// const formattedCurrency = new Intl.NumberFormat('en-In', {
+//   style: 'currency',
+//   currency: 'INR',
+// }).format(currency);
+// console.log(formattedCurrency);
+
+// const speed = 25698;
+// const formattedSpeed = new Intl.NumberFormat('en-IN', {
+//   style: 'unit',
+//   unit: 'kilometer-per-hour', //can be miles-per-hour, celcius, kelvin or other unit
+// }).format(speed);
+// console.log(formattedSpeed);
