@@ -237,7 +237,7 @@ const fakeLogin = function (currentAccount) {
 
   updateUI(currentAccount);
 };
-fakeLogin(account1);
+// fakeLogin(account1);
 
 // const now = new Date();
 // const year = now.getFullYear();
@@ -347,10 +347,12 @@ loanButton.addEventListener('click', function (e) {
     currentAccount.movements.some(current => current >= lAmount * 0.1) && //-------------------------->loan will be provided if user have at least one deposit greater than or equal to 10% of the requested amount
     lAmount > 0
   ) {
-    currentAccount.movements.push(Math.floor(lAmount));
-    currentAccount.movementsDates.push(now.toISOString());
-    updateUI(currentAccount);
-    loanAmount.value = '';
+    setTimeout(function () {
+      currentAccount.movements.push(Math.floor(lAmount));
+      currentAccount.movementsDates.push(now.toISOString());
+      updateUI(currentAccount);
+      loanAmount.value = '';
+    }, 2500);
   }
 });
 
@@ -526,3 +528,31 @@ console.log(day1);
 //   unit: 'kilometer-per-hour', //can be miles-per-hour, celcius, kelvin or other unit
 // }).format(speed);
 // console.log(formattedSpeed);
+
+//setTimeout and setInterval
+setTimeout(() => {
+  console.log('This will print after 3 sec');
+}, 3000);
+console.log('waiting...'); //this will get in the meantimee 3sec passed , becaue first when the page is loaded the callback in setTimeout will be read and execution will continue but when the mentioned time limit passed the function will get executed
+
+const ingredients = ['olives', 'spinach'];
+
+const timer = setTimeout(
+  function (ing1, ing2) {
+    console.log(`Your pizza has arrived with ${ing1} and ${ing2}`);
+  },
+  2500,
+  ...ingredients
+); //every argument given after the time is considered to be an agument that is passed to the callback function in the setTimeout
+
+if (ingredients.includes('spinach')) clearTimeout(timer); //clearTimeout is used to cancel the execution of the setTimout before the set time is passed
+
+//setInterval
+// setInterval(function () {
+//   const now = new Date();
+//   const hour = now.getHours();
+//   const minutes = now.getMinutes();
+//   const seconds = now.getSeconds();
+
+//   console.log(`${hour}:${minutes}:${seconds}`);
+// }, 1000);
