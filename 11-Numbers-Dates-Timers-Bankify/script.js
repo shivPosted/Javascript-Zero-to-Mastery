@@ -90,10 +90,14 @@ const wrongInfoMessage = document.querySelector('.wrong-info');
 const sortTransactions = document.querySelector('.sort');
 let isSorted = false;
 let timerInterval;
+let helpOpen = false;
 const now = new Date();
 //TIMER
 const timer = document.querySelector('.timer');
-
+//display-user-test-data
+const helpOpenButton = document.querySelector('.help-open');
+const helpCloseButton = document.querySelector('.help-close');
+const helpMsg = document.querySelector('.help');
 //Date
 // Functions
 
@@ -217,6 +221,7 @@ const logout = function () {
   document.body.classList.remove('.a-login');
   logoutConfirmation.classList.add('hidden');
   logoutOverlay.classList.add('hidden');
+  helpOpenButton.classList.remove('hidden');
 };
 const closeLogoutWindow = function () {
   logoutConfirmation.classList.add('hidden');
@@ -243,9 +248,11 @@ const logoutTimer = function () {
 const somethingWrong = function (str) {
   wrongInfoMessage.textContent = str;
   wrongInfoMessage.style.opacity = '100';
+  wrongInfoMessage.style.transform = 'translate(-50%, -10px)';
   setTimeout(() => {
     wrongInfoMessage.style.opacity = '0';
-  }, 3500);
+    wrongInfoMessage.style.transform = 'translate(-50%, 0)';
+  }, 5000);
 };
 // displaySummaryData(account1.movements);
 
@@ -277,6 +284,7 @@ document.querySelector('.current-date-label').textContent = date;
 
 loginButton.addEventListener('click', function (e) {
   e.preventDefault();
+
   // console.log(loginUserName.value);
   currentAccount = accounts.find(
     account => loginUserName.value === account.userName
@@ -288,7 +296,8 @@ loginButton.addEventListener('click', function (e) {
     loginPage.classList.add('hidden');
     displayUserData.classList.remove('hidden');
     loginUserName.value = loginPIN.value = '';
-
+    hideHelp();
+    helpOpenButton.classList.add('hidden');
     //display welcome message
     welcomeMessage.textContent = `Welcome back, ${
       currentAccount.owner.split(' ')[0]
@@ -400,6 +409,21 @@ sortTransactions.addEventListener('click', function () {
   }
 });
 
+//help-login
+const showHelp = function () {
+  helpOpenButton.classList.add('hidden');
+  helpCloseButton.classList.remove('hidden');
+  helpMsg.style.opacity = '100';
+};
+const hideHelp = function () {
+  helpCloseButton.classList.add('hidden');
+  helpOpenButton.classList.remove('hidden');
+  helpMsg.style.opacity = '0';
+};
+
+helpOpenButton.addEventListener('click', showHelp);
+
+helpCloseButton.addEventListener('click', hideHelp);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES

@@ -438,15 +438,48 @@ h3 {
 .wrong-info {
   text-align: center;
   background-color: #ffe3e3;
-  padding: 1.2rem 2.4rem;
+  padding: 0.8rem 1.6rem;
   font-size: 1.4rem;
   position: absolute;
-  top: 20px;
+  top: 8rem;
   left: 50%;
   transform: translateX(-50%);
-  border-radius: 10px;
+  border-radius: 9px;
   color: #ff6b6b;
-  font-weight: 500;
+  font-weight: 100;
   opacity: 0;
-  transition: all 0.5s;
+  /* box-shadow: 0 2px 4px rgba(255, 107, 107, 0.43); */
+  transition: all 1.5s;
+}
+
+.help {
+  position: absolute;
+  display: flex;
+  gap: 1.2rem;
+  top: 3rem;
+  left: 3rem;
+  padding-block: 4.8rem;
+  background-color: #fff;
+  box-shadow: 2px 2px 4px rgba(119, 119, 119, 0.468);
+  /* padding: 2rem; */
+  font-size: 1.8rem;
+  border-radius: 10px;
+  opacity: 0;
+  transition: all 1s;
+}
+.help > div {
+  padding: 2.4rem 2.8rem;
+}
+.help > div:nth-child(1) {
+  border-right: 3.5px dotted #ccc;
+}
+.help-login {
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  top: 5%;
+  left: 12.3%;
+  transform: translateX(-60%);
+  cursor: pointer;
+  z-index: 1;
 }
