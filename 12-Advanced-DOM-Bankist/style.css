@@ -58,6 +58,10 @@ header {
   margin: 0 auto;
   height: 100vh;
 }
+img {
+  overflow: clip;
+  overflow-clip-margin: content-box;
+}
 
 .section-hero {
   max-width: 115rem;
@@ -166,4 +170,56 @@ header {
 .open-account:hover,
 .open-account:active {
   background-color: var(--color-primary-darker);
+}
+
+/*FEATURE-SECTION*/
+.section-features {
+  margin-bottom: 8rem;
+}
+.feature-grid {
+  max-width: 115rem;
+  gap: 4.4rem;
+  /* row-gap: 1.4rem; */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0 auto;
+  margin-bottom: 9.6rem;
+}
+
+.feature-description {
+  flex-direction: column;
+  gap: 1.4rem;
+  align-self: center;
+  justify-self: center;
+  width: 80%;
+}
+
+.img-lzy {
+  width: 100%;
+  filter: blur(20px);
+}
+.feature-icon {
+  width: 5.5rem;
+  height: 5.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: var(--color-primary-opacity);
+  margin-bottom: 1.2rem;
+}
+.feature-icon > svg {
+  width: 3rem;
+  height: 3rem;
+  fill: var(--color-primary);
+}
+
+.feature-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+.feature-info {
+  font-size: 1.6rem;
+  color: #666;
+  line-height: 2;
 }
