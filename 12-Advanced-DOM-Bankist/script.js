@@ -29,3 +29,31 @@
 //     closeModal();
 //   }
 // });
+
+const openModal = document.querySelector('.open-panel');
+const panel = document.querySelector('.open-account-panel');
+const overlay = document.querySelector('.overlay');
+const closeModal = document.querySelector('.close-btn');
+
+const openPanel = function (e) {
+  e.preventDefault();
+  panel.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+};
+
+openModal.addEventListener('click', openPanel);
+
+const closePanel = function () {
+  panel.classList.add('hidden');
+  overlay.classList.add('hidden');
+};
+
+closeModal.addEventListener('click', closePanel);
+
+document.body.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && !panel.classList.contains('.hidden')) {
+    closePanel();
+  }
+});
+
+overlay.addEventListener('click', closePanel);
