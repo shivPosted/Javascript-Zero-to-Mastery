@@ -78,3 +78,51 @@ console.log(cookieMessage.style.fontSize); //it will return an empty string beca
 
 cookieMessage.style.fontSize =
   Number.parseInt(getComputedStyle(cookieMessage).fontSize) / 10 + 0.2 + 'rem';
+
+//Scrolling
+
+const btnScroll = document.querySelector('.learn-more');
+const sectionScroll = document.getElementById('section--1');
+
+btnScroll.addEventListener('click', function (e) {
+  e.preventDefault();
+  const s1Coord = sectionScroll.getBoundingClientRect(); //It will return an object containing some properties regarding coordinates of the element
+  console.log(s1Coord);
+  console.log(
+    'From left and top based on viewport co-ordinates are: ',
+    s1Coord.left, //----------------------> in relation to the viewport
+    s1Coord.top
+  );
+
+  console.log(
+    'Current scroll position from left and top: ',
+    //   window.pageXOffset, //------------->It is the older version of calculating the current scroll position but is useful for older browser
+    //   window.pageYOffset
+    window.scrollX,
+    window.scrollY
+  );
+
+  console.log(
+    'Width and height of the viewPort is: ',
+    document.documentElement.clientWidth,
+    document.documentElement.clientHeight
+  );
+
+  //applying scrolling
+  // window.scrollTo(s1Coord.left, s1Coord.top); //it will scroll to absolute x and y postion on the document from top left and from top of the document
+
+  //Scrolling without smooth behaviour
+  // window.scrollTo(
+  //   s1Coord.left + window.pageXOffset,
+  //   s1Coord.top + window.pageYOffset
+  // );
+
+  // window.scrollTo({
+  //   left: s1Coord.left + window.pageXOffset,
+  //   top: s1Coord.top + window.pageYOffset,
+  //   behavior: 'smooth',
+  // });
+
+  //New way of applying smooth scrolling
+  sectionScroll.scrollIntoView({ behavior: 'smooth' });
+});
