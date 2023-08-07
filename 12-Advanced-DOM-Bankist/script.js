@@ -143,6 +143,52 @@ const mouseEvent = function () {
 
 //removing eventlistener above
 
-setTimeout(() => {
-  h1.removeEventListener('mouseenter', mouseEvent);
-}, 5000);
+// setTimeout(() => {
+//   h1.removeEventListener('mouseenter', mouseEvent);
+// }, 5000);
+
+//Event propgation or event bubbling
+const navLink = document.querySelector('.nav-list-item'); //first item of this class
+const navLinks = document.querySelector('.nav-list-items');
+const navBar = document.querySelector('.main-navigation');
+
+const randomNumber = (min, max) =>
+  Math.floor(Math.random() * (max - min) + min);
+// console.log(randomNumber(0, 255));
+
+const randomColor = () =>
+  `rgb(${randomNumber(0, 255)}, ${randomNumber(0, 255)}, ${randomNumber(
+    0,
+    255
+  )})`;
+// console.log(randomColor());
+
+navLink.addEventListener('click', function () {
+  this.style.backgroundColor = randomColor();
+  stopPropagation();
+});
+navLinks.addEventListener('click', function () {
+  //due to event bubbling the event will also apply to parent element when only navLink is clicked
+  this.style.backgroundColor = randomColor();
+});
+navBar.addEventListener('click', function () {
+  //due to event bubbling the event will also apply to parent element when only navLink is clicked
+  this.style.backgroundColor = randomColor();
+});
+
+/*Immersive mouseenter effect*/
+const sectionI = document.querySelector('.immersive-section');
+const divI = document.querySelector('.immersive');
+let interval;
+const makeI = function () {
+  interval = setInterval(function () {
+    divI.classList.toggle('scale');
+  }, 500);
+};
+
+sectionI.addEventListener('mouseenter', makeI);
+
+const eraseI = function () {
+  clearInterval(interval);
+};
+sectionI.addEventListener('mouseleave', eraseI);
