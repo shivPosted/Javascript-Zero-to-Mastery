@@ -126,3 +126,23 @@ btnScroll.addEventListener('click', function (e) {
   //New way of applying smooth scrolling
   sectionScroll.scrollIntoView({ behavior: 'smooth' });
 });
+
+//EVENT AND EVENTHANDLERS
+const h1 = document.querySelector('h1');
+
+const mouseEvent = function () {
+  alert('Mouse event triggered');
+};
+
+//most used event handler and newer way because it can be removed later in the code and is dynamic
+// h1.addEventListener('mouseenter', mouseEvent);
+
+//old school way of handling events
+
+// h1.onmouseenter = mouseEvent; //----------> not used anymore
+
+//removing eventlistener above
+
+setTimeout(() => {
+  h1.removeEventListener('mouseenter', mouseEvent);
+}, 5000);
