@@ -53,7 +53,7 @@ console.log(allLinks);
 const cookieMessage = document.createElement('div');
 cookieMessage.classList.add('cookie-message');
 cookieMessage.innerHTML =
-  'We use cookies for better experience and security so that we can provide you the best! <a href = "" class= "cookie-close open-account">Got it</a>';
+  'We use cookies for better experience and security so that we can provide you the best! <a href = "" class= "open-account" id = "cookie-close">Got it</a>';
 
 console.log(cookieMessage);
 
@@ -63,7 +63,18 @@ header.append(cookieMessage); //as the element is already appended it will just 
 
 //deleting the element
 
-document.querySelector('.cookie-close').addEventListener('click', e => {
+document.querySelector('#cookie-close').addEventListener('click', e => {
   e.preventDefault();
   cookieMessage.remove(); //is used to remove the element from the document  / we can alse use dom traversal for it too
 });
+
+//styles, attributes,classes
+
+cookieMessage.style.backgroundColor = 'rgb(55, 56, 61)';
+cookieMessage.style.width = '100%';
+cookieMessage.style.color = 'rgba(255, 255, 255, 0.532)';
+console.log(cookieMessage.style.fontSize); //it will return an empty string because it will return style applied manually or that are inline
+// console.log(getComputedStyle(cookieMessage).fontSize);
+
+cookieMessage.style.fontSize =
+  Number.parseInt(getComputedStyle(cookieMessage).fontSize) / 10 + 0.2 + 'rem';
