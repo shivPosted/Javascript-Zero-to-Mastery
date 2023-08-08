@@ -70,7 +70,7 @@ img {
   display: none !important;
 }
 ::-webkit-scrollbar {
-  width: 1rem;
+  width: 0.8rem;
   background-color: rgba(55, 56, 61, 0.1);
   border-radius: 100vw;
 }
@@ -180,6 +180,7 @@ img {
   background-color: var(--color-primary);
   padding: 1.2rem 2.4rem;
   font-weight: 500;
+  font-size: 1.8rem;
   border-radius: 100vw;
   color: #222 !important;
   transition: all 0.3s;
@@ -591,7 +592,7 @@ h5 {
 }
 
 /*immersive*/
-.immersive-section {
+/* .immersive-section {
   height: 30rem;
   max-width: 80rem;
   margin: 0 auto;
@@ -612,4 +613,4 @@ h5 {
 
 .immersive.scale {
   transform: scale(1.1);
-}
+} */
