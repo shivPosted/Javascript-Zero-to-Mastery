@@ -242,3 +242,24 @@ operationButtonContainer.addEventListener('click', e => {
     .querySelector(`.operation-detail-${clickedBtn.dataset.tab}`)
     .classList.remove('hidden');
 });
+
+//NAVIGATION FADING EFFECT
+const navBar = document.querySelector('.nav-list');
+
+const handleNav = function (e) {
+  const rqd = e.target;
+  if (rqd.classList.contains('nav-link')) {
+    rqd
+      .closest('.nav-list-items')
+      .querySelectorAll('.nav-link')
+      .forEach(link => {
+        if (link !== rqd) {
+          link.style.opacity = this;
+        }
+      });
+    rqd.closest('.main-navigation').querySelector('img').style.opacity = this;
+  }
+};
+
+navBar.addEventListener('mouseover', handleNav.bind(0.5)); // this will point to 0.5 and there is no need to pass e
+navBar.addEventListener('mouseout', handleNav.bind(1));
