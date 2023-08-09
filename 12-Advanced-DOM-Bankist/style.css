@@ -345,7 +345,7 @@ img {
 }
 
 /*to-transform button when clicked*/
-.operation-btn-1 {
+.operation-btn-active {
   transform: translateY(-0.8rem);
 }
 

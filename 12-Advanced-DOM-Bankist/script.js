@@ -223,3 +223,22 @@ allNav.addEventListener('click', function (e) {
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
 });
+
+//TABBED COMPONENT OPERATIONS
+const operationButtonContainer = document.querySelector('.operation-buttons');
+const operationButtons = document.querySelectorAll('.operation-btn');
+const operationDetails = document.querySelectorAll('.operation-details');
+
+operationButtonContainer.addEventListener('click', e => {
+  const clickedBtn = e.target.closest('.operation-btn');
+  console.log(clickedBtn.dataset.tab);
+  //Guard Clause, that will return the whole block if condition is true before initializing the later code
+
+  if (!clickedBtn) return;
+  operationButtons.forEach(btn => btn.classList.remove('operation-btn-active'));
+  clickedBtn.classList.add('operation-btn-active');
+  operationDetails.forEach(tab => tab.classList.add('hidden'));
+  document
+    .querySelector(`.operation-detail-${clickedBtn.dataset.tab}`)
+    .classList.remove('hidden');
+});
