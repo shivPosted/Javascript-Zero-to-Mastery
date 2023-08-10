@@ -58,7 +58,6 @@ hr {
   border: 0.1px solid #ddd;
 }
 header {
-  max-width: 130rem;
   margin: 0 auto;
   height: 100vh;
 }
@@ -68,6 +67,11 @@ img {
 }
 .hidden {
   display: none !important;
+}
+.sticky {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 100;
 }
 ::-webkit-scrollbar {
   width: 0.8rem;
@@ -83,10 +87,8 @@ img {
 .section-hero {
   max-width: 115rem;
   margin: 0 auto;
-  /* margin-bottom: 6.4rem; */
   display: grid;
   grid-template-columns: 3fr 2fr;
-  margin-top: 9.6rem;
 }
 .hero-description {
   align-self: center;
@@ -150,9 +152,10 @@ img {
 
 .main-navigation {
   width: 100%;
-  margin: 0;
+  padding: 0 6rem;
   align-items: center;
   height: 9rem;
+  margin-bottom: 9.6rem;
 }
 .nav-list {
   margin-left: auto;

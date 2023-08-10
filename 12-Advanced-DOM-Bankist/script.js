@@ -81,8 +81,8 @@ cookieMessage.style.fontSize =
 
 //Scrolling
 
-// const btnScroll = document.querySelector('.learn-more');
-// const sectionScroll = document.getElementById('section--1');
+const btnScroll = document.querySelector('.learn-more');
+const sectionScroll = document.getElementById('section--2');
 
 // btnScroll.addEventListener('click', function (e) {
 //   e.preventDefault();
@@ -124,9 +124,13 @@ cookieMessage.style.fontSize =
 // });
 
 //New way of applying smooth scrolling
-//   sectionScroll.scrollIntoView({ behavior: 'smooth' });
+// sectionScroll.scrollIntoView({ behavior: 'smooth' });
 // });
 
+btnScroll.addEventListener('click', function (e) {
+  e.preventDefault();
+  sectionScroll.scrollIntoView({ behavior: 'smooth' });
+});
 //EVENT AND EVENTHANDLERS
 // const h1 = document.querySelector('h1');
 
@@ -263,3 +267,53 @@ const handleNav = function (e) {
 
 navBar.addEventListener('mouseover', handleNav.bind(0.5)); // this will point to 0.5 and there is no need to pass e
 navBar.addEventListener('mouseout', handleNav.bind(1));
+
+//Intersection observer API
+
+//3.Defining object/options for observer
+// const optionsObs = {
+//   root: null, //root means element for intersection with element being observed
+//   threshold: 0.1, //Percentage of observing element visible on the root element,  can be a single value or an array of values
+// };
+//4. callback function for observer
+// const callbackObs = function (entries, observer) {
+//   //will get two arguments i.e. entries/threshold and whole observer
+//   entries.forEach(entry => {
+//     // console.log(entry); //will get an entry that contains values like intersection ratio, isIntersecting set to true or false
+//   });
+// };
+// //1.defining the API
+// const observer = new IntersectionObserver(callbackObs, optionsObs);
+
+//2.set the element to observe
+// observer.observe(sectionScroll); //section-features
+
+//using intersection observer
+// const observer2 = new IntersectionObserver(
+//   function (entries, observer) {
+//     entries.forEach(entry => {
+//       console.log(entry);
+//     });
+//   },
+//   { root: null, threshold: [0, 0.4, 0.7] }
+// ).observe(document.getElementById('section--3'));
+
+//Applying sticky nav with intersection observer
+const navHeight = document
+  .querySelector('.main-navigation')
+  .getBoundingClientRect().height;
+
+const callbackObs = function (entries, observer) {
+  const [entry] = entries;
+  console.log(entry);
+  !entry.isIntersecting
+    ? document.querySelector('.main-navigation').classList.add('sticky')
+    : document.querySelector('.main-navigation').classList.remove('sticky');
+};
+const optionsObs = {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navHeight}px`, //will set margin to the observing element not visully but for the intersection observer, only pixel will work, +ve means after intersection and -ve means before it
+};
+const headerObserver = new IntersectionObserver(callbackObs, optionsObs);
+headerObserver.observe(header);
