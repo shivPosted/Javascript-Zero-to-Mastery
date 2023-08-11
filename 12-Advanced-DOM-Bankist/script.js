@@ -305,7 +305,6 @@ const navHeight = document
 
 const callbackObs = function (entries, observer) {
   const [entry] = entries;
-  console.log(entry);
   !entry.isIntersecting
     ? document.querySelector('.main-navigation').classList.add('sticky')
     : document.querySelector('.main-navigation').classList.remove('sticky');
@@ -317,3 +316,21 @@ const optionsObs = {
 };
 const headerObserver = new IntersectionObserver(callbackObs, optionsObs);
 headerObserver.observe(header);
+
+//Displaying sections on scoll
+const sectionToShow = document.querySelectorAll('.section');
+console.log(sectionToShow);
+const sectionObserver = new IntersectionObserver(
+  (entries, observer) => {
+    const [entry] = entries;
+    if (!entry.isIntersecting) return;
+    entry.target.classList.remove('section--hidden');
+    observer.unobserve(entry.target);
+    console.log(entry.target.id); //target is available in the entry object
+  },
+  { root: null, threshold: 0.15 }
+);
+sectionToShow.forEach(section => {
+  section.classList.add('section--hidden');
+  sectionObserver.observe(section);
+});
