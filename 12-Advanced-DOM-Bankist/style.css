@@ -223,8 +223,10 @@ img {
   width: 80%;
 }
 
-.img-lzy {
+.feature-grid img {
   width: 100%;
+}
+.img-lzy {
   filter: blur(20px);
 }
 .feature-icon {
