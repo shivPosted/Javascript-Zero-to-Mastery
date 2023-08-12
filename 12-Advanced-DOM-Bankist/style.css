@@ -368,7 +368,8 @@ img {
   height: 50rem;
   margin: 0 auto;
   position: relative;
-  margin-top: 12.6rem;
+  overflow: hidden;
+  margin-bottom: 12.6rem;
   /* background-color: #fff; */
 }
 .left-arrow,
@@ -377,15 +378,22 @@ img {
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 30%;
+  top: 50%;
   height: 5rem;
   width: 5rem;
   font-size: 3.2rem;
   border-radius: 50%;
   background-color: #fff;
   cursor: pointer;
-  /* transform: translate(-50%, -50%); */
+  transform: translate(-50%, -50%);
 }
+.right-arrow {
+  right: 6%;
+}
+.left-arrow {
+  left: 6%;
+}
+
 .slide {
   width: 100%;
   position: absolute;
@@ -401,6 +409,7 @@ img {
   font-size: 2.2rem;
   font-weight: 500;
   margin-bottom: 3.2rem;
+  margin-top: 8rem;
 }
 .review-heading::before {
   display: block;
@@ -445,13 +454,6 @@ blockquote {
   border-radius: 50%;
   border: 3.5px solid var(--color-primary);
   width: 100%;
-}
-.right-arrow {
-  right: 0;
-  transform: translate(50%, -50%);
-}
-.left-arrow {
-  transform: translate(-50%, -50%);
 }
 
 /*JOIN NOW SECTION*/

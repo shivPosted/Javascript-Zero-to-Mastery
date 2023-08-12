@@ -351,6 +351,16 @@ const lazyCallback = function (entries, observer) {
 const lazyOptions = {
   root: null,
   threshold: 0,
+  rootMargin: '-200px',
 };
 const imageObserver = new IntersectionObserver(lazyCallback, lazyOptions);
 lazyImages.forEach(img => imageObserver.observe(img));
+
+//Applying the slider component
+const slides = document.querySelectorAll('.slide');
+let Percentage = 0;
+slides.forEach(slide => {
+  slide.style.transform = `translate(${Percentage}%)`;
+  console.log(Percentage);
+  Percentage += 100;
+});
