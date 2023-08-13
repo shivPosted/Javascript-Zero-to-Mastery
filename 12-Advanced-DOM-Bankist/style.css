@@ -378,6 +378,7 @@ img {
   justify-content: center;
   align-items: center;
   position: absolute;
+  font-weight: 700;
   top: 50%;
   height: 5rem;
   width: 5rem;
@@ -388,7 +389,7 @@ img {
   transform: translate(-50%, -50%);
 }
 .right-arrow {
-  right: 6%;
+  right: 1%;
 }
 .left-arrow {
   left: 6%;
