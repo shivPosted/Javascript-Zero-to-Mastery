@@ -362,11 +362,19 @@ const slides = document.querySelectorAll('.slide');
 const rightArrBtn = document.querySelector('.right-arrow');
 const leftArrBtn = document.querySelector('.left-arrow');
 
+const dots = document.querySelectorAll('.dot');
+const dotsContainer = document.querySelector('.dots');
+
 let currentSlide = 0;
 const maxSLide = slides.length;
+
 const goToSlide = function (currentSlide) {
   slides.forEach((slide, i) => {
     slide.style.transform = `translateX(${(i - currentSlide) * 100}%)`;
+    dots.forEach(dot => {
+      dot.classList.remove('dot-active');
+    });
+    dots[currentSlide].classList.add('dot-active');
   });
 };
 
@@ -388,3 +396,17 @@ const moveLeft = function () {
 };
 rightArrBtn.addEventListener('click', moveRight);
 leftArrBtn.addEventListener('click', moveLeft);
+
+window.addEventListener('keydown', function (e) {
+  if (e.key === 'ArrowRight') {
+    moveRight(currentSlide);
+  } else if (e.key === 'ArrowLeft') {
+    moveLeft(currentSlide);
+  }
+});
+
+dotsContainer.addEventListener('click', function (e) {
+  // e.target.classList.add('dot-active');
+  currentSlide = Number(e.target.dataset.dotnumber) - 1;
+  goToSlide(currentSlide);
+});

@@ -372,6 +372,31 @@ img {
   margin-bottom: 12.6rem;
   /* background-color: #fff; */
 }
+
+.dots {
+  display: flex;
+  gap: 1rem;
+  position: absolute;
+  bottom: 6%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dot {
+  height: 1.2rem;
+  width: 1.2rem;
+  border-radius: 50%;
+  border: solid 1.5px #aaa;
+  cursor: pointer;
+  box-shadow: 0 1px 1px 1px rgb(119, 119, 119, 0.3);
+}
+
+.dot-active {
+  height: 1.4rem;
+  width: 1.4rem;
+  background-color: #999;
+  box-shadow: none;
+}
 .left-arrow,
 .right-arrow {
   display: flex;
@@ -401,7 +426,7 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 1s ease-out;
+  transition: all 0.8s ease-in-out;
 }
 .testimonial {
   width: 65%;
