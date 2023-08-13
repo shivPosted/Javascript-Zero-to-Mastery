@@ -358,7 +358,33 @@ lazyImages.forEach(img => imageObserver.observe(img));
 
 //Applying the slider component
 const slides = document.querySelectorAll('.slide');
-let Percentage = 0;
-slides.forEach((slide, index) => {
-  slide.style.transform = `translate(${Percentage}%)`;
-});
+
+const rightArrBtn = document.querySelector('.right-arrow');
+const leftArrBtn = document.querySelector('.left-arrow');
+
+let currentSlide = 0;
+const maxSLide = slides.length;
+const goToSlide = function (currentSlide) {
+  slides.forEach((slide, i) => {
+    slide.style.transform = `translateX(${(i - currentSlide) * 100}%)`;
+  });
+};
+
+goToSlide(currentSlide);
+
+const moveRight = function () {
+  currentSlide++;
+  if (currentSlide === maxSLide) {
+    currentSlide = 0;
+  }
+  goToSlide(currentSlide);
+};
+const moveLeft = function () {
+  currentSlide--;
+  if (currentSlide === -1) {
+    currentSlide = maxSLide - 1;
+  }
+  goToSlide(currentSlide);
+};
+rightArrBtn.addEventListener('click', moveRight);
+leftArrBtn.addEventListener('click', moveLeft);
