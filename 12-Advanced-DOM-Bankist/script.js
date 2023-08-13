@@ -397,16 +397,14 @@ const moveLeft = function () {
 rightArrBtn.addEventListener('click', moveRight);
 leftArrBtn.addEventListener('click', moveLeft);
 
-window.addEventListener('keydown', function (e) {
-  if (e.key === 'ArrowRight') {
-    moveRight(currentSlide);
-  } else if (e.key === 'ArrowLeft') {
-    moveLeft(currentSlide);
-  }
+document.addEventListener('keydown', function (e) {
+  e.key === 'ArrowRight' && moveRight();
+  e.key === 'ArrowLeft' && moveLeft();
 });
 
 dotsContainer.addEventListener('click', function (e) {
-  // e.target.classList.add('dot-active');
+  //using event delegation
+  if (!e.target.classList.contains('dot')) return;
   currentSlide = Number(e.target.dataset.dotnumber) - 1;
   goToSlide(currentSlide);
 });
