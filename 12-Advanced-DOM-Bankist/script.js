@@ -359,8 +359,6 @@ lazyImages.forEach(img => imageObserver.observe(img));
 //Applying the slider component
 const slides = document.querySelectorAll('.slide');
 let Percentage = 0;
-slides.forEach(slide => {
+slides.forEach((slide, index) => {
   slide.style.transform = `translate(${Percentage}%)`;
-  console.log(Percentage);
-  Percentage += 100;
 });
