@@ -408,3 +408,22 @@ dotsContainer.addEventListener('click', function (e) {
   currentSlide = Number(e.target.dataset.dotnumber) - 1;
   goToSlide(currentSlide);
 });
+
+//DOM lifecycle events
+
+//DOMContentLoaded event , it is triggered when all the HTML and Scripts are loaded, doesn't wait for images or other external source to be loaded
+document.addEventListener('DOMContentLoaded', function () {
+  console.log('All the HTML and JS is loaded');
+});
+
+//load event, it is triggered when all the html, script, images and external sources are loaded
+window.addEventListener('load', function (e) {
+  console.log('All the images and external files are loaded,', e);
+});
+
+//beforeunload event, it is triggered when we press the close button to close the tab
+window.addEventListener('beforeunload', function (e) {
+  e.preventDefault(); //needed in some browsers
+  console.log('unload triggered');
+  e.returnValue = false;
+});
