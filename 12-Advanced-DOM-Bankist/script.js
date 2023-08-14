@@ -358,7 +358,72 @@ lazyImages.forEach(img => imageObserver.observe(img));
 
 //Applying the slider component
 const slides = document.querySelectorAll('.slide');
-let Percentage = 0;
-slides.forEach((slide, index) => {
-  slide.style.transform = `translate(${Percentage}%)`;
+
+const rightArrBtn = document.querySelector('.right-arrow');
+const leftArrBtn = document.querySelector('.left-arrow');
+
+const dots = document.querySelectorAll('.dot');
+const dotsContainer = document.querySelector('.dots');
+
+let currentSlide = 0;
+const maxSLide = slides.length;
+
+const goToSlide = function (currentSlide) {
+  slides.forEach((slide, i) => {
+    slide.style.transform = `translateX(${(i - currentSlide) * 100}%)`;
+    dots.forEach(dot => {
+      dot.classList.remove('dot-active');
+    });
+    dots[currentSlide].classList.add('dot-active');
+  });
+};
+
+goToSlide(currentSlide);
+
+const moveRight = function () {
+  currentSlide++;
+  if (currentSlide === maxSLide) {
+    currentSlide = 0;
+  }
+  goToSlide(currentSlide);
+};
+const moveLeft = function () {
+  currentSlide--;
+  if (currentSlide === -1) {
+    currentSlide = maxSLide - 1;
+  }
+  goToSlide(currentSlide);
+};
+rightArrBtn.addEventListener('click', moveRight);
+leftArrBtn.addEventListener('click', moveLeft);
+
+document.addEventListener('keydown', function (e) {
+  e.key === 'ArrowRight' && moveRight();
+  e.key === 'ArrowLeft' && moveLeft();
+});
+
+dotsContainer.addEventListener('click', function (e) {
+  //using event delegation
+  if (!e.target.classList.contains('dot')) return;
+  currentSlide = Number(e.target.dataset.dotnumber) - 1;
+  goToSlide(currentSlide);
+});
+
+//DOM lifecycle events
+
+//DOMContentLoaded event , it is triggered when all the HTML and Scripts are loaded, doesn't wait for images or other external source to be loaded
+document.addEventListener('DOMContentLoaded', function () {
+  console.log('All the HTML and JS is loaded');
+});
+
+//load event, it is triggered when all the html, script, images and external sources are loaded
+window.addEventListener('load', function (e) {
+  console.log('All the images and external files are loaded,', e);
+});
+
+//beforeunload event, it is triggered when we press the close button to close the tab
+window.addEventListener('beforeunload', function (e) {
+  e.preventDefault(); //needed in some browsers
+  console.log('unload triggered');
+  e.returnValue = false;
 });
