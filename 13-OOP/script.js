@@ -78,3 +78,35 @@ car1.accelerate();
 car2.accelerate();
 car1.brake();
 car2.brake();
+
+//classes are also a type of function in JS
+//--> classes are not hoisted
+// --> classes are first class citizens
+// --> classes are executed in strict mode
+
+//class expression
+// const PersonCL = class {}
+//class declaration
+class PersonCL {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+
+  //every method outside the constructor function will be a part of the .prototype property of the class
+
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+}
+
+const shivCL = new PersonCL('Shiv', 2003);
+shivCL.calcAge();
+console.log(shivCL.__proto__ === PersonCL.prototype);
+
+PersonCL.prototype.greet = function () {
+  console.log(`hi! ${this.firstName}`);
+};
+
+shivCL.greet();
+console.dir(shivCL.__proto__);
