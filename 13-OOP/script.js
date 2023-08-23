@@ -181,3 +181,42 @@ const shivNew = Object.create(PersonProto); // will create PersonProto as a prot
 
 shivNew.init('Shiv', 2003); // can use methods from PersonProto as it is its prototype created using Object.create()
 shivNew.calcAge();
+
+// Coding Challenge #2
+// Your tasks:
+// 1. Re-create Challenge #1, but this time using an ES6 class (call it 'CarCl')
+// 2. Add a getter called 'speedUS' which returns the current speed in mi/h (divide
+// by 1.6)
+// 3. Add a setter called 'speedUS' which sets the current speed in mi/h (but
+// converts it to km/h before storing the value, by multiplying the input by 1.6)
+// 4. Create a new car and experiment with the 'accelerate' and 'brake'
+// methods, and with the getter and setter.
+// Test data:
+// § Data car 1: 'Ford' going at 120 km/h
+
+class CarCl {
+  constructor(make, currentSpeed) {
+    this.make = make;
+    this.currentSpeed = currentSpeed;
+  }
+  accelerate() {
+    console.log(this.currentSpeed + 10);
+  }
+  brake() {
+    console.log(this.currentSpeed - 5);
+  }
+  get speedUS() {
+    return this.currentSpeed / 1.6; //using this.currentSpeed because we don't know which object will call getter
+  }
+  set speedUS(speed) {
+    this.currentSpeed = speed * 1.6;
+  }
+}
+
+const car1CL = new CarCl('Ford', 120);
+
+console.log(car1CL.speedUS);
+car1CL.speedUS = 130;
+console.log(car1CL.currentSpeed); //in miles
+car1CL.accelerate();
+car1CL.brake();
