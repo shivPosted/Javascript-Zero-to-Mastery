@@ -110,3 +110,74 @@ PersonCL.prototype.greet = function () {
 
 shivCL.greet();
 console.dir(shivCL.__proto__);
+
+const now = new Date();
+const month = now.getMonth();
+const year = now.getFullYear();
+const day = now.getDate();
+
+const rqdAge = function (dMonth, dYear, dDay) {
+  if (dMonth > month) {
+    //year - dyear - 1;
+    // dMonth - month
+  }
+};
+// const rqdTimeStamp = Date.now() - DOB;
+
+// const rqdDiff = function (stamp) {
+//   const remainder = stamp / (1000 * 60 * 60 * 24 * 365);
+//   console.log(remainder);
+// };
+// rqdDiff(rqdTimeStamp);
+
+// const operations = [
+//   '5469',
+//   '+',
+//   '98657',
+//   '-',
+//   '456',
+//   '+',
+//   '963',
+//   '/',
+//   '25',
+//   '*',
+//   '96',
+// ].map(curr => {
+//   if (!Number(curr)) return curr;
+//   return Number(curr);
+// });
+// console.log(operations);
+
+// // console.log(Number('+'));
+// const rqd = operations.reduce((accum, curr, i, arr) => {
+//   if (!Number(curr)) {
+//     if (curr === '+') accum += arr[i + 1];
+//     else if (curr === '-') accum -= arr[i + 1];
+//     else if (curr === '*') accum *= arr[i + 1];
+//     else accum /= arr[i + 1];
+//     console.log(accum);
+//     return accum;
+//   }
+//   return accum;
+// });
+
+// console.log(rqd);
+// const arr = '456+968-9632*98/89+6325-96'.split(/[+  * /]/);
+// console.log(arr);
+
+//creating prototypes using Object.create()
+
+const PersonProto = {
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  },
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
+
+const shivNew = Object.create(PersonProto); // will create PersonProto as a prototype for shivNew
+
+shivNew.init('Shiv', 2003); // can use methods from PersonProto as it is its prototype created using Object.create()
+shivNew.calcAge();
