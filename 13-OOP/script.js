@@ -110,3 +110,113 @@ PersonCL.prototype.greet = function () {
 
 shivCL.greet();
 console.dir(shivCL.__proto__);
+
+const now = new Date();
+const month = now.getMonth();
+const year = now.getFullYear();
+const day = now.getDate();
+
+const rqdAge = function (dMonth, dYear, dDay) {
+  if (dMonth > month) {
+    //year - dyear - 1;
+    // dMonth - month
+  }
+};
+// const rqdTimeStamp = Date.now() - DOB;
+
+// const rqdDiff = function (stamp) {
+//   const remainder = stamp / (1000 * 60 * 60 * 24 * 365);
+//   console.log(remainder);
+// };
+// rqdDiff(rqdTimeStamp);
+
+// const operations = [
+//   '5469',
+//   '+',
+//   '98657',
+//   '-',
+//   '456',
+//   '+',
+//   '963',
+//   '/',
+//   '25',
+//   '*',
+//   '96',
+// ].map(curr => {
+//   if (!Number(curr)) return curr;
+//   return Number(curr);
+// });
+// console.log(operations);
+
+// // console.log(Number('+'));
+// const rqd = operations.reduce((accum, curr, i, arr) => {
+//   if (!Number(curr)) {
+//     if (curr === '+') accum += arr[i + 1];
+//     else if (curr === '-') accum -= arr[i + 1];
+//     else if (curr === '*') accum *= arr[i + 1];
+//     else accum /= arr[i + 1];
+//     console.log(accum);
+//     return accum;
+//   }
+//   return accum;
+// });
+
+// console.log(rqd);
+// const arr = '456+968-9632*98/89+6325-96'.split(/[+  * /]/);
+// console.log(arr);
+
+//creating prototypes using Object.create()
+
+const PersonProto = {
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  },
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
+
+const shivNew = Object.create(PersonProto); // will create PersonProto as a prototype for shivNew
+
+shivNew.init('Shiv', 2003); // can use methods from PersonProto as it is its prototype created using Object.create()
+shivNew.calcAge();
+
+// Coding Challenge #2
+// Your tasks:
+// 1. Re-create Challenge #1, but this time using an ES6 class (call it 'CarCl')
+// 2. Add a getter called 'speedUS' which returns the current speed in mi/h (divide
+// by 1.6)
+// 3. Add a setter called 'speedUS' which sets the current speed in mi/h (but
+// converts it to km/h before storing the value, by multiplying the input by 1.6)
+// 4. Create a new car and experiment with the 'accelerate' and 'brake'
+// methods, and with the getter and setter.
+// Test data:
+// § Data car 1: 'Ford' going at 120 km/h
+
+class CarCl {
+  constructor(make, currentSpeed) {
+    this.make = make;
+    this.currentSpeed = currentSpeed;
+  }
+  accelerate() {
+    console.log(this.currentSpeed + 10);
+  }
+  brake() {
+    console.log(this.currentSpeed - 5);
+  }
+  get speedUS() {
+    return this.currentSpeed / 1.6; //using this.currentSpeed because we don't know which object will call getter
+  }
+  set speedUS(speed) {
+    this.currentSpeed = speed * 1.6;
+  }
+}
+
+const car1CL = new CarCl('Ford', 120);
+
+console.log(car1CL.speedUS);
+car1CL.speedUS = 130;
+console.log(car1CL.currentSpeed); //in miles
+car1CL.accelerate();
+car1CL.brake();
