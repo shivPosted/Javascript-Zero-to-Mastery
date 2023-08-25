@@ -323,7 +323,21 @@ class Account {
   withdraw(val) {
     this.deposit(-val);
   }
+
+  //we need encapsulation because these methods can be manipulated by anyone
+  approveLoan() {
+    return true;
+  }
+  requerstLoan(val) {
+    if (this.approveLoan()) {
+      this.deposit(val);
+      console.log('Loan Approved');
+    }
+  }
 }
 const accountShiv = new Account('Shiv', 'INR', 4444);
 accountShiv.deposit(5000);
 accountShiv.withdraw(1000);
+accountShiv.requerstLoan(10000);
+
+//Encapsulation
