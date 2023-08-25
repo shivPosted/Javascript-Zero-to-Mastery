@@ -68,10 +68,12 @@ const car1 = new Car('BMW', 120);
 const car2 = new Car('Mercedes', 95);
 
 Car.prototype.accelerate = function () {
-  console.log(this.speed + 10);
+  this.speed = this.speed + 10;
+  console.log(this.speed);
 };
 Car.prototype.brake = function () {
-  console.log(this.speed - 5);
+  this.speed = this.speed - 5;
+  console.log(this.speed);
 };
 
 car1.accelerate();
@@ -220,3 +222,60 @@ car1CL.speedUS = 130;
 console.log(car1CL.currentSpeed); //in miles
 car1CL.accelerate();
 car1CL.brake();
+
+var createCounter = function (n) {
+  let count = -1;
+  return function () {
+    count++;
+    return count + n;
+  };
+};
+
+const counter = createCounter(10);
+console.log(counter());
+console.log(counter());
+
+// Coding Challenge #3
+// Your tasks:
+// 1. Use a constructor function to implement an Electric Car (called 'EV') as a child
+// "class" of 'Car'. Besides a make and current speed, the 'EV' also has the
+// current battery charge in % ('charge' property)
+// 2. Implement a 'chargeBattery' method which takes an argument
+// 'chargeTo' and sets the battery charge to 'chargeTo'
+// 3. Implement an 'accelerate' method that will increase the car's speed by 20,
+// and decrease the charge by 1%. Then log a message like this: 'Tesla going at 140
+// km/h, with a charge of 22%'
+// 4. Create an electric car object and experiment with calling 'accelerate',
+// 'brake' and 'chargeBattery' (charge to 90%). Notice what happens when
+// you 'accelerate'! Hint: Review the definiton of polymorphism 😉
+// Test data:
+// § Data car 1: 'Tesla' going at 120 km/h, with a charge of 23%
+
+//Car class is defined above in code in challege #1
+const EV = function (make, speed, charge) {
+  Car.call(this, make, speed);
+  this.charge = charge;
+};
+//set prototypal inheritance in classes at first because it will set the prototype to an empty object
+EV.prototype = Object.create(Car.prototype);
+const car1IN = new EV('Tesla', 140, 23);
+
+EV.prototype.chargeBattery = function (chargeTo) {
+  this.charge = chargeTo;
+};
+car1IN.chargeBattery(90);
+
+EV.prototype.accelerate = function () {
+  this.speed = this.speed + 20;
+  this.charge = this.charge - 1;
+  console.log(
+    `${this.make} is going at a speed of ${this.speed}km/hr, with a charge of ${this.charge}%`
+  );
+};
+
+car1IN.chargeBattery(90);
+car1IN.accelerate();
+car1IN.accelerate();
+car1IN.brake();
+car1IN.brake();
+console.log(car1IN.speed);
