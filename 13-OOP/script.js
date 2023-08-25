@@ -307,29 +307,40 @@ car2CL.brake();
 
 //An example of class and inheritance
 class Account {
+  //Public fields
+  language = navigator.language;
+
+  //private fields;
+  #movements = [];
+  #pin;
+
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
-    this.pin = pin;
-    this.movements = [];
-    this.language = navigator.language;
+    this.#pin = pin;
   }
+
+  //public methods
 
   //public interface API
   deposit(val) {
-    this.movements.push(val);
-    console.log(this.movements);
+    this.#movements.push(val);
+    console.log(this.#movements);
   }
   withdraw(val) {
     this.deposit(-val);
   }
 
+  getMovements() {
+    return this.#movements;
+  }
+
   //we need encapsulation because these methods can be manipulated by anyone
-  approveLoan() {
+  #approveLoan() {
     return true;
   }
   requerstLoan(val) {
-    if (this.approveLoan()) {
+    if (this.#approveLoan()) {
       this.deposit(val);
       console.log('Loan Approved');
     }
@@ -340,4 +351,8 @@ accountShiv.deposit(5000);
 accountShiv.withdraw(1000);
 accountShiv.requerstLoan(10000);
 
-//Encapsulation
+//can't access private fields
+// accountShiv.#approveLoan(); // this will be a private field
+// console.log(accountShiv.#pin);
+
+console.log(accountShiv.getMovements());
