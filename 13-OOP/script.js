@@ -196,32 +196,33 @@ shivNew.calcAge();
 // Test data:
 // § Data car 1: 'Ford' going at 120 km/h
 
-class CarCl {
-  constructor(make, currentSpeed) {
-    this.make = make;
-    this.currentSpeed = currentSpeed;
-  }
-  accelerate() {
-    console.log(this.currentSpeed + 10);
-  }
-  brake() {
-    console.log(this.currentSpeed - 5);
-  }
-  get speedUS() {
-    return this.currentSpeed / 1.6; //using this.currentSpeed because we don't know which object will call getter
-  }
-  set speedUS(speed) {
-    this.currentSpeed = speed * 1.6;
-  }
-}
+// class CarCl {
+//   constructor(make, currentSpeed) {
+//     this.make = make;
+//     this.currentSpeed = currentSpeed;
+//   }
+//   accelerate() {
+//     console.log(this.currentSpeed + 10);
+//   }
+//   brake() {
+//     console.log(this.currentSpeed - 5);
+//     return this;
+//   }
+//   get speedUS() {
+//     return this.currentSpeed / 1.6; //using this.currentSpeed because we don't know which object will call getter
+//   }
+//   set speedUS(speed) {
+//     this.currentSpeed = speed * 1.6;
+//   }
+// }
 
-const car1CL = new CarCl('Ford', 120);
+// const car1CL = new CarCl('Ford', 120);
 
-console.log(car1CL.speedUS);
-car1CL.speedUS = 130;
-console.log(car1CL.currentSpeed); //in miles
-car1CL.accelerate();
-car1CL.brake();
+// console.log(car1CL.speedUS);
+// car1CL.speedUS = 130;
+// console.log(car1CL.currentSpeed); //in miles
+// car1CL.accelerate();
+// car1CL.brake();
 
 /////////////////////////////////////////////////////////////////////
 
@@ -264,7 +265,7 @@ const EV = function (make, speed, charge) {
 EV.prototype = Object.create(Car.prototype);
 const car1IN = new EV('Tesla', 140, 23);
 
-EV.prototype.chargeBattery = function (chargeTo) {
+Car.prototype.chargeBattery = function (chargeTo) {
   this.charge = chargeTo;
 };
 car1IN.chargeBattery(90);
@@ -286,24 +287,24 @@ console.log(car1IN.speed);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Inheritance between classes using ES6 classes
-class EVCL extends CarCl {
-  constructor(make, currentSpeed, charge) {
-    super(make, currentSpeed);
-    this.charge = charge;
-  }
-  accelerate() {
-    this.currentSpeed = this.currentSpeed + 20;
-    this.charge = this.charge - 1;
-    console.log(
-      `${this.make} is running at ${this.currentSpeed}km/hr at ${this.charge}% charge`
-    );
-  }
-}
+// class EVCL extends CarCl {
+//   constructor(make, currentSpeed, charge) {
+//     super(make, currentSpeed);
+//     this.charge = charge;
+//   }
+//   accelerate() {
+//     this.currentSpeed = this.currentSpeed + 20;
+//     this.charge = this.charge - 1;
+//     console.log(
+//       `${this.make} is running at ${this.currentSpeed}km/hr at ${this.charge}% charge`
+//     );
+//   }
+// }
 
-const car2CL = new EVCL('Tata', 90, 80);
-console.log('Use of class inheritance with ES6 classes');
-car2CL.accelerate();
-car2CL.brake();
+// const car2CL = new EVCL('Tata', 90, 80);
+// console.log('Use of class inheritance with ES6 classes');
+// car2CL.accelerate();
+// car2CL.brake();
 
 //An example of class and inheritance
 class Account {
@@ -326,9 +327,11 @@ class Account {
   deposit(val) {
     this.#movements.push(val);
     console.log(this.#movements);
+    return this; //for making methods chainable
   }
   withdraw(val) {
     this.deposit(-val);
+    return this;
   }
 
   getMovements() {
@@ -343,6 +346,7 @@ class Account {
     if (this.#approveLoan()) {
       this.deposit(val);
       console.log('Loan Approved');
+      return this;
     }
   }
 }
@@ -356,3 +360,59 @@ accountShiv.requerstLoan(10000);
 // console.log(accountShiv.#pin);
 
 console.log(accountShiv.getMovements());
+
+//Chaining
+accountShiv
+  .deposit(1000)
+  .deposit(2000)
+  .withdraw(1000)
+  .requerstLoan(5000)
+  .withdraw(5000);
+
+//   Coding Challenge #4
+// Your tasks:
+// 1. Re-create Challenge #3, but this time using ES6 classes: create an 'EVCl'
+// child class of the 'CarCl' class
+// 2. Make the 'charge' property private
+// 3. Implement the ability to chain the 'accelerate' and 'chargeBattery'
+// methods of this class, and also update the 'brake' method in the 'CarCl'
+// class. Then experiment with chaining!
+// Test data:
+// § Data car 1: 'Rivian' going at 120 km/h, with a charge of 23%
+
+class CarCl {
+  constructor(make, currentSpeed) {
+    this.make = make;
+    this.currentSpeed = currentSpeed;
+  }
+  accelerate() {
+    console.log(this.currentSpeed + 10);
+    return this;
+  }
+  brake() {
+    console.log(this.currentSpeed - 5);
+    return this;
+  }
+  get speedUS() {
+    return this.currentSpeed / 1.6;
+  }
+  set speedUS(speed) {
+    this.currentSpeed = speed * 1.6;
+  }
+}
+
+class EVCL extends CarCl {
+  #charge;
+  constructor(make, currentSpeed, charge) {
+    super(make, currentSpeed);
+    this.#charge = charge;
+  }
+  chargeBattery(chargeTo) {
+    this.#charge = chargeTo;
+    return this;
+  }
+}
+
+const car1EVCL = new EVCL('Rivion', 120, 23);
+
+car1EVCL.accelerate().accelerate().brake().chargeBattery(90);
