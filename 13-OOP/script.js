@@ -223,6 +223,8 @@ console.log(car1CL.currentSpeed); //in miles
 car1CL.accelerate();
 car1CL.brake();
 
+/////////////////////////////////////////////////////////////////////
+
 var createCounter = function (n) {
   let count = -1;
   return function () {
@@ -234,6 +236,8 @@ var createCounter = function (n) {
 const counter = createCounter(10);
 console.log(counter());
 console.log(counter());
+
+//////////////////////////////////////////////////////////////////////////////////////////
 
 // Coding Challenge #3
 // Your tasks:
@@ -279,3 +283,24 @@ car1IN.accelerate();
 car1IN.brake();
 car1IN.brake();
 console.log(car1IN.speed);
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Inheritance between classes using ES6 classes
+class EVCL extends CarCl {
+  constructor(make, currentSpeed, charge) {
+    super(make, currentSpeed);
+    this.charge = charge;
+  }
+  accelerate() {
+    this.currentSpeed = this.currentSpeed + 20;
+    this.charge = this.charge - 1;
+    console.log(
+      `${this.make} is running at ${this.currentSpeed}km/hr at ${this.charge}% charge`
+    );
+  }
+}
+
+const car2CL = new EVCL('Tata', 90, 80);
+console.log('Use of class inheritance with ES6 classes');
+car2CL.accelerate();
+car2CL.brake();
