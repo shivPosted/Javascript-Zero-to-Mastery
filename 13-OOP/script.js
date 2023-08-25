@@ -304,3 +304,26 @@ const car2CL = new EVCL('Tata', 90, 80);
 console.log('Use of class inheritance with ES6 classes');
 car2CL.accelerate();
 car2CL.brake();
+
+//An example of class and inheritance
+class Account {
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    this.pin = pin;
+    this.movements = [];
+    this.language = navigator.language;
+  }
+
+  //public interface API
+  deposit(val) {
+    this.movements.push(val);
+    console.log(this.movements);
+  }
+  withdraw(val) {
+    this.deposit(-val);
+  }
+}
+const accountShiv = new Account('Shiv', 'INR', 4444);
+accountShiv.deposit(5000);
+accountShiv.withdraw(1000);
