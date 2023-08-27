@@ -164,7 +164,7 @@ const rqdAge = function (dMonth, dYear, dDay) {
 // });
 
 // console.log(rqd);
-// const arr = '456+968-9632*98/89+6325-96'.split(/[+  * /]/);
+const arr = '456 + 968 - 9632 * 98 / 89 + 6325 - 96'.split(' ');
 // console.log(arr);
 
 //creating prototypes using Object.create()
