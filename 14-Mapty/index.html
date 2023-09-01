@@ -7,14 +7,87 @@
     <link rel="shortcut icon" type="image/png" href="/icon.png" />
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-
     <link rel="stylesheet" href="style.css" />
-
     <script defer src="script.js"></script>
     <title>mapty // Map your workouts</title>
   </head>
-  <body></body>
+  <body>
+    <div class="activity-main-tab">
+      <img src="logo.png" alt="company-logo" class="company-logo" />
+      <form action="/">
+        <div class="form-row">
+          <label for="type">Type</label>
+          <select name="exercise-type" id="type">
+            <option value="running">Running</option>
+            <option value="cycling">Cycling</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="distance">Distance</label>
+          <input type="text" id="distance" placeholder="km" />
+        </div>
+        <div class="form-row">
+          <label for="distance">Duration</label>
+          <input type="text" id="duration" placeholder="min" />
+        </div>
+        <div class="form-row">
+          <label for="distance">Cadence</label>
+          <input type="text" id="cadence" placeholder="step/min" />
+        </div>
+        <div class="form-row form-row-hidden">
+          <label for="distance">Elev Gain</label>
+          <input type="text" id="elev-gain" />
+        </div>
+      </form>
+
+      <div class="activity activity-cycling">
+        <h2>
+          Cycling on <span class="month">September</span>
+          <span class="day">1</span>
+        </h2>
+        <div class="activity-info">
+          <div class="activity-distance">
+            <span class="activity-distance-display">🚴‍♀️ 10</span> km
+          </div>
+          <div class="activity-distance">
+            <span class="activity-time-display">⏱ 30</span> min
+          </div>
+          <div class="activity-distance">
+            <span class="activity-speed-display">⚡️ 20</span> km/hr
+          </div>
+          <div class="activity-rate">
+            <span class="activity-rate-display">⛰ 500</span> M
+          </div>
+        </div>
+      </div>
+      <div class="activity activity-running">
+        <h2>
+          Running on <span class="month">September</span>
+          <span class="day">1</span>
+        </h2>
+        <div class="activity-info">
+          <div class="activity-distance">
+            <span class="activity-distance-display">🏃‍♂️ 10</span> km
+          </div>
+          <div class="activity-distance">
+            <span class="activity-time-display">⏱ 30</span> min
+          </div>
+          <div class="activity-distance">
+            <span class="activity-speed-display">⚡️ 20</span> km/hr
+          </div>
+          <div class="activity-rate">
+            <span class="activity-rate-display">🦶🏼 500</span> spm
+          </div>
+        </div>
+      </div>
+      <p class="footer">
+        Concept by Jonas Schemedtmann and coded with ❣️ by
+        <a href="https://twitter.com/shiv_posted">Shiv Pratap</a>
+      </p>
+    </div>
+    <div class="map-display-tab"></div>
+  </body>
 </html>
