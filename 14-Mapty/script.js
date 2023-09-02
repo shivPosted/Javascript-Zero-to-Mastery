@@ -23,13 +23,20 @@ navigator.geolocation.getCurrentPosition(
     console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
 
     //leaflet library
-    const map = L.map('map').setView(coords, 17);
+    const map = L.map('map').setView(coords, 13);
 
     map.on('click', function (mapEvent) {
       //for hannling anything that happen on map
       console.log(mapEvent);
       const { lat, lng } = mapEvent.latlng;
-      L.marker([lat, lng])
+      const myIcon = L.icon({
+        iconUrl: 'icon.png',
+        iconSize: [45, 45],
+        iconAnchor: [20, 50],
+        popupAnchor: [0, -50],
+      });
+
+      L.marker([lat, lng], { icon: myIcon })
         .addTo(map)
         .bindPopup(
           L.popup({
