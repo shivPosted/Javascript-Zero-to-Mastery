@@ -58,7 +58,7 @@ a:active {
   width: 15rem;
 }
 
-form {
+.form {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   background-color: var(--color-dark--2);
@@ -66,7 +66,11 @@ form {
   row-gap: 1.2rem;
   column-gap: 2.4rem;
 }
-form,
+input:focus {
+  /* border: none; */
+  outline: none;
+}
+.form,
 .activity {
   width: 100%;
   padding: 1.2rem 2.4rem;
@@ -74,6 +78,7 @@ form,
   background-color: var(--color-dark--2);
   font-size: 1.6rem;
   font-weight: 500;
+  transition: all 0.3s;
 }
 
 .form-row {
@@ -91,7 +96,13 @@ select {
 .form-row:first-child {
   width: 100%;
 }
-
+.form-btn {
+  display: none;
+}
+.hidden {
+  transform: translateY(3rem) !important;
+  opacity: 0;
+}
 .form-row-hidden {
   display: none;
 }
