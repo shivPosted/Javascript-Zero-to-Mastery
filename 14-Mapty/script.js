@@ -10,10 +10,18 @@ const inputCadence = document.getElementById('cadence');
 const inputElevGain = document.getElementById('elev-gain');
 const inputType = document.getElementById('type');
 let map, mapEvent;
-//use of geolocation
-navigator.geolocation.getCurrentPosition(
-  function (position) {
-    // console.log(position);
+
+class App {
+  constructor() {
+    this._getCurrentPosition();
+  }
+
+  _getCurrentPosition() {
+    navigator.geolocation.getCurrentPosition(this._loadMap, function () {
+      alert(`couldn't get your locatoin`);
+    });
+  }
+  _loadMap(position) {
     const { latitude, longitude } = position.coords;
 
     const coords = [latitude, longitude];
@@ -36,11 +44,9 @@ navigator.geolocation.getCurrentPosition(
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
-  },
-  function () {
-    alert(`couldn't get your locatoin`);
   }
-);
+}
+const app = new App();
 
 form.addEventListener('submit', function (e) {
   e.preventDefault();
