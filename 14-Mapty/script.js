@@ -53,6 +53,36 @@ class App {
     this.#mapEvent = mapE;
   }
   _newWorkout(e) {
+    //get data from user
+    const type = inputType.value;
+    const distance = +inputDistance.value;
+    const duration = +inputDuration.value;
+
+    //check the input from the user
+    const checkNumber = (...inputs) =>
+      inputs.every(input => Number.isFinite(input));
+    const checkPositive = (...inputs) => inputs.every(input => input > 0);
+
+    //if type is cycling set cycling object
+    if (type === 'cycling') {
+      const eleveGain = +inputElevGain.value;
+      if (
+        !checkNumber(distance, duration, eleveGain) ||
+        !checkPositive(distance, duration) //elevation gain can be negative
+      ) {
+        return alert('Entered value should be number and positive');
+      }
+    }
+    //if type is running set running object
+    if (type === 'running') {
+      const cadence = +inputCadence.value;
+      if (
+        !checkNumber(distance, duration, cadence) ||
+        !checkPositive(distance, duration) //elevation gain can be negative
+      ) {
+        return alert('Entered value should be number and positive');
+      }
+    }
     e.preventDefault();
     inputDistance.value =
       inputDuration.value =
@@ -73,6 +103,8 @@ class App {
       .addTo(this.#map)
       .bindPopup(
         L.popup({
+          minWidth: 30,
+          maxWidth: 100,
           autoClose: false,
           closeOnClick: false,
           className: 'cycling-popup',
@@ -104,6 +136,7 @@ class Workout {
 }
 
 class Running extends Workout {
+  type = 'running';
   constructor(coords, distance, duration, cadence) {
     super(coords, distance, duration);
     this.cadence = cadence;
@@ -117,6 +150,7 @@ class Running extends Workout {
 }
 
 class Cycling extends Workout {
+  type = 'cycling';
   constructor(coords, distance, duration, elevationGain) {
     super(coords, distance, duration);
     this.elevationGain = elevationGain;
@@ -131,5 +165,3 @@ class Cycling extends Workout {
 
 const run1 = new Running([36, -12], 5, 30, 90);
 const cycling1 = new Cycling([36, -12], 10, 20, 10);
-
-console.log(run1, cycling1);
