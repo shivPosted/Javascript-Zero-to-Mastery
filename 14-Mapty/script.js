@@ -14,6 +14,8 @@ let map, mapEvent;
 class App {
   #map;
   #mapEvent;
+  workouts = [];
+
   constructor() {
     this._getCurrentPosition();
 
@@ -57,7 +59,7 @@ class App {
     const type = inputType.value;
     const distance = +inputDistance.value;
     const duration = +inputDuration.value;
-
+    const { lat, lng } = this.#mapEvent.latlng;
     //check the input from the user
     const checkNumber = (...inputs) =>
       inputs.every(input => Number.isFinite(input));
@@ -72,16 +74,20 @@ class App {
       ) {
         return alert('Entered value should be number and positive');
       }
+      const workout = new Cycling([lat, lng], distance, duration, eleveGain);
+      this.workouts.push(workout);
     }
     //if type is running set running object
     if (type === 'running') {
       const cadence = +inputCadence.value;
       if (
         !checkNumber(distance, duration, cadence) ||
-        !checkPositive(distance, duration) //elevation gain can be negative
+        !checkPositive(distance, duration, cadence) //elevation gain can be negative
       ) {
         return alert('Entered value should be number and positive');
       }
+      const workout = new Running([lat, lng], distance, duration, cadence);
+      this.workouts.push(workout);
     }
     e.preventDefault();
     inputDistance.value =
@@ -91,7 +97,7 @@ class App {
         '';
 
     console.log('submitted');
-    const { lat, lng } = this.#mapEvent.latlng;
+
     const myIcon = L.icon({
       iconUrl: 'icon.png',
       iconSize: [45, 45],
