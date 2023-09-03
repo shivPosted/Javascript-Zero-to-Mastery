@@ -50,6 +50,7 @@ class App {
   }
 
   _showForm(mapE) {
+    form.style.display = 'grid';
     form.classList.remove('hidden');
     inputDistance.focus();
     this.#mapEvent = mapE;
@@ -76,6 +77,8 @@ class App {
       }
       const workout = new Cycling([lat, lng], distance, duration, eleveGain);
       this.workouts.push(workout);
+      this._renderWorkoutMarker(workout);
+      this._renderWorkout(workout);
     }
     //if type is running set running object
     if (type === 'running') {
@@ -88,7 +91,11 @@ class App {
       }
       const workout = new Running([lat, lng], distance, duration, cadence);
       this.workouts.push(workout);
+      this._renderWorkoutMarker(workout);
+      this._renderWorkout(workout);
     }
+
+    //render workout on map
     e.preventDefault();
     inputDistance.value =
       inputDuration.value =
@@ -98,6 +105,11 @@ class App {
 
     console.log('submitted');
 
+    // form.classList.add('hidden');
+    form.style.display = 'none';
+  }
+
+  _renderWorkoutMarker(workout) {
     const myIcon = L.icon({
       iconUrl: 'icon.png',
       iconSize: [45, 45],
@@ -105,21 +117,54 @@ class App {
       popupAnchor: [0, -50],
     });
 
-    L.marker([lat, lng], { icon: myIcon })
+    L.marker(workout.coords, { icon: myIcon })
       .addTo(this.#map)
       .bindPopup(
         L.popup({
           minWidth: 30,
-          maxWidth: 100,
+          maxWidth: 300,
           autoClose: false,
           closeOnClick: false,
-          className: 'cycling-popup',
+          className: `${workout.type}-popup`,
         })
       )
-      .setPopupContent('workout')
+      .setPopupContent(
+        `${workout.type === 'cycling' ? '🚴‍♀️' : '🏃‍♂️'} ${workout.description}`
+      )
       .openPopup();
+  }
 
-    form.classList.add('hidden');
+  _renderWorkout(workout) {
+    let html = `<div class="activity activity-${workout.type}">
+    <h2>
+      ${workout.description}
+    </h2>
+    <div class="activity-info">
+      <div class="activity-distance">
+        <span class="activity-distance-display">${
+          workout.type === 'cycling' ? '🚴‍♀️' : '🏃‍♂️'
+        } ${workout.distance}</span> km
+      </div>
+      <div class="activity-distance">
+        <span class="activity-time-display">⏱ ${workout.duration}</span> min
+      </div>
+      <div class="activity-distance">
+        <span class="activity-speed-display">⚡️ ${
+          workout.type === 'running'
+            ? workout.pace.toFixed(1)
+            : workout.speed.toFixed(1)
+        }</span> ${workout.type === 'running' ? 'min/km' : 'km/hr'}
+      </div>
+      <div class="activity-rate">
+        <span class="activity-rate-display">${
+          workout.type === 'running'
+            ? `👣 ${workout.cadence}`
+            : `⛰ ${workout.elevationGain}`
+        }</span> ${workout.type === 'running' ? 'SPM' : 'M'}
+      </div>
+    </div>
+  </div>`;
+    form.insertAdjacentHTML('afterend', html);
   }
 
   _toggleElevationField() {
@@ -133,11 +178,17 @@ const app = new App();
 class Workout {
   date = new Date();
   id = (+new Date() + '').slice(-10);
-
   constructor(coords, distance, duration) {
     this.coords = coords; // [lat, lng]
     this.distance = distance;
     this.duration = duration;
+  }
+  workoutDescription() {
+    // prettier-ignore
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    return `${this.type[0].toUpperCase() + this.type.slice(1)} on ${
+      months[this.date.getMonth()]
+    } ${this.date.getDate()}`;
   }
 }
 
@@ -147,6 +198,7 @@ class Running extends Workout {
     super(coords, distance, duration);
     this.cadence = cadence;
     this.calcPace();
+    this.description = this.workoutDescription();
   }
   calcPace() {
     // min/km
@@ -161,6 +213,7 @@ class Cycling extends Workout {
     super(coords, distance, duration);
     this.elevationGain = elevationGain;
     this.calcSpeed();
+    this.description = this.workoutDescription();
   }
   calcSpeed() {
     // km/hr
