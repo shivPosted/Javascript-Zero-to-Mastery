@@ -19,11 +19,7 @@ class App {
 
     form.addEventListener('submit', this._newWorkout.bind(this));
 
-    type.addEventListener('change', function () {
-      inputElevGain.closest('.form-row').classList.toggle('form-row-hidden');
-      inputCadence.closest('.form-row').classList.toggle('form-row-hidden');
-      console.log(inputCadence.closest('.form-row'));
-    });
+    type.addEventListener('change', this._toggleElevationField.bind(this));
   }
 
   _getCurrentPosition() {
@@ -88,6 +84,10 @@ class App {
     form.classList.add('hidden');
   }
 
-  _toggleElevationField() {}
+  _toggleElevationField() {
+    inputElevGain.closest('.form-row').classList.toggle('form-row-hidden');
+    inputCadence.closest('.form-row').classList.toggle('form-row-hidden');
+    console.log(inputCadence.closest('.form-row'));
+  }
 }
 const app = new App();
