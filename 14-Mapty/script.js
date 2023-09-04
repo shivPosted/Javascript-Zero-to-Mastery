@@ -9,6 +9,7 @@ const inputDuration = document.getElementById('duration');
 const inputCadence = document.getElementById('cadence');
 const inputElevGain = document.getElementById('elev-gain');
 const inputType = document.getElementById('type');
+const activities = document.querySelector('.activity-main-tab');
 let map, mapEvent;
 
 class App {
@@ -22,6 +23,8 @@ class App {
     form.addEventListener('submit', this._newWorkout.bind(this));
 
     type.addEventListener('change', this._toggleElevationField.bind(this));
+
+    activities.addEventListener('click', this._moveToPopup.bind(this));
   }
 
   _getCurrentPosition() {
@@ -134,8 +137,15 @@ class App {
       .openPopup();
   }
 
+  _moveToPopup() {
+    activities.addEventListener('click', function (e) {
+      const workoutEl = e.target.closest('.activity');
+      console.log(workoutEl.dataSet.id);
+    });
+  }
   _renderWorkout(workout) {
-    let html = `<div class="activity activity-${workout.type}">
+    let html = `
+    <div class="activity activity-${workout.type} data-id=${workout.id}">
     <h2>
       ${workout.description}
     </h2>
