@@ -15,6 +15,7 @@ let map, mapEvent;
 class App {
   #map;
   #mapEvent;
+  #zoomLevel = 13;
   workouts = [];
 
   constructor() {
@@ -42,7 +43,7 @@ class App {
 
     //leaflet library
 
-    this.#map = L.map('map').setView(coords, 13);
+    this.#map = L.map('map').setView(coords, this.#zoomLevel);
 
     this.#map.on('click', this._showForm.bind(this));
 
@@ -137,15 +138,23 @@ class App {
       .openPopup();
   }
 
-  _moveToPopup() {
-    activities.addEventListener('click', function (e) {
-      const workoutEl = e.target.closest('.activity');
-      console.log(workoutEl.dataSet.id);
+  _moveToPopup(e) {
+    const workoutEl = e.target.closest('.activity');
+    if (!workoutEl) return;
+    const workout = this.workouts.find(
+      work => work.id === workoutEl.dataset.id
+    );
+
+    this.#map.setView(workout.coords, this.#zoomLevel, {
+      animate: true,
+      pan: {
+        duration: 0.8,
+      },
     });
   }
   _renderWorkout(workout) {
     let html = `
-    <div class="activity activity-${workout.type} data-id=${workout.id}">
+    <div class="activity activity-${workout.type}" data-id = ${workout.id}>
     <h2>
       ${workout.description}
     </h2>

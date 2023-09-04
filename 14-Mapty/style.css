@@ -132,7 +132,7 @@ h2 {
 .activity-distance span,
 .activity-rate span {
   font-size: 1.6rem;
-  color: var(--color-light--2);
+  color: var(--color-light--2w);
 }
 .map-display-tab {
   width: 70%;
