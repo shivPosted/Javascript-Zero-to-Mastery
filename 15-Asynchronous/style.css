@@ -64,3 +64,21 @@ h5:last-child {
 .country-continent {
   margin-bottom: 1.6rem;
 }
+
+.images {
+  width: 30%;
+  height: auto;
+}
+
+.images img {
+  width: 100%;
+}
+
+/* .anime-quotes {
+  width: 100%;
+  font-size: 4rem;
+}
+.anime-quotes::before {
+  content: '"';
+  font-size: 8rem;
+} */

@@ -2,17 +2,19 @@
 
 const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
-
+const imageUpdate = document.querySelector('.images img');
+console.log(imageUpdate);
 ///////////////////////////////////////
 const getCountryInfo = function (country) {
   let languages = '';
-  const request = new XMLHttpRequest();
-  request.open('GET', `https://restcountries.com/v3.1/name/${country}`);
-  request.send();
+  const request = new XMLHttpRequest(); //request object from the XMLHttpsRequest
+  request.open('GET', `https://restcountries.com/v3.1/name/${country}`); //to open a request accpts arguments for type of request and source for request
+  request.send(); //for sending request
 
   request.addEventListener('load', function () {
-    const [data] = JSON.parse(this.responseText);
-    console.log(data);
+    //adding event listener so that it triggered when the request is loaded with data
+    const [data] = JSON.parse(this.responseText); //parsing the string back to object/array
+    // console.log(data);
     for (const [, value] of Object.entries(data.languages)) {
       languages += value + ' ';
     }
@@ -35,13 +37,35 @@ const getCountryInfo = function (country) {
   });
 };
 
-getCountryInfo('india');
+// getCountryInfo('india');
 // getCountryInfo('canada');
-getCountryInfo('usa');
-getCountryInfo('bangladesh');
-getCountryInfo('indonesia');
-getCountryInfo('china');
+// getCountryInfo('usa');
+// getCountryInfo('bangladesh');
+// getCountryInfo('indonesia');
+// getCountryInfo('china');
 // const languages = { eng: 'English', hin: 'Hindi', tam: 'Tamil' };
 // for (const [, value] of Object.entries(languages)) {
 //   console.log(value);
 // }
+
+const loadImage = function () {
+  const params = {
+    included_tags: 'selfies',
+    height: '>=2000',
+    nsfw: false,
+  };
+  const apiURL = 'https://api.waifu.im/search';
+  const queryParams = new URLSearchParams(params);
+  const requestUrl = `${apiURL}?${queryParams}`;
+
+  const request02 = new XMLHttpRequest();
+  request02.open('GET', requestUrl);
+  request02.send();
+  request02.addEventListener('load', function () {
+    const data = JSON.parse(request02.responseText);
+    const [img] = data['images'];
+    const images = img.url;
+    imageUpdate.src = images;
+    imageUpdate.src = images;
+  });
+};
