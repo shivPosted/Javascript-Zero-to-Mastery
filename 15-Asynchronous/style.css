@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  font-family: sans-serif;
+  background-color: azure;
+}
+
+.countries {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3.2rem;
+  max-width: 120rem;
+  height: 100%;
+  align-items: flex-start;
+  background-color: inherit;
+  padding: 3.2rem 0 3.2rem 0;
+}
+
+.country {
+  width: 25rem;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(85, 85, 85, 0.4);
+  border-radius: 10px;
+  height: 40rem;
+  overflow: hidden;
+}
+
+.country img {
+  width: 100%;
+  box-shadow: 0 1px 2px rgba(34, 34, 34, 0.3);
+}
+
+.country-data {
+  padding: 2.4rem;
+  color: #777;
+  font-size: 2rem;
+}
+
+.country-name {
+  color: #444;
+  font-size: 3.2rem;
+}
+h5 {
+  margin-bottom: 1.2rem;
+}
+h5:last-child {
+  margin-bottom: 0;
+}
+
+.country-continent {
+  margin-bottom: 1.6rem;
+}
+
+.images {
+  width: 30%;
+  height: auto;
+}
+
+.images img {
+  width: 100%;
+}
+
+/* .anime-quotes {
+  width: 100%;
+  font-size: 4rem;
+}
+.anime-quotes::before {
+  content: '"';
+  font-size: 8rem;
+} */
