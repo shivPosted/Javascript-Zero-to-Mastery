@@ -146,7 +146,7 @@ const getCountry = function (country) {
     })
     .then(response => {
       const [data] = response;
-      console.log(data);
+      setElCountry(data); //using from previous data
     });
 };
 getCountry('india');
