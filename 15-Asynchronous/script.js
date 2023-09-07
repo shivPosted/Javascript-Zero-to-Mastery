@@ -93,12 +93,12 @@ const setElCountry = function (data, isNeighbour = false) {
 
 const getNeighbour = function (data) {
   if (data) {
-    const request02 = new XMLHttpRequest();
-    request02.open('GET', `https://restcountries.com/v3.1/alpha/${data[0]}`);
-    request02.send();
-    request02.addEventListener('load', function () {
-      const [data02] = JSON.parse(request02.responseText);
-      setElCountry(data02, true);
+    const request = new XMLHttpRequest();
+    request.open('GET', `https://restcountries.com/v3.1/alpha/${data[0]}`);
+    request.send();
+    request.addEventListener('load', function () {
+      const [data] = JSON.parse(request.responseText);
+      setElCountry(data, true);
     });
   }
 };
@@ -111,16 +111,14 @@ const getCountry = function (country) {
   request.addEventListener('load', function () {
     //adding event listener so that it triggered when the request is loaded with data
     const [data] = JSON.parse(this.responseText); //parsing the string back to object/array
-    console.log(data);
-    console.log(data?.borders);
 
     // console.log(data);
-    setElCountry(data, false);
+    setElCountry(data);
     getNeighbour(data?.borders); //example of callback
   });
 };
 
-getCountry('india');
+// getCountry('india');
 
 //another example of callback
 // setTimeout(() => {
@@ -135,3 +133,7 @@ getCountry('india');
 //     }, 1000);
 //   }, 1000);
 // }, 1000);
+
+//using fetch api---------------------> modern way of handling apis
+const request = fetch(`https://restcountries.com/v3.1/name/india`); //it will return a promise
+console.log(request);
