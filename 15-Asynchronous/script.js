@@ -91,32 +91,32 @@ const setElCountry = function (data, isNeighbour = false) {
   countriesContainer.insertAdjacentHTML('beforeend', html);
 };
 
-const getNeighbour = function (data) {
-  if (data) {
-    const request = new XMLHttpRequest();
-    request.open('GET', `https://restcountries.com/v3.1/alpha/${data[0]}`);
-    request.send();
-    request.addEventListener('load', function () {
-      const [data] = JSON.parse(request.responseText);
-      setElCountry(data, true);
-    });
-  }
-};
+// const getNeighbour = function (data) {
+//   if (data) {
+//     const request = new XMLHttpRequest();
+//     request.open('GET', `https://restcountries.com/v3.1/alpha/${data[0]}`);
+//     request.send();
+//     request.addEventListener('load', function () {
+//       const [data] = JSON.parse(request.responseText);
+//       setElCountry(data, true);
+//     });
+//   }
+// };
 
-const getCountry = function (country) {
-  const request = new XMLHttpRequest(); //request object from the XMLHttpsRequest
-  request.open('GET', `https://restcountries.com/v3.1/name/${country}`); //to open a request accpts arguments for type of request and source for request
-  request.send(); //for sending request
+// const getCountry = function (country) {
+//   const request = new XMLHttpRequest(); //request object from the XMLHttpsRequest
+//   request.open('GET', `https://restcountries.com/v3.1/name/${country}`); //to open a request accpts arguments for type of request and source for request
+//   request.send(); //for sending request
 
-  request.addEventListener('load', function () {
-    //adding event listener so that it triggered when the request is loaded with data
-    const [data] = JSON.parse(this.responseText); //parsing the string back to object/array
+//   request.addEventListener('load', function () {
+//     //adding event listener so that it triggered when the request is loaded with data
+//     const [data] = JSON.parse(this.responseText); //parsing the string back to object/array
 
-    // console.log(data);
-    setElCountry(data);
-    getNeighbour(data?.borders); //example of callback
-  });
-};
+//     // console.log(data);
+//     setElCountry(data);
+//     getNeighbour(data?.borders); //example of callback
+//   });
+// };
 
 // getCountry('india');
 
@@ -135,5 +135,18 @@ const getCountry = function (country) {
 // }, 1000);
 
 //using fetch api---------------------> modern way of handling apis
-const request = fetch(`https://restcountries.com/v3.1/name/india`); //it will return a promise
-console.log(request);
+// const request = fetch(`https://restcountries.com/v3.1/name/india`); //it will return a promise
+// console.log(request);
+
+const getCountry = function (country) {
+  const request = fetch(`https://restcountries.com/v3.1/name/${country}`)
+    .then(response => {
+      //then will have a callback function that takes an argument i.e. response, we can then return this response as json to further apply then on it
+      return response.json(); //return response converted to json to further work on the data
+    })
+    .then(response => {
+      const [data] = response;
+      console.log(data);
+    });
+};
+getCountry('india');
