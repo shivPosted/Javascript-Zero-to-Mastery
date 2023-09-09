@@ -139,14 +139,23 @@ const setElCountry = function (data, isNeighbour = false) {
 // console.log(request);
 
 const getCountry = function (country) {
-  const request = fetch(`https://restcountries.com/v3.1/name/${country}`)
-    .then(response => {
+  fetch(`https://restcountries.com/v3.1/name/${country}`)
+    .then(
       //then will have a callback function that takes an argument i.e. response, we can then return this response as json to further apply then on it
-      return response.json(); //return response converted to json to further work on the data
+      //return response converted to json to further work on the data
+      response => response.json()
+    )
+    .then(data => {
+      setElCountry(data[0]); //using from previous data
+      // console.log(data[0]);
+      const border = data[0].borders?.[0];
+
+      if (!border) return;
+      return fetch(`https://restcountries.com/v3.1/alpha/${border}`);
     })
-    .then(response => {
-      const [data] = response;
-      setElCountry(data); //using from previous data
+    .then(response => response.json())
+    .then(data => {
+      setElCountry(data[0], true);
     });
 };
 getCountry('india');
