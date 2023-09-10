@@ -1,6 +1,6 @@
 'use strict';
 
-const btn = document.querySelector('.btn-country');
+const btn = document.querySelector('.btn');
 const countriesContainer = document.querySelector('.countries');
 const imageUpdate = document.querySelector('.images img');
 ///////////////////////////////////////
@@ -138,6 +138,11 @@ const setElCountry = function (data, isNeighbour = false) {
 // const request = fetch(`https://restcountries.com/v3.1/name/india`); //it will return a promise
 // console.log(request);
 
+const handleError = function (msg) {
+  console.error(msg);
+  countriesContainer.insertAdjacentText('beforeend', msg.message + '🥲🥲🥲');
+};
+
 const getCountry = function (country) {
   fetch(`https://restcountries.com/v3.1/name/${country}`)
     .then(
@@ -151,11 +156,19 @@ const getCountry = function (country) {
       const border = data[0].borders?.[0];
 
       if (!border) return;
-      return fetch(`https://restcountries.com/v3.1/alpha/${border}`);
+      return fetch(`https://restcountries.com/v3.1/alpha/${border}`); //returning promise
     })
-    .then(response => response.json())
+    .then(response => response.json()) //returning promise successfull value
     .then(data => {
       setElCountry(data[0], true);
+    })
+    .catch(err => {
+      handleError(err);
     });
 };
-getCountry('india');
+
+btn.addEventListener('click', () => {
+  countriesContainer.classList.remove('hidden');
+  btn.classList.add('btn-hidden');
+  getCountry('india');
+});

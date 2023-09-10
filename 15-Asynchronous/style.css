@@ -28,6 +28,8 @@ body {
   align-items: center;
   background-color: inherit;
   padding: 3.2rem 0 3.2rem 0;
+  transition: all 0.5s;
+  font-size: 3.2rem;
 }
 
 .country {
@@ -89,6 +91,27 @@ h5:last-child {
   width: 100%;
 }
 
+.hidden {
+  opacity: 0;
+}
+
+.btn {
+  font-size: 3.2rem;
+  background-color: aquamarine;
+  color: #fff;
+  font-weight: 500;
+  padding: 1.2rem 2.4rem;
+  border-radius: 100vw;
+  border: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+.btn-hidden {
+  display: none;
+}
 /* .anime-quotes {
   width: 100%;
   font-size: 4rem;
