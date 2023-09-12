@@ -209,3 +209,6 @@ btn.addEventListener('click', () => {
 // § Coordinates 1: 52.508, 13.381 (Latitude, Longitude)
 // § Coordinates 2: 19.037, 72.873
 // § Coordinates 3: -33.933, 18.474
+const data = [1, 2, 3, 4, 5, 6];
+const data01 = data.map(curr => curr * 2);
+console.log(data01);
