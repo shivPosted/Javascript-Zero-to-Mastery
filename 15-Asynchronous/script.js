@@ -210,5 +210,8 @@ btn.addEventListener('click', () => {
 // § Coordinates 2: 19.037, 72.873
 // § Coordinates 3: -33.933, 18.474
 const data = [1, 2, 3, 4, 5, 6];
-const data01 = data.map(curr => curr * 2);
+const data01 = data
+  .map(curr => curr * 2)
+  .filter(curr => curr % 2 === 0)
+  .reduce((accum, curr) => accum + curr);
 console.log(data01);
