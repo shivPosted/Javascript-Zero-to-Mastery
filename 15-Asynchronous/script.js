@@ -140,25 +140,31 @@ const setElCountry = function (data, isNeighbour = false) {
 
 const handleError = function (msg) {
   console.error(msg);
-  countriesContainer.insertAdjacentText('beforeend', msg.message + '🥲🥲🥲');
+  countriesContainer.insertAdjacentText('beforeend', msg.message + ' 🥲🥲🥲');
+};
+
+const getJSON = function (url, error) {
+  return fetch(url).then(response => {
+    //returning whole block
+    if (!response.ok) throw new Error(error + `(${response.status})`);
+    return response.json();
+  });
 };
 
 const getCountry = function (country) {
-  fetch(`https://restcountries.com/v3.1/name/${country}`)
-    .then(
-      //then will have a callback function that takes an argument i.e. response, we can then return this response as json to further apply then on it
-      //return response converted to json to further work on the data
-      response => response.json()
-    )
+  getJSON(
+    `https://restcountries.com/v3.1/name/${country}`,
+    `Cannot find Country`
+  )
     .then(data => {
       setElCountry(data[0]); //using from previous data
       // console.log(data[0]);
       const border = data[0].borders?.[0];
-
-      if (!border) return;
-      return fetch(`https://restcountries.com/v3.1/alpha/${border}`); //returning promise
+      return getJSON(
+        `https://restcountries.com/v3.1/alpha/${border}`,
+        `This country is an island`
+      );
     })
-    .then(response => response.json()) //returning promise successfull value
     .then(data => {
       setElCountry(data[0], true);
     })
@@ -167,13 +173,13 @@ const getCountry = function (country) {
     });
 };
 
-btn.addEventListener('click', () => {
-  countriesContainer.classList.remove('hidden');
-  btn.classList.add('btn-hidden');
-  getCountry('india');
-});
+// btn.addEventListener('click', () => {
+//   countriesContainer.classList.remove('hidden');
+//   btn.classList.add('btn-hidden');
+//   getCountry('iceland');
+// });
 
-// coding challenge#1
+// Coding Challenge #1
 // In this challenge you will build a function 'whereAmI' which renders a country
 // only based on GPS coordinates. For that, you will use a second API to geocode
 // coordinates. So in this challenge, you’ll use an API on your own for the first time 😁
@@ -209,9 +215,27 @@ btn.addEventListener('click', () => {
 // § Coordinates 1: 52.508, 13.381 (Latitude, Longitude)
 // § Coordinates 2: 19.037, 72.873
 // § Coordinates 3: -33.933, 18.474
-const data = [1, 2, 3, 4, 5, 6];
-const data01 = data
-  .map(curr => curr * 2)
-  .filter(curr => curr % 2 === 0)
-  .reduce((accum, curr) => accum + curr);
-console.log(data01);
+
+const getData = function (url, error) {
+  return fetch(url)
+    .then(response => {
+      if (!response.ok) throw new Error(error);
+      return response.json();
+    })
+    .then(data => {
+      const result = data.features[0].properties.country;
+      getCountry(result);
+    });
+};
+const whereAmI = function (lat, lon) {
+  getData(
+    `https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lon}&apiKey=204cec54c45543bb8119a66423c82d74`,
+    `Country Not Found`
+  ).catch(err => handleError(err));
+};
+
+btn.addEventListener('click', () => {
+  countriesContainer.classList.remove('hidden');
+  btn.classList.add('btn-hidden');
+  whereAmI(0, 0);
+});
