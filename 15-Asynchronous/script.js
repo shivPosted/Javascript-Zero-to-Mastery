@@ -140,29 +140,31 @@ const setElCountry = function (data, isNeighbour = false) {
 
 const handleError = function (msg) {
   console.error(msg);
-  countriesContainer.insertAdjacentText('beforeend', msg.message + '🥲🥲🥲');
+  countriesContainer.insertAdjacentText('beforeend', msg.message + ' 🥲🥲🥲');
+};
+
+const getJSON = function (url, error) {
+  return fetch(url).then(response => {
+    //returning whole block
+    if (!response.ok) throw new Error(error + `(${response.status})`);
+    return response.json();
+  });
 };
 
 const getCountry = function (country) {
-  fetch(`https://restcountries.com/v3.1/name/${country}`)
-    .then(
-      //then will have a callback function that takes an argument i.e. response, we can then return this response as json to further apply then on it
-      //return response converted to json to further work on the data
-      response => {
-        if (!response.ok)
-          throw new Error(`Cannot find country(${response.status})`); //throw an error that will travel down to the catch or finally mehtod, string in Error will work as the message in the err argument of the catch method(err.message will be this string)
-        return response.json();
-      }
-    )
+  getJSON(
+    `https://restcountries.com/v3.1/name/${country}`,
+    `Cannot find Country`
+  )
     .then(data => {
       setElCountry(data[0]); //using from previous data
       // console.log(data[0]);
       const border = data[0].borders?.[0];
-
-      if (!border) return;
-      return fetch(`https://restcountries.com/v3.1/alpha/${border}`); //returning promise
+      return getJSON(
+        `https://restcountries.com/v3.1/alpha/${border}`,
+        `This country is an island`
+      );
     })
-    .then(response => response.json()) //returning promise successfull value
     .then(data => {
       setElCountry(data[0], true);
     })
@@ -174,5 +176,5 @@ const getCountry = function (country) {
 btn.addEventListener('click', () => {
   countriesContainer.classList.remove('hidden');
   btn.classList.add('btn-hidden');
-  getCountry('fgeettr');
+  getCountry('iceland');
 });
