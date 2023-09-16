@@ -237,5 +237,11 @@ const whereAmI = function (lat, lon) {
 btn.addEventListener('click', () => {
   countriesContainer.classList.remove('hidden');
   btn.classList.add('btn-hidden');
-  whereAmI(0, 0);
+  whereAmI(-33.933, 18.474);
 });
+
+//Event loop in practice
+console.log('Test start');
+setTimeout(() => console.log('0 sec timer'), 0);
+Promise.resolve('Promise 1 resolved').then(res => console.log(res));
+console.log('Test End');
