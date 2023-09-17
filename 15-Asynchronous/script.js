@@ -277,6 +277,23 @@ const wait = seconds => {
   });
 };
 
-wait(1).then(() => {
-  console.log('I waited for 1 sec');
-});
+wait(1)
+  .then(() => {
+    console.log('I waited for 1 sec');
+    return wait(1);
+  })
+  .then(() => {
+    console.log('I waited for 2 sec');
+    return wait(1);
+  })
+  .then(() => {
+    console.log('I waited for 3 sec');
+    return wait(1);
+  })
+  .then(() => {
+    console.log('I waited for 4 sec');
+    return wait(1);
+  })
+  .then(() => {
+    console.log('I waited for 5 sec');
+  });
