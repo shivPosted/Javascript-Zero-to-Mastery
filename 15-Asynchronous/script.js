@@ -253,12 +253,12 @@ btn.addEventListener('click', () => {
 //building a new promise
 const lotteryPromise = new Promise(function (resolve, reject) {
   //Promise constructor will contain an executer function which will run immediately with two arguments resolve and reject => resolve for successfull promise and reject for rejected promise
+  //resolve and reject are two functions and will be called in this executor function
   console.log('Lottery draw is in progress 💭💭');
   setTimeout(function () {
-    if (Math.random() >= 0.5)
-      resolve(
-        'You won the lottery 💵'
-      ); //resolve() value will be caught in then as it is a successful promise
+    if (Math.random() >= 0.5) resolve('You won the lottery 💵');
+    //resolve() value will be caught in then as it is a successful promise
+    //we can pass any type of value in resolve() that will be used as successfull promise value in then()
     else {
       reject(new Error('You lost the lottery 💔')); // reject() value will be caught in catch as it is rejected promise
     }
@@ -266,5 +266,5 @@ const lotteryPromise = new Promise(function (resolve, reject) {
 });
 
 lotteryPromise
-  .then(response => console.log(response))
-  .catch(err => console.error(err));
+  .then(response => console.log(response)) //will catch resolve() value
+  .catch(err => console.error(err)); // will catch reject() value
