@@ -241,11 +241,30 @@ btn.addEventListener('click', () => {
 });
 
 //Event loop in practice
-console.log('Test start');
-setTimeout(() => console.log('0 sec timer'), 0);
-Promise.resolve('Promise 1 resolved').then(res => console.log(res));
-Promise.resolve('Promise 2 resolved').then(res => {
-  for (let i = 0; i < 10000000000; i++) {}
-  console.log(res);
+// console.log(`Let's start`);
+// setTimeout(() => console.log('0 sec timer'), 0);
+// Promise.resolve('Promise 1 resolved').then(res => console.log(res));
+// Promise.resolve('Promise 2 resolved').then(res => {
+//   for (let i = 0; i < 10000000000; i++) {}
+//   console.log(res);
+// });
+// console.log('End');
+
+//building a new promise
+const lotteryPromise = new Promise(function (resolve, reject) {
+  //Promise constructor will contain an executer function which will run immediately with two arguments resolve and reject => resolve for successfull promise and reject for rejected promise
+  console.log('Lottery draw is in progress 💭💭');
+  setTimeout(function () {
+    if (Math.random() >= 0.5)
+      resolve(
+        'You won the lottery 💵'
+      ); //resolve() value will be caught in then as it is a successful promise
+    else {
+      reject(new Error('You lost the lottery 💔')); // reject() value will be caught in catch as it is rejected promise
+    }
+  }, 3000);
 });
-console.log('Test End');
+
+lotteryPromise
+  .then(response => console.log(response))
+  .catch(err => console.error(err));
