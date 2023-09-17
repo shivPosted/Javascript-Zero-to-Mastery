@@ -268,3 +268,15 @@ const lotteryPromise = new Promise(function (resolve, reject) {
 lotteryPromise
   .then(response => console.log(response)) //will catch resolve() value
   .catch(err => console.error(err)); // will catch reject() value
+
+//Promisifying setTimeout()
+const wait = seconds => {
+  return new Promise(resolve => {
+    //return a promise so that this works as asychronous and there is no need for reject because setTimout will not fail
+    setTimeout(resolve, seconds * 1000);
+  });
+};
+
+wait(1).then(() => {
+  console.log('I waited for 1 sec');
+});
