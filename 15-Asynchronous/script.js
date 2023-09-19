@@ -297,3 +297,10 @@ wait(1)
   .then(() => {
     console.log('I waited for 5 sec');
   });
+
+const number = [1, 2, 3, 4, 5, 6];
+const result = number
+  .map(curr => curr * 5)
+  .filter(curr => curr % 2 === 0)
+  .reduce((accum, curr) => accum + curr, 0);
+console.log(result);
