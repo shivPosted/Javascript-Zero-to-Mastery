@@ -216,29 +216,29 @@ const getCountry = function (country) {
 // § Coordinates 2: 19.037, 72.873
 // § Coordinates 3: -33.933, 18.474
 
-const getData = function (url, error) {
-  return fetch(url)
-    .then(response => {
-      if (!response.ok) throw new Error(error);
-      return response.json();
-    })
-    .then(data => {
-      const result = data.features[0].properties.country;
-      getCountry(result);
-    });
-};
-const whereAmI = function (lat, lon) {
-  getData(
-    `https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lon}&apiKey=204cec54c45543bb8119a66423c82d74`,
-    `Country Not Found`
-  ).catch(err => handleError(err));
-};
+// const getData = function (url, error) {
+//   return fetch(url)
+//     .then(response => {
+//       if (!response.ok) throw new Error(error);
+//       return response.json();
+//     })
+//     .then(data => {
+//       const result = data.features[0].properties.country;
+//       getCountry(result);
+//     });
+// };
+// const whereAmI = function (lat, lon) {
+//   getData(
+//     `https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lon}&apiKey=204cec54c45543bb8119a66423c82d74`,
+//     `Country Not Found`
+//   ).catch(err => handleError(err));
+// };
 
-btn.addEventListener('click', () => {
-  countriesContainer.classList.remove('hidden');
-  btn.classList.add('btn-hidden');
-  whereAmI(-33.933, 18.474);
-});
+// btn.addEventListener('click', () => {
+//   countriesContainer.classList.remove('hidden');
+//   btn.classList.add('btn-hidden');
+//   whereAmI(-33.933, 18.474);
+// });
 
 //Event loop in practice
 // console.log(`Let's start`);
@@ -273,7 +273,7 @@ lotteryPromise
 const wait = seconds => {
   return new Promise(resolve => {
     //return a promise so that this works as asychronous and there is no need for reject because setTimout will not fail
-    setTimeout(resolve, seconds * 1000);
+    setTimeout(resolve, seconds * 1000); //resolve can be empty if you don't want to pass any values
   });
 };
 
@@ -298,9 +298,35 @@ wait(1)
     console.log('I waited for 5 sec');
   });
 
-const number = [1, 2, 3, 4, 5, 6];
-const result = number
-  .map(curr => curr * 5)
-  .filter(curr => curr % 2 === 0)
-  .reduce((accum, curr) => accum + curr, 0);
-console.log(result);
+//promisifying the geoloaction API
+const getData = function (url, error) {
+  return fetch(url)
+    .then(response => {
+      if (!response.ok) throw new Error(error);
+      return response.json();
+    })
+    .then(data => {
+      const result = data.features[0].properties.country;
+      getCountry(result);
+    });
+};
+const getPosition = function () {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject); //resolve will return position automatically as first callback of the geoloaction API do that
+  });
+};
+const whereAmI = function () {
+  countriesContainer.classList.remove('hidden');
+  btn.classList.add('btn-hidden');
+  getPosition()
+    .then(res => {
+      const { latitude: lat, longitude: lon } = res.coords;
+      return getData(
+        `https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lon}&apiKey=204cec54c45543bb8119a66423c82d74`,
+        `Country Not Found`
+      );
+    })
+    .catch(err => handleError(err));
+};
+
+btn.addEventListener('click', whereAmI);
