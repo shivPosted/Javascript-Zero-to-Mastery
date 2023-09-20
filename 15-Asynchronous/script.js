@@ -3,6 +3,7 @@
 const btn = document.querySelector('.btn');
 const countriesContainer = document.querySelector('.countries');
 const imageUpdate = document.querySelector('.images img');
+const images = document.querySelector('.images');
 ///////////////////////////////////////
 // const getCountryInfo = function (country) {
 //   let languages = '';
@@ -216,29 +217,29 @@ const getCountry = function (country) {
 // § Coordinates 2: 19.037, 72.873
 // § Coordinates 3: -33.933, 18.474
 
-const getData = function (url, error) {
-  return fetch(url)
-    .then(response => {
-      if (!response.ok) throw new Error(error);
-      return response.json();
-    })
-    .then(data => {
-      const result = data.features[0].properties.country;
-      getCountry(result);
-    });
-};
-const whereAmI = function (lat, lon) {
-  getData(
-    `https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lon}&apiKey=204cec54c45543bb8119a66423c82d74`,
-    `Country Not Found`
-  ).catch(err => handleError(err));
-};
+// const getData = function (url, error) {
+//   return fetch(url)
+//     .then(response => {
+//       if (!response.ok) throw new Error(error);
+//       return response.json();
+//     })
+//     .then(data => {
+//       const result = data.features[0].properties.country;
+//       getCountry(result);
+//     });
+// };
+// const whereAmI = function (lat, lon) {
+//   getData(
+//     `https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lon}&apiKey=204cec54c45543bb8119a66423c82d74`,
+//     `Country Not Found`
+//   ).catch(err => handleError(err));
+// };
 
-btn.addEventListener('click', () => {
-  countriesContainer.classList.remove('hidden');
-  btn.classList.add('btn-hidden');
-  whereAmI(-33.933, 18.474);
-});
+// btn.addEventListener('click', () => {
+//   countriesContainer.classList.remove('hidden');
+//   btn.classList.add('btn-hidden');
+//   whereAmI(-33.933, 18.474);
+// });
 
 //Event loop in practice
 // console.log(`Let's start`);
@@ -251,56 +252,146 @@ btn.addEventListener('click', () => {
 // console.log('End');
 
 //building a new promise
-const lotteryPromise = new Promise(function (resolve, reject) {
-  //Promise constructor will contain an executer function which will run immediately with two arguments resolve and reject => resolve for successfull promise and reject for rejected promise
-  //resolve and reject are two functions and will be called in this executor function
-  console.log('Lottery draw is in progress 💭💭');
-  setTimeout(function () {
-    if (Math.random() >= 0.5) resolve('You won the lottery 💵');
-    //resolve() value will be caught in then as it is a successful promise
-    //we can pass any type of value in resolve() that will be used as successfull promise value in then()
-    else {
-      reject(new Error('You lost the lottery 💔')); // reject() value will be caught in catch as it is rejected promise
-    }
-  }, 3000);
-});
+// const lotteryPromise = new Promise(function (resolve, reject) {
+//   //Promise constructor will contain an executer function which will run immediately with two arguments resolve and reject => resolve for successfull promise and reject for rejected promise
+//   //resolve and reject are two functions and will be called in this executor function
+//   console.log('Lottery draw is in progress 💭💭');
+//   setTimeout(function () {
+//     if (Math.random() >= 0.5) resolve('You won the lottery 💵');
+//     //resolve() value will be caught in then as it is a successful promise
+//     //we can pass any type of value in resolve() that will be used as successfull promise value in then()
+//     else {
+//       reject(new Error('You lost the lottery 💔')); // reject() value will be caught in catch as it is rejected promise
+//     }
+//   }, 3000);
+// });
 
-lotteryPromise
-  .then(response => console.log(response)) //will catch resolve() value
-  .catch(err => console.error(err)); // will catch reject() value
+// lotteryPromise
+//   .then(response => console.log(response)) //will catch resolve() value
+//   .catch(err => console.error(err)); // will catch reject() value
 
 //Promisifying setTimeout()
 const wait = seconds => {
   return new Promise(resolve => {
     //return a promise so that this works as asychronous and there is no need for reject because setTimout will not fail
-    setTimeout(resolve, seconds * 1000);
+    setTimeout(resolve, seconds * 1000); //resolve can be empty if you don't want to pass any values
   });
 };
 
-wait(1)
-  .then(() => {
-    console.log('I waited for 1 sec');
-    return wait(1);
-  })
-  .then(() => {
-    console.log('I waited for 2 sec');
-    return wait(1);
-  })
-  .then(() => {
-    console.log('I waited for 3 sec');
-    return wait(1);
-  })
-  .then(() => {
-    console.log('I waited for 4 sec');
-    return wait(1);
-  })
-  .then(() => {
-    console.log('I waited for 5 sec');
-  });
+// wait(1)
+//   .then(() => {
+//     console.log('I waited for 1 sec');
+//     return wait(1);
+//   })
+//   .then(() => {
+//     console.log('I waited for 2 sec');
+//     return wait(1);
+//   })
+//   .then(() => {
+//     console.log('I waited for 3 sec');
+//     return wait(1);
+//   })
+//   .then(() => {
+//     console.log('I waited for 4 sec');
+//     return wait(1);
+//   })
+//   .then(() => {
+//     console.log('I waited for 5 sec');
+//   });
 
-const number = [1, 2, 3, 4, 5, 6];
-const result = number
-  .map(curr => curr * 5)
-  .filter(curr => curr % 2 === 0)
-  .reduce((accum, curr) => accum + curr, 0);
-console.log(result);
+//promisifying the geoloaction API
+// const getData = function (url, error) {
+//   return fetch(url)
+//     .then(response => {
+//       if (!response.ok) throw new Error(error);
+//       return response.json();
+//     })
+//     .then(data => {
+//       const result = data.features[0].properties.country;
+//       getCountry(result);
+//     });
+// };
+// const getPosition = function () {
+//   return new Promise((resolve, reject) => {
+//     navigator.geolocation.getCurrentPosition(resolve, reject); //resolve will return position automatically as first callback of the geoloaction API do that
+//   });
+// };
+// const whereAmI = function () {
+//   countriesContainer.classList.remove('hidden');
+//   btn.classList.add('btn-hidden');
+//   getPosition()
+//     .then(res => {
+//       const { latitude: lat, longitude: lon } = res.coords;
+//       return getData(
+//         `https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lon}&apiKey=204cec54c45543bb8119a66423c82d74`,
+//         `Country Not Found`
+//       );
+//     })
+//     .catch(err => handleError(err));
+// };
+
+// btn.addEventListener('click', whereAmI);
+
+// Coding Challenge #2
+
+// For this challenge you will actually have to watch the video! Then, build the image
+// loading functionality that I just showed you on the screen.
+// Your tasks:
+// Tasks are not super-descriptive this time, so that you can figure out some stuff by
+// yourself. Pretend you're working on your own 😉
+
+// PART 1
+// 1. Create a function 'createImage' which receives 'imgPath' as an input.
+// This function returns a promise which creates a new image (use
+// document.createElement('img')) and sets the .src attribute to the
+// provided image path
+// 2. When the image is done loading, append it to the DOM element with the
+// 'images' class, and resolve the promise. The fulfilled value should be the
+// image element itself. In case there is an error loading the image (listen for
+// the'error' event), reject the promise
+// 3. If this part is too tricky for you, just watch the first part of the solution
+
+// PART 2
+// 4. Consume the promise using .then and also add an error handler
+// 5. After the image has loaded, pause execution for 2 seconds using the 'wait'
+// function we created earlier
+// 6. After the 2 seconds have passed, hide the current image (set display CSS
+// property to 'none'), and load a second image (Hint: Use the image element
+// returned by the 'createImage' promise to hide the current image. You will
+// need a global variable for that 😉)
+// 7. After the second image has loaded, pause execution for 2 seconds again
+// 8. After the 2 seconds have passed, hide the current image
+// Test data: Images in the img folder. Test the error handler by passing a wrong
+// image path. Set the network speed to “Fast 3G” in the dev tools Network tab,
+// otherwise images load too fast
+let image;
+const createImage = function (imgPath) {
+  image = document.createElement('img');
+  image.setAttribute('src', `img/${imgPath}.jpg`);
+  console.log(image);
+  return new Promise(function (resolve, reject) {
+    resolve(image);
+    reject(new Error('Error loading the image'));
+  });
+};
+
+const promiseHandler = function () {
+  image.addEventListener('load', function () {
+    images.append(image);
+    wait(2).then(() => {
+      image.style.display = 'none';
+    });
+  });
+};
+
+createImage('img-1')
+  .then(() => {
+    promiseHandler();
+    return wait(2);
+  })
+  .then(() => {
+    createImage('img-2').then(() => {
+      promiseHandler();
+    });
+  })
+  .catch(error => console.error(error));
