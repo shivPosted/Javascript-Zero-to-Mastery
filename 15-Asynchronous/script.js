@@ -397,4 +397,5 @@ createImage('img-1')
   .catch(error => console.error(error));
 
 const name01 = 'My name is Shiv Pratap Singh';
-const result = name01.split(' ');
+const result = name01.split(' ').map(curr => curr.padStart(6, '*'));
+console.log(result.join('|'));
