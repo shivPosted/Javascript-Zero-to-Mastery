@@ -369,33 +369,29 @@ const createImage = function (imgPath) {
   image = document.createElement('img');
   image.setAttribute('src', `img/${imgPath}.jpg`);
   console.log(image);
+  images.append(image);
   return new Promise(function (resolve, reject) {
-    resolve(image);
-    reject(new Error('Error loading the image'));
-  });
-};
-
-const promiseHandler = function () {
-  image.addEventListener('load', function () {
-    images.append(image);
-    wait(2).then(() => {
-      image.style.display = 'none';
+    image.addEventListener('load', () => {
+      resolve(image);
+    });
+    image.addEventListener('error', () => {
+      reject(new Error('Image not found'));
     });
   });
 };
 
 createImage('img-1')
   .then(() => {
-    promiseHandler();
     return wait(2);
   })
   .then(() => {
-    createImage('img-2').then(() => {
-      promiseHandler();
-    });
+    image.style.display = 'none';
+    return createImage('img-2');
   })
-  .catch(error => console.error(error));
-
-const name01 = 'My name is Shiv Pratap Singh';
-const result = name01.split(' ').map(curr => curr.padStart(6, '*'));
-console.log(result.join('|'));
+  .then(() => {
+    return wait(2);
+  })
+  .then(() => {
+    image.style.display = 'none';
+  })
+  .catch(err => console.error(err.message));
