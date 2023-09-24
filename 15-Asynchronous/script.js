@@ -364,34 +364,50 @@ const wait = seconds => {
 // Test data: Images in the img folder. Test the error handler by passing a wrong
 // image path. Set the network speed to “Fast 3G” in the dev tools Network tab,
 // otherwise images load too fast
-let image;
-const createImage = function (imgPath) {
-  image = document.createElement('img');
-  image.setAttribute('src', `img/${imgPath}.jpg`);
-  console.log(image);
-  images.append(image);
-  return new Promise(function (resolve, reject) {
-    image.addEventListener('load', () => {
-      resolve(image);
-    });
-    image.addEventListener('error', () => {
-      reject(new Error('Image not found'));
-    });
-  });
+
+// let image;
+// const createImage = function (imgPath) {
+//   image = document.createElement('img');
+//   image.setAttribute('src', `img/${imgPath}.jpg`);
+//   console.log(image);
+//   images.append(image);
+//   return new Promise(function (resolve, reject) {
+//     image.addEventListener('load', () => {
+//       resolve(image);
+//     });
+//     image.addEventListener('error', () => {
+//       reject(new Error('Image not found'));
+//     });
+//   });
+// };
+
+// createImage('img-1')
+//   .then(() => {
+//     return wait(2);
+//   })
+//   .then(() => {
+//     image.style.display = 'none';
+//     return createImage('img-2');
+//   })
+//   .then(() => {
+//     return wait(2);
+//   })
+//   .then(() => {
+//     image.style.display = 'none';
+//   })
+//   .catch(err => console.error(err.message));
+
+const whereAmI = async function (country) {
+  //to define a function as async add async keyword like this and the function will return a promise ------------------------------------------->automatically
+  const res = await fetch(`https://restcountries.com/v3.1/name/${country}`); //as fetch will return a new promise we use await keyword to wait for the process to complete so that promise can be stored in the variable, it will not stop the execution of the main thread as the function is running as asynchronously
+
+  console.log(res); // it will print the response
+  const [data] = await res.json(); //as res.json() is also a promise so that we will use await for it
+  setElCountry(data);
 };
 
-createImage('img-1')
-  .then(() => {
-    return wait(2);
-  })
-  .then(() => {
-    image.style.display = 'none';
-    return createImage('img-2');
-  })
-  .then(() => {
-    return wait(2);
-  })
-  .then(() => {
-    image.style.display = 'none';
-  })
-  .catch(err => console.error(err.message));
+btn.addEventListener('click', () => {
+  countriesContainer.classList.remove('hidden');
+  btn.classList.add('btn-hidden');
+  whereAmI('bharat');
+});
