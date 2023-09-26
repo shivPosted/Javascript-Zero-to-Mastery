@@ -412,6 +412,29 @@ btn.addEventListener('click', () => {
   whereAmI('bharat');
 });
 
+// const p1 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve('Promise 1 is resolved');
+//   }, 10000);
+// });
+// const p2 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve('Promise 2 is resolved');
+//   }, 5000);
+// });
+//async await behind the scenes
+// const handlePromise = async function () {
+//   console.log('Welcome to async/await');
+//   const data1 = await p1; //await is used before the promise; => when JS encounter 'await' keyword it will suspend the execution of the function and put the function out of the call stack and when the promise is resolved it will put back the function in call stack and will resumed the execution of the programme from where it left off
+//   console.log(data1);
+
+//   const data2 = await p2; //p2 is already resovled in 5 sec that's why both line 432 and 429 will get printed simultaneously
+//   console.log(data2);
+// };
+
+// handlePromise();
+
+//anonther example  of async function
 const p1 = new Promise((resolve, reject) => {
   setTimeout(() => {
     resolve('Promise 1 is resolved');
@@ -420,16 +443,15 @@ const p1 = new Promise((resolve, reject) => {
 const p2 = new Promise((resolve, reject) => {
   setTimeout(() => {
     resolve('Promise 2 is resolved');
-  }, 5000);
+  }, 20000);
 });
-//async await behind the scenes
+
 const handlePromise = async function () {
-  console.log('Welcome to async/await');
-  const data1 = await p1; //await is used before the promise; => when JS encounter 'await' keyword it will suspend the execution of the function and put the function out of the call stack and when the promise is resolved it will put back the function in call stack and will resumed the execution of the programme from where it left off
-  console.log(data1);
+  console.log('welcom to async function');
+  const data01 = await p1;
+  console.log(data01);
 
-  const data2 = await p2; //p2 is already resovled in 5 sec that's why both line 432 and 429 will get printed simultaneously
-  console.log(data2);
+  const data02 = await p2;
+  console.log(data02);
 };
-
 handlePromise();
