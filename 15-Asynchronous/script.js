@@ -455,3 +455,11 @@ const handlePromise = async function () {
   console.log(data02);
 };
 handlePromise();
+
+const data = {
+  string: ['one', 'two', 'three', 'four'],
+  numeral: [1, 2, 3, 4],
+};
+
+const { str: string, num: numeral } = data;
+console.log(numeral);
