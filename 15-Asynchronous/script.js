@@ -435,31 +435,36 @@ btn.addEventListener('click', () => {
 // handlePromise();
 
 //anonther example  of async function
-const p1 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve('Promise 1 is resolved');
-  }, 10000);
-});
-const p2 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve('Promise 2 is resolved');
-  }, 20000);
-});
+// const p1 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve('Promise 1 is resolved');
+//   }, 10000);
+// });
+// const p2 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve('Promise 2 is resolved');
+//   }, 20000);
+// });
 
-const handlePromise = async function () {
-  console.log('welcom to async function');
-  const data01 = await p1;
-  console.log(data01);
+// const handlePromise = async function () {
+//   console.log('welcom to async function');
+//   const data01 = await p1;
+//   console.log(data01);
 
-  const data02 = await p2;
-  console.log(data02);
-};
-handlePromise();
+//   const data02 = await p2;
+//   console.log(data02);
+// };
+// handlePromise();
 
-const data = {
-  string: ['one', 'two', 'three', 'four'],
-  numeral: [1, 2, 3, 4],
-};
+//error handling witht try and catch
 
-const { str: string, num: numeral } = data;
-console.log(numeral);
+try {
+  const x = 32;
+  let y = 0;
+  x = 20;
+  y = 10;
+  if (x !== 20) new Error('This is the error');
+} catch (err) {
+  console.error(err.message);
+  console.log('the error was in previous line but the code is working');
+}
