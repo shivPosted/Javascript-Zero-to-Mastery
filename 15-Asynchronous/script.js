@@ -474,5 +474,6 @@ const stringAsync = async function () {
   return `This is an async function`;
 };
 
-const resultAsync = stringAsync();
-console.log(resultAsync); //what should be the output😈😈
+// const resultAsync = stringAsync();
+// console.log(resultAsync); //what should be the output😈😈
+stringAsync().then(string => console.log(string));
