@@ -8,3 +8,6 @@ console.log('Importing Module');
 
 ShoppingCart.addToCart('Butter', 10);
 console.log(ShoppingCart.totalPrice);
+
+import add from './shoppingCart.js'; //importing default export
+add('burger', 5);
