@@ -468,3 +468,11 @@ try {
   console.error(err.message);
   console.log('the error was in previous line but the code is working');
 }
+
+//Returning values from async function
+const stringAsync = async function () {
+  return `This is an async function`;
+};
+
+const resultAsync = stringAsync();
+console.log(resultAsync); //what should be the output😈😈
