@@ -15,3 +15,17 @@ export default function (item, quantity) {
   cart.push({ item, quantity });
   console.log(`${quantity} ${item} are added to the cart`);
 }
+
+const result = await fetch('https://jsonplaceholder.typicode.com/todos'); //top level await without using async function
+const data = await result.json();
+console.log(data);
+
+const topFunction = async function (data) {
+  return { title: data.at(-1).title, isCompleted: data.at(-1).completed };
+};
+
+//not very efficient way
+// topFunction(data).then(res => console.log(res));
+
+const newObj = await topFunction(data);
+console.log(newObj);

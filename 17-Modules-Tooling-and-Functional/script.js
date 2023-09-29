@@ -9,5 +9,5 @@ console.log('Importing Module');
 ShoppingCart.addToCart('Butter', 10);
 console.log(ShoppingCart.totalPrice);
 
-import add from './shoppingCart.js'; //importing default export
+import add from './shoppingCart.js'; //importing default export, don't use curylbraces for default exports
 add('burger', 5);
