@@ -1,5 +1,6 @@
 //importing module
-import { addToCart } from './shoppingCart.js';
+import { addToCart as AC, shoppingCart as SC } from './shoppingCart.js';
+AC('Butter', 10);
+console.log(SC);
 
 console.log('Importing Module');
-addToCart('Butter', 10);

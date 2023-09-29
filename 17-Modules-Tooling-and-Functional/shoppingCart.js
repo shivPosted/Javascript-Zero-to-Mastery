@@ -8,4 +8,4 @@ const addToCart = function (item, quantity) {
   console.log(`${quantity} ${item} are added to the cart`);
 };
 
-export { addToCart };
+// export { addToCart, shoppingCart }; // export should be used as the top level code, export-import works as live connection  //named exports
